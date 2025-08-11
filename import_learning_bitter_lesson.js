@@ -40,11 +40,11 @@ function parseVocabularyFromFile(filePath) {
       }
       
       // 开始新词汇
-      const wordMatch = line.match(/\*\*\*(\w+)\*\*\*/);
+      const wordMatch = line.match(/\* \*\*([^*]+)\*\*\*/);
       if (wordMatch) {
         currentWord = {
           id: wordId++,
-          word: wordMatch[1],
+          word: wordMatch[1].trim(),
           category: currentCategory,
           pronunciation: '',
           meaning: '',
@@ -52,7 +52,7 @@ function parseVocabularyFromFile(filePath) {
           sentence: '',
           translation: '',
           paperTitle: 'Learning the Bitter Lesson: Empirical Evidence from 20 Years of CVPR Proceedings',
-          difficulty: getDifficulty(wordMatch[1]),
+          difficulty: getDifficulty(wordMatch[1].trim()),
           studyCount: 0,
           correctCount: 0,
           lastStudyTime: null,
@@ -69,11 +69,23 @@ function parseVocabularyFromFile(filePath) {
         const match = line.match(/\*\*英文释义\*\*: (.+)/);
         if (match) {
           currentWord.englishMeaning = match[1].trim();
+        } else {
+          // 尝试匹配带星号的格式
+          const matchWithStar = line.match(/\* \*\*英文释义\*\*: (.+)/);
+          if (matchWithStar) {
+            currentWord.englishMeaning = matchWithStar[1].trim();
+          }
         }
       } else if (line.includes('**中文释义**:')) {
         const match = line.match(/\*\*中文释义\*\*: (.+)/);
         if (match) {
           currentWord.meaning = match[1].trim();
+        } else {
+          // 尝试匹配带星号的格式
+          const matchWithStar = line.match(/\* \*\*中文释义\*\*: (.+)/);
+          if (matchWithStar) {
+            currentWord.meaning = matchWithStar[1].trim();
+          }
         }
       } else if (line.includes('**词性**:')) {
         const match = line.match(/\*\*词性\*\*: (.+)/);
@@ -82,21 +94,48 @@ function parseVocabularyFromFile(filePath) {
           if (currentWord.meaning) {
             currentWord.meaning += ` (${partOfSpeech})`;
           }
+        } else {
+          // 尝试匹配带星号的格式
+          const matchWithStar = line.match(/\* \*\*词性\*\*: (.+)/);
+          if (matchWithStar) {
+            const partOfSpeech = matchWithStar[1].trim();
+            if (currentWord.meaning) {
+              currentWord.meaning += ` (${partOfSpeech})`;
+            }
+          }
         }
       } else if (line.includes('**音标**:')) {
         const match = line.match(/\*\*音标\*\*: (.+)/);
         if (match) {
           currentWord.pronunciation = match[1].trim();
+        } else {
+          // 尝试匹配带星号的格式
+          const matchWithStar = line.match(/\* \*\*音标\*\*: (.+)/);
+          if (matchWithStar) {
+            currentWord.pronunciation = matchWithStar[1].trim();
+          }
         }
       } else if (line.includes('**在论文中的例句**:')) {
         const match = line.match(/\*\*在论文中的例句\*\*: (.+)/);
         if (match) {
           currentWord.sentence = match[1].trim();
+        } else {
+          // 尝试匹配带星号的格式
+          const matchWithStar = line.match(/\* \*\*在论文中的例句\*\*: (.+)/);
+          if (matchWithStar) {
+            currentWord.sentence = matchWithStar[1].trim();
+          }
         }
       } else if (line.includes('**例句中文翻译**:')) {
         const match = line.match(/\*\*例句中文翻译\*\*: (.+)/);
         if (match) {
           currentWord.translation = match[1].trim();
+        } else {
+          // 尝试匹配带星号的格式
+          const matchWithStar = line.match(/\* \*\*例句中文翻译\*\*: (.+)/);
+          if (matchWithStar) {
+            currentWord.translation = matchWithStar[1].trim();
+          }
         }
       }
     }

@@ -1,8 +1,6 @@
 <!--pages/study/study.wxml-->
 <view class="container">
 
-
-
   <!-- 单词卡片（空态时不显示） -->
   <view class="word-card" wx:if="{{!isEmptyState}}">
     <view class="card-header">
@@ -68,6 +66,16 @@
     </view>
   </view>
 
+  <!-- 导航按钮（空态时不显示） -->
+  <view class="navigation-buttons" wx:if="{{!isTestMode && !isEmptyState}}">
+    <button class="nav-btn" bindtap="prevWord" disabled="{{isEmptyState || currentIndex === 0}}">
+      上一个
+    </button>
+    <button class="nav-btn primary" bindtap="nextWord" disabled="{{isEmptyState || totalWords === 0 || currentIndex >= totalWords - 1}}">
+      下一个
+    </button>
+  </view>
+
   <!-- 模式选择 -->
   <view class="mode-selector">
     <view class="mode-buttons">
@@ -87,16 +95,6 @@
         学习模式
       </button>
     </view>
-  </view>
-
-  <!-- 导航按钮（空态时不显示） -->
-  <view class="navigation-buttons" wx:if="{{!isTestMode && !isEmptyState}}">
-    <button class="nav-btn" bindtap="prevWord" disabled="{{isEmptyState || currentIndex === 0}}">
-      上一个
-    </button>
-    <button class="nav-btn primary" bindtap="nextWord" disabled="{{isEmptyState || totalWords === 0 || currentIndex >= totalWords - 1}}">
-      下一个
-    </button>
   </view>
 
   <!-- 测试结果区域 -->

@@ -50,15 +50,8 @@ Page({
 
   // 加载统计数据
   loadStats() {
-    // 确保从本地存储重新加载最新数据
-    try {
-      const savedWords = wx.getStorageSync('words')
-      if (Array.isArray(savedWords) && savedWords.length > 0) {
-        app.globalData.words = savedWords
-      }
-    } catch (error) {
-      console.error('加载本地存储数据失败:', error)
-    }
+    // 强制使用app.globalData中的词汇数据，不从本地存储加载
+    console.log('统计页面使用app.globalData中的词汇数据')
     
     const words = app.globalData.words || []
     

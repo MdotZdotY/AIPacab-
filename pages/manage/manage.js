@@ -47,15 +47,8 @@ Page({
 
   // 加载词汇列表
   loadWords() {
-    // 从本地存储重新加载最新数据
-    try {
-      const savedWords = wx.getStorageSync('words')
-      if (Array.isArray(savedWords) && savedWords.length > 0) {
-        app.globalData.words = savedWords
-      }
-    } catch (error) {
-      console.error('加载本地存储数据失败:', error)
-    }
+    // 强制使用app.globalData中的词汇数据，不从本地存储加载
+    console.log('管理页面使用app.globalData中的词汇数据')
     
     let words = app.globalData.words || []
     
@@ -201,10 +194,8 @@ Page({
 
   // 显示添加词汇模态框
   showAddWord() {
-    wx.showToast({
-      title: '功能开发中',
-      icon: 'none',
-      duration: 2000
+    this.setData({
+      showAddModal: true
     })
   },
 

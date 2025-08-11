@@ -1,7 +1,7 @@
 /* pages/study/study.wxss */
 .container {
   padding: 15rpx;
-  padding-bottom: 380rpx; /* 增加底部padding，从350rpx增加到380rpx */
+  padding-bottom: 420rpx; /* 保持底部padding，为模式选择器留出空间 */
   background-color: #F5F7FA;
   min-height: 100vh;
   box-sizing: border-box;
@@ -11,20 +11,18 @@
   gap: 20rpx; /* 添加统一的间距 */
 }
 
-
-
 /* 词汇卡片 */
 .word-card {
   background: white;
   border-radius: 16rpx;
-  padding: 60rpx 40rpx; /* 增加上下内边距 */
+  padding: 60rpx 40rpx; /* 保持上下内边距 */
   margin-bottom: 20rpx;
   box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.1);
   margin-top: 20rpx;
-  height: 900rpx; /* 稍微减小卡片高度，从950rpx减小到900rpx */
+  height: 1000rpx; /* 稍微增加卡片高度，从950rpx增加到1000rpx */
   display: flex;
   flex-direction: column;
-  margin-bottom: 240rpx; /* 增加底部边距，从200rpx增加到240rpx */
+  margin-bottom: 220rpx; /* 保持底部边距 */
   box-sizing: border-box; /* 确保padding包含在高度内 */
 }
 
@@ -167,6 +165,46 @@
   color: white;
 }
 
+/* 导航按钮 */
+.navigation-buttons {
+  display: flex;
+  gap: 15rpx;
+  margin-bottom: 20rpx;
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 20%; /* 向上移动，从15%调整到20% */
+  left: 15rpx;
+  right: 15rpx;
+  z-index: 100;
+  margin-top: 20rpx; /* 添加顶部外边距 */
+}
+
+.nav-btn {
+  flex: 1;
+  height: 76rpx; /* 稍微减小按钮高度，从80rpx减小到76rpx */
+  border-radius: 38rpx; /* 相应调整圆角 */
+  border: 2rpx solid #e0e0e0;
+  background: white;
+  color: #666;
+  font-size: 28rpx;
+  box-sizing: border-box;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-btn.primary {
+  background: #0D47A1;
+  color: white;
+  border-color: #0D47A1;
+}
+
+.nav-btn[disabled] {
+  opacity: 0.5;
+  background: #f5f5f5;
+}
+
 /* 模式选择器 */
 .mode-selector {
   background: white;
@@ -176,7 +214,7 @@
   box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   position: fixed;
-  bottom: 30%; /* 向上移动更多，从28%增加到30% */
+  bottom: 10%; /* 向上移动，从8%调整到10% */
   left: 15rpx;
   right: 15rpx;
   z-index: 100;
@@ -216,46 +254,6 @@
   background: #0D47A1;
   color: white;
   border-color: #0D47A1;
-}
-
-/* 导航按钮 */
-.navigation-buttons {
-  display: flex;
-  gap: 15rpx;
-  margin-bottom: 20rpx;
-  box-sizing: border-box;
-  position: fixed;
-  bottom: 18%; /* 向下移动更多，从15%增加到18% */
-  left: 15rpx;
-  right: 15rpx;
-  z-index: 100;
-  margin-top: 20rpx; /* 添加顶部外边距 */
-}
-
-.nav-btn {
-  flex: 1;
-  height: 76rpx; /* 稍微减小按钮高度，从80rpx减小到76rpx */
-  border-radius: 38rpx; /* 相应调整圆角 */
-  border: 2rpx solid #e0e0e0;
-  background: white;
-  color: #666;
-  font-size: 28rpx;
-  box-sizing: border-box;
-  min-width: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.nav-btn.primary {
-  background: #0D47A1;
-  color: white;
-  border-color: #0D47A1;
-}
-
-.nav-btn[disabled] {
-  opacity: 0.5;
-  background: #f5f5f5;
 }
 
 /* 空状态样式 */
