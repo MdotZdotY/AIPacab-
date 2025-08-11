@@ -1,0 +1,18 @@
+<view class="tabbar">
+  <view class="tab-item" bindtap="onSwitch" data-path="/pages/index/index">
+    <text class="tab-text {{selected === 0 ? 'active' : ''}}">首页</text>
+  </view>
+  <view class="tab-item" bindtap="onSwitch" data-path="/pages/study/study">
+    <text class="tab-text {{selected === 1 ? 'active' : ''}}">学习</text>
+  </view>
+  <view class="tab-item" bindtap="onSwitch" data-path="/pages/manage/manage">
+    <text class="tab-text {{selected === 2 ? 'active' : ''}}">词汇</text>
+  </view>
+  <view class="tab-item" bindtap="onSwitch" data-path="/pages/papers/papers">
+    <text class="tab-text {{selected === 3 ? 'active' : ''}}">论文</text>
+  </view>
+  <view class="tab-item" bindtap="onSwitch" data-path="/pages/stats/stats">
+    <text class="tab-text {{selected === 4 ? 'active' : ''}}">统计</text>
+  </view>
+</view>
+

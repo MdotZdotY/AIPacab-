@@ -1,0 +1,114 @@
+<!--pages/study/study.wxml-->
+<view class="container">
+
+
+
+  <!-- 单词卡片（空态时不显示） -->
+  <view class="word-card" wx:if="{{!isEmptyState}}">
+    <view class="card-header">
+      <!-- 词汇文本和发音 -->
+      <view class="word-text" bindtap="playPronunciation">
+        <text class="word">{{currentWord.word}}</text>
+        <text class="pronunciation-icon">🔊</text>
+      </view>
+
+      <!-- 含义（中英同时显示） -->
+      <view class="word-meaning" wx:if="{{showMeaning}}">
+        {{currentWord.meaning}}
+        <block wx:if="{{currentWord.englishMeaning}}">
+          \n{{currentWord.englishMeaning}}
+        </block>
+      </view>
+
+      <!-- 例句 -->
+      <view class="sentence-section" wx:if="{{showTranslation}}">
+        <view class="sentence-text">{{currentWord.sentence}}</view>
+        <view class="sentence-translation" wx:if="{{currentWord.translation}}">{{currentWord.translation}}</view>
+      </view>
+
+      <!-- 论文来源信息 -->
+      <view class="paper-info" wx:if="{{showPaperInfo}}">
+        <text class="paper-label">来源论文：</text>
+        <text class="paper-title">{{currentWord.paperTitle}}</text>
+      </view>
+    </view>
+
+    <!-- 测试模式的选项 -->
+    <view class="test-options" wx:if="{{isTestMode}}">
+      <view class="option-item" 
+            wx:for="{{options}}" 
+            wx:key="*this"
+            bindtap="selectAnswer"
+            data-answer="{{item}}">
+        <text class="option-text">{{item}}</text>
+      </view>
+    </view>
+
+    <!-- 控制按钮 -->
+    <view class="control-buttons" wx:if="{{!isTestMode}}">
+      <button class="control-btn" bindtap="toggleMeaning">
+        {{showMeaning ? '隐藏含义' : '显示含义'}}
+      </button>
+      <button class="control-btn" bindtap="toggleTranslation">
+        {{showTranslation ? '隐藏例句' : '显示例句'}}
+      </button>
+      <button class="control-btn" bindtap="togglePaperInfo">
+        {{showPaperInfo ? '隐藏来源' : '显示来源'}}
+      </button>
+    </view>
+  </view>
+
+  <!-- 空状态提示 -->
+  <view class="empty-state" wx:if="{{isEmptyState}}">
+    <view class="empty-icon">📚</view>
+    <view class="empty-message">{{emptyMessage}}</view>
+    <view class="empty-sub-message">{{emptySubMessage}}</view>
+    <view class="empty-actions">
+      <button class="empty-btn" bindtap="switchMode" data-mode="learning">开始学习</button>
+    </view>
+  </view>
+
+  <!-- 模式选择 -->
+  <view class="mode-selector">
+    <view class="mode-buttons">
+      <button class="mode-btn {{mode === 'review' ? 'active' : ''}}" 
+              bindtap="switchMode" 
+              data-mode="review">
+        复习模式
+      </button>
+      <button class="mode-btn {{mode === 'test' ? 'active' : ''}}" 
+              bindtap="switchMode" 
+              data-mode="test">
+        测试模式
+      </button>
+      <button class="mode-btn {{mode === 'learning' ? 'active' : ''}}" 
+              bindtap="switchMode" 
+              data-mode="learning">
+        学习模式
+      </button>
+    </view>
+  </view>
+
+  <!-- 导航按钮（空态时不显示） -->
+  <view class="navigation-buttons" wx:if="{{!isTestMode && !isEmptyState}}">
+    <button class="nav-btn" bindtap="prevWord" disabled="{{isEmptyState || currentIndex === 0}}">
+      上一个
+    </button>
+    <button class="nav-btn primary" bindtap="nextWord" disabled="{{isEmptyState || totalWords === 0 || currentIndex >= totalWords - 1}}">
+      下一个
+    </button>
+  </view>
+
+  <!-- 测试结果区域 -->
+  <view class="test-result" wx:if="{{isTestMode && testResult}}">
+    <view class="result-header">
+      <text class="result-title">{{testResult.correct ? '回答正确！' : '回答错误'}}</text>
+    </view>
+    <view class="result-content">
+      <text class="correct-answer">正确答案：{{currentWord.meaning}}</text>
+      <text class="explanation" wx:if="{{testResult.explanation}}">{{testResult.explanation}}</text>
+    </view>
+    <button class="result-btn" bindtap="nextWord">继续</button>
+  </view>
+
+</view>

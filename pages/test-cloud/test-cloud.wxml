@@ -1,0 +1,56 @@
+<!--pages/test-cloud/test-cloud.wxml-->
+<view class="container">
+  <view class="header">
+    <text class="title">云函数测试页面</text>
+    <text class="subtitle">测试云开发功能是否正常工作</text>
+  </view>
+
+  <view class="button-group">
+    <button class="btn btn-primary" bindtap="runAllTests" loading="{{loading}}">
+      运行所有测试
+    </button>
+    <button class="btn btn-secondary" bindtap="clearResults">
+      清空结果
+    </button>
+  </view>
+
+  <view class="test-buttons">
+    <button class="btn btn-test" bindtap="testAddVocabulary" loading="{{loading}}">
+      测试添加词汇
+    </button>
+    <button class="btn btn-test" bindtap="testGetVocabulary" loading="{{loading}}">
+      测试获取词汇
+    </button>
+    <button class="btn btn-test" bindtap="testBatchAdd" loading="{{loading}}">
+      测试批量添加
+    </button>
+    <button class="btn btn-test" bindtap="testGetByCategory" loading="{{loading}}">
+      测试按分类获取
+    </button>
+    <button class="btn btn-test" bindtap="testLocalMethods" loading="{{loading}}">
+      测试本地方法
+    </button>
+  </view>
+
+  <view class="results-section">
+    <text class="section-title">测试结果</text>
+    <view class="results-list">
+      <view wx:for="{{testResults}}" wx:key="index" class="result-item">
+        <view class="result-header">
+          <text class="test-name">{{item.name}}</text>
+          <text class="test-status {{item.status === '成功' ? 'success' : 'failed'}}">
+            {{item.status}}
+          </text>
+        </view>
+        <text class="test-time">{{item.time}}</text>
+        <view class="test-details">
+          <text class="details-text">{{item.result}}</text>
+        </view>
+      </view>
+    </view>
+    
+    <view wx:if="{{testResults.length === 0}}" class="empty-results">
+      <text>暂无测试结果，请点击上方按钮开始测试</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,65 @@
+<!--pages/paper-detail/paper-detail.wxml-->
+<view class="container" wx:if="{{paper}}">
+  <!-- 论文标题 -->
+  <view class="paper-header">
+    <text class="paper-title">{{paper.title}}</text>
+    <text class="paper-authors">{{paper.authors}}</text>
+    <view class="paper-meta">
+      <text class="meta-item">{{paper.year}}</text>
+      <text class="meta-item">{{paper.journal}}</text>
+      <text class="meta-item">{{paper.wordCount}}个词汇</text>
+    </view>
+  </view>
+
+  <!-- 论文摘要 -->
+  <view class="section">
+    <view class="section-title">
+      <text>论文摘要</text>
+    </view>
+    <view class="section-content">
+      <text class="abstract-text">{{paper.abstract}}</text>
+    </view>
+  </view>
+
+  <!-- 论文背景 -->
+  <view class="section">
+    <view class="section-title">
+      <text>论文背景</text>
+    </view>
+    <view class="section-content">
+      <text class="content-text">{{paper.background}}</text>
+    </view>
+  </view>
+
+  <!-- 关键概念 -->
+  <view class="section">
+    <view class="section-title">
+      <text>关键概念</text>
+    </view>
+    <view class="section-content">
+      <text class="content-text">{{paper.keyConcepts}}</text>
+    </view>
+  </view>
+
+  <!-- 论文亮点 -->
+  <view class="section">
+    <view class="section-title">
+      <text>论文亮点</text>
+    </view>
+    <view class="section-content">
+      <text class="content-text">{{paper.highlights}}</text>
+    </view>
+  </view>
+
+  <!-- 源文链接 -->
+  <view class="link-section">
+    <button class="link-btn" bindtap="openPaperUrl">
+      <text class="link-text">查看原文</text>
+    </button>
+  </view>
+</view>
+
+<!-- 加载状态 -->
+<view class="loading" wx:else>
+  <text>加载中...</text>
+</view>

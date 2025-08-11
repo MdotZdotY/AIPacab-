@@ -1,0 +1,44 @@
+<!--pages/index/index.wxml-->
+<view style="padding: 40rpx; background: #f5f5f5; min-height: 100vh;">
+  <view style="background: white; padding: 40rpx; border-radius: 20rpx; text-align: center; margin-bottom: 40rpx;">
+    <text style="font-size: 48rpx; font-weight: bold; color: #333; display: block; margin-bottom: 20rpx;">AI Pacab+</text>
+    <text style="font-size: 32rpx; color: #666; display: block; margin-bottom: 40rpx;">AI论文阅读，词汇无障碍</text>
+    
+    <view style="display: flex; justify-content: space-around; margin-bottom: 40rpx;">
+      <view style="text-align: center;">
+        <text style="font-size: 36rpx; font-weight: bold; color: #007bff; display: block;">{{stats.totalWords}}</text>
+        <text style="font-size: 24rpx; color: #666;">总词汇</text>
+      </view>
+      <view style="text-align: center;">
+        <text style="font-size: 36rpx; font-weight: bold; color: #28a745; display: block;">{{stats.papersCount}}</text>
+        <text style="font-size: 24rpx; color: #666;">论文数</text>
+      </view>
+      <view style="text-align: center;">
+        <text style="font-size: 36rpx; font-weight: bold; color: #ffc107; display: block;">{{stats.studyDays}}</text>
+        <text style="font-size: 24rpx; color: #666;">学习天数</text>
+      </view>
+    </view>
+  </view>
+
+    <view style="background: white; padding: 30rpx; border-radius: 16rpx; margin-top: 40rpx;">
+    <text style="font-size: 32rpx; font-weight: bold; color: #333; display: block; margin-bottom: 20rpx; text-align: center;">分类统计</text>
+    <view style="display: flex; flex-direction: column; gap: 15rpx;">
+      <view style="padding: 20rpx; background: #f8f9fa; border-radius: 12rpx; border-left: 6rpx solid #007bff;" wx:for="{{categories}}" wx:key="name">
+        <text style="font-size: 28rpx; color: #333;">{{item.name}}: {{item.count}}个词汇</text>
+      </view>
+    </view>
+  </view>
+
+  <view style="display: flex; flex-direction: row; gap: 20rpx; margin-top: 60rpx;">
+    <button style="background: #28a745; color: white; padding: 30rpx; border: none; border-radius: 16rpx; font-size: 32rpx; flex: 1;" bindtap="goToPapers">
+      论文资源
+    </button>
+    <button style="background: #007bff; color: white; padding: 30rpx; border: none; border-radius: 16rpx; font-size: 32rpx; flex: 1;" bindtap="startStudy">
+      开始学习
+    </button>
+  </view>
+
+  <view style="margin-top: 80rpx; text-align: center;">
+    <text style="font-size: 24rpx; color: #999;">使用底部导航栏切换不同功能</text>
+  </view>
+</view>

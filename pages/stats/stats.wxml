@@ -1,0 +1,65 @@
+<!--pages/stats/stats.wxml-->
+<view class="container">
+  <!-- 学习概览：四张卡片，两行两列 -->
+  <view class="overview-section overview-top">
+    <view class="section-title">学习概览</view>
+    <view class="stats-grid">
+      <!-- 第一排：左 已掌握/总词；右 已阅读论文/总论文 -->
+      <view class="stat-card">
+        <text class="stat-number">{{stats.masteredWords}}/{{stats.totalWords}}</text>
+        <text class="stat-label">已掌握单词 / 单词总数</text>
+      </view>
+      <view class="stat-card">
+        <text class="stat-number">{{stats.papersRead}}/{{stats.totalPapers}}</text>
+        <text class="stat-label">已阅读论文 / 论文总篇数</text>
+      </view>
+      <!-- 第二排：左 总学习时长；右 周平均学习时长 -->
+      <view class="stat-card">
+        <text class="stat-number">{{stats.totalStudyHours}} 小时</text>
+        <text class="stat-label">总学习时长</text>
+      </view>
+      <view class="stat-card">
+        <text class="stat-number">{{stats.weeklyAvgHours}} 小时</text>
+        <text class="stat-label">周平均学习时长</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 分类词汇统计：两行两列，与概览卡片风格一致 -->
+  <view class="overview-section overview-categories">
+    <view class="section-title">分类统计</view>
+    <view class="stats-grid">
+      <view class="stat-card">
+        <text class="stat-number">{{categorySummary.gre.mastered}}/{{categorySummary.gre.total}}</text>
+        <text class="stat-label">✔ GRE / GRE总词汇</text>
+      </view>
+      <view class="stat-card">
+        <text class="stat-number">{{categorySummary.toefl.mastered}}/{{categorySummary.toefl.total}}</text>
+        <text class="stat-label">✔ TOEFL / TOEFL总词汇</text>
+      </view>
+      <view class="stat-card">
+        <text class="stat-number">{{categorySummary.ielts.mastered}}/{{categorySummary.ielts.total}}</text>
+        <text class="stat-label">✔ IELTS / IELTS总词汇</text>
+      </view>
+      <view class="stat-card">
+        <text class="stat-number">{{categorySummary.ai.mastered}}/{{categorySummary.ai.total}}</text>
+        <text class="stat-label">✔ AI专有 / AI专有总词汇</text>
+      </view>
+    </view>
+  </view>
+
+  
+
+  
+
+  
+
+  
+
+  <!-- 分享按钮 -->
+  <view class="share-section">
+    <button class="share-btn" open-type="share">
+      <text class="share-text">分享学习</text>
+    </button>
+  </view>
+</view>

@@ -1,0 +1,95 @@
+<!--pages/import/import.wxml-->
+<view class="container">
+  <!-- 标题 -->
+  <view class="header">
+    <text class="title">词汇导入</text>
+    <text class="subtitle">支持从文本文件导入词汇</text>
+  </view>
+
+  <!-- 导入表单 -->
+  <view class="import-form">
+    <view class="form-item">
+      <text class="form-label">论文标题</text>
+      <input class="form-input" 
+             placeholder="输入论文标题（可选）"
+             value="{{paperTitle}}"
+             bindinput="onPaperTitleChange" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">词汇文本</text>
+      <textarea class="form-textarea" 
+                placeholder="粘贴词汇文本，格式如下：&#10;&#10;GRE高频词汇&#10;&#10;● Abstract&#10;○ 音标: /ˈæb.strækt/&#10;○ 中文解释: 抽象的&#10;○ 词性: 形容词 (adjective)&#10;○ 例句: The paper begins with an abstract...&#10;&#10;● Complexity&#10;○ 音标: /kəmˈplɛk.sə.t̬i/&#10;○ 中文解释: 复杂性&#10;○ 词性: 名词 (noun)&#10;○ 例句: In terms of computational complexity..."
+                value="{{importText}}"
+                bindinput="onImportTextChange" />
+    </view>
+
+    <view class="form-actions">
+      <button class="action-btn preview" bindtap="previewVocabulary">
+        预览词汇
+      </button>
+      <button class="action-btn stats" bindtap="viewStats">
+        查看统计
+      </button>
+      <button class="action-btn export" bindtap="exportVocabulary">
+        导出词汇
+      </button>
+    </view>
+  </view>
+
+  <!-- 预览区域 -->
+  <view class="preview-section" wx:if="{{showPreview}}">
+    <view class="preview-header">
+      <text class="preview-title">预览 ({{previewWords.length}}个词汇)</text>
+      <button class="preview-btn" bindtap="cancelPreview">取消</button>
+    </view>
+
+    <view class="preview-list">
+      <view class="preview-item" wx:for="{{previewWords}}" wx:key="id">
+        <view class="word-info">
+          <text class="word-text">{{item.word}}</text>
+          <text class="word-meaning">{{item.meaning}}</text>
+          <text class="word-category">{{item.category}}</text>
+        </view>
+        <view class="word-details">
+          <text class="word-sentence" wx:if="{{item.sentence}}">{{item.sentence}}</text>
+          <text class="word-paper">{{item.paperTitle}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="preview-actions">
+      <button class="confirm-btn" bindtap="confirmImport">
+        确认导入 ({{previewWords.length}}个)
+      </button>
+    </view>
+  </view>
+
+  <!-- 导入结果 -->
+  <view class="result-section" wx:if="{{importResult}}">
+    <view class="result-card">
+      <text class="result-title">导入完成</text>
+      <view class="result-stats">
+        <view class="result-item">
+          <text class="result-label">成功导入</text>
+          <text class="result-value success">{{importResult.added}}个</text>
+        </view>
+        <view class="result-item">
+          <text class="result-label">跳过重复</text>
+          <text class="result-value warning">{{importResult.skipped}}个</text>
+        </view>
+        <view class="result-item">
+          <text class="result-label">总词汇量</text>
+          <text class="result-value total">{{importResult.total}}个</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部操作 -->
+  <view class="bottom-actions">
+    <button class="back-btn" bindtap="goBack">
+      返回管理
+    </button>
+  </view>
+</view>

@@ -1,0 +1,55 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/minimal-test/minimal-test",
+    "pages/study/study",
+    "pages/manage/manage",
+    "pages/test/test",
+    "pages/stats/stats",
+    "pages/import/import",
+    "pages/papers/papers",
+    "pages/paper-detail/paper-detail",
+    "pages/test-cloud/test-cloud",
+    "pages/debug/debug",
+    "pages/simple-test/simple-test"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#0D47A1",
+    "navigationBarTitleText": "AI Pacab+",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F5F7FA"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#5F6368",
+    "selectedColor": "#0D47A1",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/study/study",
+        "text": "学习"
+      },
+      {
+        "pagePath": "pages/manage/manage",
+        "text": "管理"
+      },
+      {
+        "pagePath": "pages/papers/papers",
+        "text": "论文"
+      },
+      {
+        "pagePath": "pages/stats/stats",
+        "text": "统计"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

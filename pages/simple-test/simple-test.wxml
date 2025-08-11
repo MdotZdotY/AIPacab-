@@ -1,0 +1,16 @@
+<!--pages/simple-test/simple-test.wxml-->
+<view class="container">
+  <view class="header">
+    <text class="title">简单测试页面</text>
+  </view>
+
+  <view class="content">
+    <text class="message">{{message}}</text>
+    <text class="words-count">词汇数量: {{wordsCount}}</text>
+  </view>
+
+  <view class="buttons">
+    <button class="btn" bindtap="testFix">修复数据</button>
+    <button class="btn" bindtap="goHome">返回首页</button>
+  </view>
+</view>

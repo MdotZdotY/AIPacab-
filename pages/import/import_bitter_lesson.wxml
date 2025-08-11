@@ -1,0 +1,105 @@
+<!--pages/import/import_bitter_lesson.wxml-->
+<view class="container">
+  <view class="header">
+    <text class="title">导入Learning the Bitter Lesson论文</text>
+    <text class="subtitle">论文信息和词汇库导入</text>
+  </view>
+
+  <view class="paper-info">
+    <view class="paper-card">
+      <text class="paper-title">Learning the Bitter Lesson: Empirical Evidence from 20 Years of CVPR Proceedings</text>
+      <text class="paper-authors">Rich Sutton et al.</text>
+      <text class="paper-year">2024 - CVPR</text>
+      <text class="paper-abstract">本研究旨在通过实证分析，检验顶级计算机视觉会议CVPR在过去二十年的研究趋势是否与萨顿的"惨痛教训"原则相符。</text>
+    </view>
+  </view>
+
+  <view class="import-section">
+    <view class="import-status">
+      <text class="status-title">导入状态</text>
+      
+      <!-- 准备状态 -->
+      <view wx:if="{{importStatus === 'ready'}}" class="status ready">
+        <text class="status-text">准备导入</text>
+        <text class="status-desc">点击下方按钮开始导入论文词汇</text>
+      </view>
+
+      <!-- 导入中状态 -->
+      <view wx:if="{{importStatus === 'importing'}}" class="status importing">
+        <text class="status-text">导入中...</text>
+        <view class="progress-bar">
+          <view class="progress-fill" style="width: {{importProgress}}%"></view>
+        </view>
+        <text class="progress-text">{{importProgress}}%</text>
+      </view>
+
+      <!-- 成功状态 -->
+      <view wx:if="{{importStatus === 'success'}}" class="status success">
+        <text class="status-text">导入成功！</text>
+        <view class="result-info">
+          <text class="result-item">📄 论文: {{importResult.paperTitle}}</text>
+          <text class="result-item">📚 新增词汇: {{importResult.added}} 个</text>
+          <text class="result-item">⏭️ 跳过重复: {{importResult.skipped}} 个</text>
+          <text class="result-item">📊 总词汇库: {{importResult.total}} 个</text>
+        </view>
+      </view>
+
+      <!-- 错误状态 -->
+      <view wx:if="{{importStatus === 'error'}}" class="status error">
+        <text class="status-text">导入失败</text>
+        <text class="error-message">{{importResult.error}}</text>
+      </view>
+    </view>
+
+    <!-- 操作按钮 -->
+    <view class="action-buttons">
+      <button 
+        wx:if="{{importStatus === 'ready' || importStatus === 'error'}}"
+        class="import-btn" 
+        bindtap="importBitterLessonVocabulary"
+        disabled="{{importStatus === 'importing'}}">
+        开始导入
+      </button>
+      
+      <button 
+        wx:if="{{importStatus === 'success'}}"
+        class="reset-btn" 
+        bindtap="resetImport">
+        重新导入
+      </button>
+    </view>
+  </view>
+
+  <!-- 词汇预览 -->
+  <view class="vocabulary-preview">
+    <text class="preview-title">词汇预览 (12个)</text>
+    <view class="vocab-list">
+      <view class="vocab-item" wx:for="{{['Primacy', 'Embracement', 'Systematically', 'Alignment', 'Principle', 'Comprehensive', 'Examines', 'Methodology', 'Implications', 'Heuristics', 'Paradigm Shift', 'Hand-crafted features']}}" wx:key="*this">
+        <text class="vocab-word">{{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 分类统计 -->
+  <view class="category-stats">
+    <text class="stats-title">分类统计</text>
+    <view class="stats-grid">
+      <view class="stat-item">
+        <text class="stat-number">3</text>
+        <text class="stat-label">GRE高频词</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-number">3</text>
+        <text class="stat-label">TOEFL高频词</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-number">3</text>
+        <text class="stat-label">IELTS高频词</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-number">3</text>
+        <text class="stat-label">AI专业词汇</text>
+      </view>
+    </view>
+  </view>
+</view>

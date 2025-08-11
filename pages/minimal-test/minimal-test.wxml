@@ -1,0 +1,12 @@
+<!--pages/minimal-test/minimal-test.wxml-->
+<view style="padding: 20px; background: red; color: white; font-size: 20px;">
+  这是一个红色背景的测试页面
+</view>
+
+<view style="padding: 20px; background: blue; color: white; font-size: 20px; margin-top: 20px;">
+  如果您能看到这个蓝色块，说明页面渲染正常
+</view>
+
+<view style="padding: 20px; background: green; color: white; font-size: 20px; margin-top: 20px;">
+  消息: {{message}}
+</view>

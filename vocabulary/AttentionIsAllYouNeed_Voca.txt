@@ -1,0 +1,250 @@
+论文原文链接：https://arxiv.org/abs/1706.03762
+论文名：Attention is all you need
+
+好的，这是根据《Attention Is All You Need》这篇论文为您整理的、包含四个类别的综合词汇清单。
+
+### **GRE高频词汇**
+
+* **Abstract**
+    * **音标**: /ˈæb.strækt/
+    * **英文解释**: Existing in thought or as an idea but not having a physical or concrete existence.
+    * **中文解释**: 抽象的
+    * **词性**: adjective
+    * [cite_start]**例句**: Self-attention has been used successfully in a variety of tasks including reading comprehension, **abstractive** summarization, textual entailment and learning task-independent sentence representations[cite: 583]. (使用了其派生词 abstractive)
+
+* **Constraint**
+    * **音标**: /kənˈstreɪnt/
+    * **英文解释**: A limitation or restriction.
+    * **中文解释**: 约束，限制
+    * **词性**: noun
+    * [cite_start]**例句**: The fundamental **constraint** of sequential computation, however, remains[cite: 572].
+
+* **Dominant**
+    * **音标**: /ˈdɑː.mə.nənt/
+    * **英文解释**: Most important, powerful, or influential.
+    * **中文解释**: 占主导地位的
+    * **词性**: adjective
+    * [cite_start]**例句**: The **dominant** sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder[cite: 553].
+
+* **Fundamental**
+    * **音标**: /ˌfʌn.dəˈmen.t̬əl/
+    * **英文解释**: Forming a necessary base or core; of central importance.
+    * **中文解释**: 基础的，根本的
+    * **词性**: adjective
+    * [cite_start]**例句**: The **fundamental** constraint of sequential computation, however, remains[cite: 572].
+
+* **Generalize**
+    * **音标**: /ˈdʒen.ə.rəl.aɪz/
+    * **英文解释**: To make a general or broad statement by inferring from specific cases; to apply a model successfully to new data.
+    * **中文解释**: 泛化，归纳
+    * **词性**: verb
+    * [cite_start]**例句**: We show that the Transformer **generalizes** well to other tasks by applying it successfully to English constituency parsing both with large and limited training data[cite: 559].
+
+* **Propose**
+    * **音标**: /prəˈpoʊz/
+    * **英文解释**: To put forward an idea or plan for consideration or discussion by others.
+    * **中文解释**: 提议，提出
+    * **词性**: verb
+    * [cite_start]**例句**: We **propose** a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely[cite: 555].
+
+* **Superior**
+    * **音标**: /səˈpɪr.i.ɚ/
+    * **英文解释**: Higher in rank, status, or quality.
+    * **中文解释**: 更好的，优越的
+    * **词性**: adjective
+    * [cite_start]**例句**: Experiments on two machine translation tasks show these models to be **superior** in quality while being more parallelizable and requiring significantly less time to train[cite: 556].
+
+### **TOEFL高频词汇**
+
+* **Achieve**
+    * **音标**: /əˈtʃiːv/
+    * **英文解释**: To successfully bring about or reach a desired objective, level, or result by effort, skill, or courage.
+    * **中文解释**: 实现，达到
+    * **词性**: verb
+    * [cite_start]**例句**: Our model **achieves** 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results...[cite: 557].
+
+* **Component**
+    * **音标**: /kəmˈpoʊ.nənt/
+    * **英文解释**: A part or element of a larger whole.
+    * **中文解释**: 组件，组成部分
+    * **词性**: noun
+    * [cite_start]**例句**: To evaluate the importance of different **components** of the Transformer, we varied our base model in different ways...[cite: 779].
+
+* **Establish**
+    * **音标**: /ɪˈstæb.lɪʃ/
+    * **英文解释**: To set up on a firm or permanent basis; to show something to be true or certain by determining the facts.
+    * **中文解释**: 建立，确立
+    * **词性**: verb
+    * [cite_start]**例句**: On the WMT 2014 English-to-French translation task, our model **establishes** a new single-model state-of-the-art BLEU score of 41.8...[cite: 558].
+
+* **Evaluate**
+    * **音标**: /ɪˈvæl.ju.eɪt/
+    * **英文解释**: To form an idea of the amount, number, or value of; to assess.
+    * **中文解释**: 评估，评价
+    * **词性**: verb
+    * [cite_start]**例句**: To **evaluate** the importance of different components of the Transformer, we varied our base model in different ways...[cite: 779].
+
+* **Implement**
+    * **音标**: /ˈɪm.plə.ment/
+    * **英文解释**: To put a decision, plan, or agreement into effect.
+    * **中文解释**: 实现，实施
+    * **词性**: verb
+    * [cite_start]**例句**: We **implement** this inside of scaled dot-product attention by masking out (setting to -∞) all values in the input of the softmax which correspond to illegal connections[cite: 681].
+
+* **Parameter**
+    * **音标**: /pəˈræm.ə.t̬ɚ/
+    * **英文解释**: A numerical or other measurable factor forming one of a set that defines a system or sets the conditions of its operation.
+    * **中文解释**: 参数
+    * **词性**: noun
+    * [cite_start]**例句**: While the linear transformations are the same across different positions, they use different **parameters** from layer to layer[cite: 688].
+
+* **Significant**
+    * **音标**: /sɪɡˈnɪf.ə.kənt/
+    * **英文解释**: Sufficiently great or important to be worthy of attention; noteworthy.
+    * **中文解释**: 显著的，重要的
+    * **词性**: adjective
+    * [cite_start]**例句**: Recent work has achieved **significant** improvements in computational efficiency through factorization tricks and conditional computation...[cite: 571].
+
+### **IELTS高频词汇**
+
+* **Approach**
+    * **音标**: /əˈproʊtʃ/
+    * **英文解释**: A way of dealing with a situation or problem.
+    * **中文解释**: 方法，方式
+    * **词性**: noun
+    * [cite_start]**例句**: Recurrent neural networks... have been firmly established as state of the art **approaches** in sequence modeling and transduction problems...[cite: 566].
+
+* **Architecture**
+    * **音标**: /ˈɑːr.kə.tek.tʃɚ/
+    * **英文解释**: The complex or carefully designed structure of something.
+    * **中文解释**: 架构，结构
+    * **词性**: noun
+    * [cite_start]**例句**: We propose a new simple network **architecture**, the Transformer, based solely on attention mechanisms...[cite: 555].
+
+* **Consist**
+    * **音标**: /kənˈsɪst/
+    * **英文解释**: To be composed or made up of.
+    * **中文解释**: 由…组成
+    * **词性**: verb
+    * [cite_start]**例句**: This **consists** of two linear transformations with a ReLU activation in between[cite: 685].
+
+* **Contrast**
+    * **音标**: /ˈkɑːn.træst/
+    * **英文解释**: The state of being strikingly different from something else.
+    * **中文解释**: 对比，差异
+    * **词性**: noun
+    * [cite_start]**例句**: In **contrast** to RNN sequence-to-sequence models, the Transformer outperforms the BerkeleyParser...[cite: 809].
+
+* **Despite**
+    * **音标**: /dɪˈspaɪt/
+    * **英文解释**: Without being affected by; in spite of.
+    * **中文解释**: 尽管，虽然
+    * **词性**: preposition
+    * [cite_start]**例句**: Our results in Table 4 show that **despite** the lack of task-specific tuning our model performs surprisingly well...[cite: 808].
+
+* **Employ**
+    * **音标**: /ɪmˈplɔɪ/
+    * **英文解释**: To make use of.
+    * **中文解释**: 使用，采用
+    * **词性**: verb
+    * [cite_start]**例句**: We **employ** a residual connection around each of the two sub-layers, followed by layer normalization[cite: 618].
+
+* **Require**
+    * **音标**: /rɪˈkwaɪər/
+    * **英文解释**: To need something or make something necessary.
+    * **中文解释**: 需要，要求
+    * **词性**: verb
+    * [cite_start]**例句**: Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and **requiring** significantly less time to train[cite: 556].
+
+* **Structure**
+    * **音标**: /ˈstrʌk.tʃɚ/
+    * **英文解释**: The arrangement of and relations between the parts or elements of something complex.
+    * **中文解释**: 结构
+    * **词性**: noun
+    * [cite_start]**例句**: Most competitive neural sequence transduction models have an encoder-decoder **structure**[cite: 588].
+
+### **AI领域内常用词和专有词**
+
+* **Attention Mechanism**
+    * **音标**: /əˈten.ʃən ˈmek.ə.nɪ.zəm/
+    * **英文解释**: A technique that allows a neural network to focus on specific parts of an input sequence when generating an output.
+    * **中文解释**: 注意力机制
+    * **词性**: noun phrase
+    * [cite_start]**例句**: The best performing models also connect the encoder and decoder through an **attention mechanism**[cite: 554].
+
+* **Auto-Regressive**
+    * **音标**: /ˌɔː.t̬oʊ.rɪˈɡres.ɪv/
+    * **英文解释**: A model where the prediction for a given time step is generated based on the outputs from previous time steps.
+    * **中文解释**: 自回归
+    * **词性**: adjective
+    * [cite_start]**例句**: At each step the model is **auto-regressive**, consuming the previously generated symbols as additional input when generating the next[cite: 591].
+
+* **Decoder**
+    * **音标**: /diːˈkoʊ.dɚ/
+    * **英文解释**: The part of an encoder-decoder model that generates the output sequence from the encoded representation.
+    * **中文解释**: 解码器
+    * **词性**: noun
+    * [cite_start]**例句**: The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a **decoder**[cite: 553].
+
+* **Embedding**
+    * **音标**: /ɪmˈbed.ɪŋ/
+    * **英文解释**: A learned representation for discrete items like words, mapping them to vectors of continuous numbers.
+    * **中文解释**: 嵌入
+    * **词性**: noun
+    * [cite_start]**例句**: To facilitate these residual connections, all sub-layers in the model, as well as the **embedding** layers, produce outputs of dimension dmodel=512[cite: 620].
+
+* **Encoder**
+    * **音标**: /ɪnˈkoʊ.dɚ/
+    * **英文解释**: The part of an encoder-decoder model that processes the input sequence and converts it into a continuous representation.
+    * **中文解释**: 编码器
+    * **词性**: noun
+    * [cite_start]**例句**: The best performing models also connect the **encoder** and decoder through an attention mechanism[cite: 554].
+
+* **Feed-Forward Network**
+    * **音标**: /ˈfiːdˌfɔːr.wɚd ˈnet.wɝːk/
+    * **英文解释**: A type of artificial neural network where connections between units do not form a cycle.
+    * **中文解释**: 前馈网络
+    * **词性**: noun phrase
+    * [cite_start]**例句**: The first is a multi-head self-attention mechanism, and the second is a simple, position-wise fully connected **feed-forward network**[cite: 617].
+
+* **Multi-Head Attention**
+    * **音标**: /ˈmʌl.ti hed əˈten.ʃən/
+    * **英文解释**: An attention mechanism that runs multiple attention functions in parallel, allowing the model to jointly attend to information from different representation subspaces.
+    * **中文解释**: 多头注意力
+    * **词性**: noun phrase
+    * [cite_start]**例句**: **Multi-head attention** allows the model to jointly attend to information from different representation subspaces at different positions[cite: 666].
+
+* **Positional Encoding**
+    * **音标**: /pəˈzɪʃ.ən.əl ɪnˈkoʊ.dɪŋ/
+    * **英文解释**: A technique to inject information about the relative or absolute position of tokens in a sequence.
+    * **中文解释**: 位置编码
+    * **词性**: noun phrase
+    * [cite_start]**例句**: The **positional encodings** have the same dimension dmodel as the embeddings, so that the two can be summed[cite: 702].
+
+* **Recurrent Neural Network (RNN)**
+    * **音标**: /rɪˈkɝː.ənt ˈnʊr.əl ˈnet.wɝːk/
+    * **英文解释**: A class of artificial neural networks where connections between nodes form a directed graph along a temporal sequence, allowing it to exhibit temporal dynamic behavior.
+    * **中文解释**: 循环神经网络
+    * **词性**: noun phrase
+    * [cite_start]**例句**: **Recurrent neural networks**, long short-term memory and gated recurrent neural networks in particular, have been firmly established as state of the art approaches in sequence modeling...[cite: 566].
+
+* **Self-Attention**
+    * **音标**: /self əˈten.ʃən/
+    * **英文解释**: An attention mechanism relating different positions of a single sequence in order to compute a representation of the sequence.
+    * **中文解释**: 自注意力
+    * **词性**: noun
+    * [cite_start]**例句**: **Self-attention**, sometimes called intra-attention is an attention mechanism relating different positions of a single sequence in order to compute a representation of the sequence[cite: 582].
+
+* **Sequence-to-Sequence (seq2seq)**
+    * **音标**: /ˈsiː.kwəns.təˈsiː.kwəns/
+    * **英文解释**: A class of models that convert sequences from one domain to sequences in another domain, such as in machine translation.
+    * **中文解释**: 序列到序列
+    * **词性**: adjective
+    * [cite_start]**例句**: In contrast to RNN **sequence-to-sequence** models, the Transformer outperforms the BerkeleyParser...[cite: 809].
+
+* **Transduction**
+    * **音标**: /trænsˈdʌk.ʃən/
+    * **英文解释**: The process of converting an input sequence into an output sequence, as seen in tasks like machine translation.
+    * **中文解释**: 转换，转导
+    * **词性**: noun
+    * [cite_start]**例句**: The dominant sequence **transduction** models are based on complex recurrent or convolutional neural networks...[cite: 553].

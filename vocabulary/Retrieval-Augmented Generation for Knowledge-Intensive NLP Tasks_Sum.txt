@@ -1,0 +1,38 @@
+论文原文链接：https://arxiv.org/pdf/2005.11401
+
+好的，我将为您解读这篇名为《Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks》的论文。
+
+### 论文背景
+
+[cite_start]在《Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks》这篇论文发表之前，大型预训练语言模型已经展示出在其参数中存储事实知识的能力，并在经过微调后，在下游的自然语言处理（NLP）任务中取得了业界顶尖的成果 [cite: 8][cite_start]。 然而，这些模型在访问和精确运用知识方面的能力仍然有限 [cite: 9][cite_start]。 因此，在知识密集型任务上，它们的表现落后于那些为特定任务设计的专门架构 [cite: 9][cite_start]。 此外，为模型的决策提供依据以及更新其世界知识仍然是悬而未决的研究难题 [cite: 10]。
+
+[cite_start]一种解决方案是混合模型，它将参数化记忆（parametric memory）与非参数化记忆（non-parametric memory，即基于检索的记忆）相结合 [cite: 21][cite_start]。 这种混合模型可以解决上述部分问题，因为知识可以直接被修改和扩展，并且被访问的知识可以被审查和解释 [cite: 21][cite_start]。 不过，在当时，带有可微调的、对外部非参数化记忆进行访问机制的预训练模型，其研究仅限于抽取式的下游任务 [cite: 11]。
+
+### 论文关键概念
+
+[cite_start]这篇论文的核心是提出了一种通用的、用于检索增强生成（Retrieval-Augmented Generation, RAG）模型的微调方法。 [cite: 12] [cite_start]RAG模型将预训练的参数化记忆和非参数化记忆相结合，用于语言生成 [cite: 12]。
+
+其主要构成部分包括：
+
+* [cite_start]**参数化记忆（Parametric Memory）**： 这是一个预训练的序列到序列（seq2seq）模型 [cite: 13][cite_start]。 在这项研究中，作者使用了BART模型，这是一个拥有4亿参数的预训练seq2seq Transformer [cite: 110]。
+* [cite_start]**非参数化记忆（Non-parametric Memory）**： 这是一个维基百科的密集向量索引，通过一个预训练的神经检索器来访问 [cite: 13, 63]。
+* [cite_start]**检索器（Retriever）**： 该组件基于DPR（Dense Passage Retriever）模型 [cite: 103][cite_start]，它采用双编码器架构，能根据查询输入，返回最相关的文本段落 [cite: 103, 65]。
+* [cite_start]**生成器（Generator）**： 该组件使用BART-large模型 [cite: 110][cite_start]，它会基于原始输入和检索到的文档来生成目标序列 [cite: 80, 84]。
+
+论文探讨了两种RAG模型：
+
+1.  [cite_start]**RAG-Sequence**： 该模型在生成整个序列的过程中，始终以同一个检索到的文档为条件 [cite: 14, 87, 91]。
+2.  [cite_start]**RAG-Token**： 该模型在生成每个词元（token）时，都可以使用不同的检索文档 [cite: 14, 88, 95]。
+
+[cite_start]在训练过程中，检索器和生成器会进行联合训练，而无需任何关于应检索何种文档的直接监督 [cite: 116]。
+
+### 论文亮点
+
+这篇论文的亮点在于其提出的RAG模型在一系列知识密集型NLP任务中取得了卓越的性能，并展示了其独特的优势。
+
+* [cite_start]**性能卓越**： RAG模型在三个开放域问答任务上创造了当时的最佳纪录，其性能超越了参数化的seq2seq模型和为特定任务设计的“检索-抽取”式架构 [cite: 15]。
+* [cite_start]**生成质量更高**： 在语言生成任务中，研究发现RAG模型比仅有参数化记忆的seq2seq基准模型生成的语言更具体、更多样、更忠于事实 [cite: 16]。
+* [cite_start]**灵活性和有效性**： 即便是在抽取式任务中，无约束的生成也胜过了以往的抽取式方法 [cite: 74][cite_start]。 RAG模型甚至能在正确答案未包含在任何检索到的文档中的情况下生成正确答案 [cite: 203]。
+* [cite_start]**可更新的知识**： RAG这类非参数化记忆模型的一大优势在于，其知识库可以在测试时轻松更新 [cite: 259][cite_start]。 研究人员通过更换不同年份的维基百科索引，成功证明了RAG模型的世界知识可以通过简单地替换其非参数化记忆来进行更新，而无需重新训练 [cite: 261, 275]。
+* [cite_start]**更少的参数，更强的性能**： 与拥有110亿参数的T5-11B模型相比，仅有6.26亿可训练参数的RAG模型在开放域问答任务上表现更优，这表明混合参数/非参数模型在实现强大的开放域问答性能方面，所需的参数要少得多 [cite: 529, 530, 531]。
+* [cite_start]**更少的“幻觉”**： RAG模型更紧密地根植于真实的知识（此案例中为维基百科），因此能更少地产生“幻觉”，其生成的内容更符合事实，并提供了更好的可控性和可解释性 [cite: 334]。

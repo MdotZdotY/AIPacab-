@@ -1,0 +1,298 @@
+/* pages/study/study.wxss */
+.container {
+  padding: 15rpx;
+  padding-bottom: 380rpx; /* 增加底部padding，从350rpx增加到380rpx */
+  background-color: #F5F7FA;
+  min-height: 100vh;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx; /* 添加统一的间距 */
+}
+
+
+
+/* 词汇卡片 */
+.word-card {
+  background: white;
+  border-radius: 16rpx;
+  padding: 60rpx 40rpx; /* 增加上下内边距 */
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.1);
+  margin-top: 20rpx;
+  height: 900rpx; /* 稍微减小卡片高度，从950rpx减小到900rpx */
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 240rpx; /* 增加底部边距，从200rpx增加到240rpx */
+  box-sizing: border-box; /* 确保padding包含在高度内 */
+}
+
+.card-header {
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* 从顶部开始布局 */
+  padding-top: 20rpx; /* 添加顶部内边距 */
+  overflow-y: auto; /* 如果内容过多，允许滚动 */
+}
+
+.word-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30rpx; /* 减少底部边距 */
+  cursor: pointer;
+  min-height: 80rpx; /* 确保词汇区域有固定高度 */
+}
+
+.word {
+  font-size: 52rpx; /* 稍微增大字体 */
+  font-weight: bold;
+  color: #0D47A1;
+  margin-right: 20rpx;
+}
+
+.pronunciation-icon {
+  font-size: 32rpx;
+  color: #0D47A1;
+}
+
+.word-meaning {
+  font-size: 38rpx; /* 稍微增大字体 */
+  color: #0D47A1;
+  font-weight: 500;
+  margin-bottom: 25rpx; /* 减少底部边距 */
+  padding: 25rpx; /* 增加内边距 */
+  background-color: #FEF3C7; /* 温暖米黄，降低刺眼程度 */
+  border-radius: 12rpx;
+  border-left: 4rpx solid rgba(13, 71, 161, 0.35); /* 降低蓝色边线透明度 */
+}
+
+.sentence-section {
+  margin-bottom: 25rpx; /* 减少底部边距 */
+}
+
+.sentence-text {
+  font-size: 28rpx;
+  color: #0D47A1;
+  line-height: 1.6;
+  margin-bottom: 15rpx;
+  font-style: italic;
+}
+
+.sentence-translation {
+  font-size: 24rpx;
+  color: #5F6368;
+  line-height: 1.5;
+}
+
+.paper-info {
+  padding: 25rpx; /* 增加内边距 */
+  background-color: #D1FAE5; /* 柔和的绿色背景 */
+  border-radius: 12rpx;
+  border-left: 4rpx solid rgba(13, 71, 161, 0.35); /* 降低蓝色边线透明度 */
+  margin-bottom: 20rpx; /* 添加底部边距 */
+}
+
+.paper-label {
+  font-size: 24rpx;
+  color: #5F6368;
+  margin-right: 10rpx;
+}
+
+.paper-title {
+  font-size: 24rpx;
+  color: #0D47A1;
+  font-weight: 500;
+}
+
+/* 测试选项 */
+.test-options {
+  margin-top: 30rpx;
+}
+
+.option-item {
+  background: #f8f9fa;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 12rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.option-item:active {
+  background: #e3f2fd;
+  border-color: #1976d2;
+}
+
+.option-text {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+/* 控制按钮 */
+.control-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15rpx;
+  margin-top: auto; /* 推到底部 */
+  margin-bottom: 40rpx; /* 增加底部间距，从20rpx增加到40rpx */
+  box-sizing: border-box;
+  justify-content: center;
+  padding-top: 20rpx; /* 添加顶部内边距 */
+  padding-bottom: 20rpx; /* 添加底部内边距 */
+}
+
+.control-btn {
+  flex: 1;
+  height: 56rpx; /* 稍微减小按钮高度，从60rpx减小到56rpx */
+  border-radius: 28rpx; /* 相应调整圆角 */
+  border: 2rpx solid #0D47A1;
+  background: white;
+  color: #0D47A1;
+  font-size: 22rpx;
+  box-sizing: border-box;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.control-btn:active {
+  background: #0D47A1;
+  color: white;
+}
+
+/* 模式选择器 */
+.mode-selector {
+  background: white;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 30%; /* 向上移动更多，从28%增加到30% */
+  left: 15rpx;
+  right: 15rpx;
+  z-index: 100;
+  margin-top: 20rpx; /* 添加顶部外边距 */
+}
+
+.mode-buttons {
+  display: flex;
+  gap: 6rpx;
+  justify-content: center;
+  width: 66.67%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.mode-btn {
+  flex: 1;
+  height: 56rpx; /* 稍微减小按钮高度，从60rpx减小到56rpx */
+  border-radius: 28rpx; /* 相应调整圆角 */
+  border: 2rpx solid #e0e0e0;
+  background: white;
+  color: #666;
+  font-size: 22rpx;
+  transition: all 0.3s ease;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+  padding: 0 8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mode-btn.active {
+  background: #0D47A1;
+  color: white;
+  border-color: #0D47A1;
+}
+
+/* 导航按钮 */
+.navigation-buttons {
+  display: flex;
+  gap: 15rpx;
+  margin-bottom: 20rpx;
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 18%; /* 向下移动更多，从15%增加到18% */
+  left: 15rpx;
+  right: 15rpx;
+  z-index: 100;
+  margin-top: 20rpx; /* 添加顶部外边距 */
+}
+
+.nav-btn {
+  flex: 1;
+  height: 76rpx; /* 稍微减小按钮高度，从80rpx减小到76rpx */
+  border-radius: 38rpx; /* 相应调整圆角 */
+  border: 2rpx solid #e0e0e0;
+  background: white;
+  color: #666;
+  font-size: 28rpx;
+  box-sizing: border-box;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-btn.primary {
+  background: #0D47A1;
+  color: white;
+  border-color: #0D47A1;
+}
+
+.nav-btn[disabled] {
+  opacity: 0.5;
+  background: #f5f5f5;
+}
+
+/* 空状态样式 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60rpx 40rpx;
+  text-align: center;
+  background: white;
+  border-radius: 20rpx;
+  margin: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.1);
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 30rpx;
+  opacity: 0.6;
+}
+
+.empty-message {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.empty-sub-message {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.5;
+  max-width: 500rpx;
+}
+
+
+
+
+

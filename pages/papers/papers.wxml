@@ -1,0 +1,68 @@
+<!--pages/papers/papers.wxml-->
+<view class="container">
+  <!-- 搜索框 -->
+  <view class="search-section">
+    <view class="search-box">
+      <input class="search-input" 
+             placeholder="搜索论文名称..." 
+             value="{{searchKeyword}}"
+             bindinput="onSearchInput"
+             bindconfirm="onSearchConfirm" />
+      <view class="search-icon">🔍</view>
+    </view>
+  </view>
+
+  <!-- 论文列表 -->
+  <view class="papers-list">
+    <view class="paper-item" 
+          wx:for="{{filteredPapers}}" 
+          wx:key="id"
+          bindtap="viewPaperDetail"
+          data-id="{{item.id}}">
+      
+      <!-- 论文标题和作者 -->
+      <view class="paper-header">
+        <text class="paper-title">{{item.title}}</text>
+        <text class="paper-authors">{{item.authors}}</text>
+      </view>
+
+      <!-- 论文信息 -->
+      <view class="paper-info">
+        <view class="info-row">
+          <text class="info-label">年份：</text>
+          <text class="info-value">{{item.year}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">期刊：</text>
+          <text class="info-value">{{item.journal}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">词汇数：</text>
+          <text class="info-value">{{item.wordCount}}个</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">分类：</text>
+          <text class="info-value">{{item.category}}</text>
+        </view>
+      </view>
+
+      <!-- 论文摘要 -->
+      <view class="paper-abstract">
+        <text class="abstract-text">{{item.abstract}}</text>
+      </view>
+
+      <!-- 查看详情按钮 -->
+      <view class="detail-btn">
+        <text>查看详情</text>
+        <text class="arrow">→</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{filteredPapers.length === 0}}">
+    <view class="empty-icon">📚</view>
+    <text class="empty-text">{{searchKeyword ? '未找到相关论文' : '暂无论文资源'}}</text>
+    <text class="empty-subtext">{{searchKeyword ? '请尝试其他关键词' : '我们会持续添加更多优质论文'}}</text>
+  </view>
+</view>
