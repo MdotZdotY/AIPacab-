@@ -13,6 +13,7 @@
       <!-- 含义（中英同时显示） -->
       <view class="word-meaning" wx:if="{{showMeaning}}">
         {{currentWord.meaning}}
+        <text class="part-of-speech" wx:if="{{currentWord.partOfSpeech}}"> ({{currentWord.partOfSpeech}})</text>
         <block wx:if="{{currentWord.englishMeaning}}">
           \n{{currentWord.englishMeaning}}
         </block>
@@ -103,7 +104,7 @@
       <text class="result-title">{{testResult.correct ? '回答正确！' : '回答错误'}}</text>
     </view>
     <view class="result-content">
-      <text class="correct-answer">正确答案：{{currentWord.meaning}}</text>
+      <text class="correct-answer">正确答案：{{currentWord.meaning}}<text class="part-of-speech" wx:if="{{currentWord.partOfSpeech}}"> ({{currentWord.partOfSpeech}})</text></text>
       <text class="explanation" wx:if="{{testResult.explanation}}">{{testResult.explanation}}</text>
     </view>
     <button class="result-btn" bindtap="nextWord">继续</button>

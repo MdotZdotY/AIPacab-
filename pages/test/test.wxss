@@ -1,8 +1,13 @@
 /* pages/test/test.wxss */
 .container {
-  padding: 20rpx;
+  padding: 15rpx;
   background-color: #F5F7FA;
   min-height: 100vh;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx; /* 添加统一的间距 */
 }
 
 /* 进度区域 */
@@ -10,7 +15,7 @@
   background: white;
   border-radius: 16rpx;
   padding: 30rpx;
-  margin-bottom: 30rpx;
+  margin-bottom: 20rpx;
   box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
 }
 
@@ -53,14 +58,21 @@
 .question-card {
   background: white;
   border-radius: 16rpx;
-  padding: 40rpx;
-  margin-bottom: 30rpx;
+  padding: 60rpx 40rpx; /* 与学习页面保持一致的内边距 */
+  margin-bottom: 20rpx;
   box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.1);
+  margin-top: 20rpx;
+  height: 1000rpx; /* 与学习页面保持一致的固定高度 */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box; /* 确保padding包含在宽度内 */
+  width: 100%; /* 确保卡片占满容器宽度 */
 }
 
 .question-header {
   text-align: center;
   margin-bottom: 30rpx;
+  flex-shrink: 0; /* 防止头部被压缩 */
 }
 
 .question-title {
@@ -75,6 +87,7 @@
   padding: 30rpx;
   background: #f8f9fa;
   border-radius: 12rpx;
+  flex-shrink: 0; /* 防止词汇区域被压缩 */
 }
 
 .word-text {
@@ -83,6 +96,9 @@
   font-weight: bold;
   color: #0D47A1;
   margin-bottom: 10rpx;
+  word-wrap: break-word; /* 允许长单词换行 */
+  overflow-wrap: break-word; /* 现代浏览器的换行属性 */
+  max-width: 100%; /* 限制最大宽度 */
 }
 
 .pronunciation {
@@ -94,6 +110,7 @@
 
 .sentence-section {
   margin-bottom: 30rpx;
+  flex-shrink: 0; /* 防止例句区域被压缩 */
 }
 
 .sentence-text {
@@ -106,6 +123,10 @@
 /* 选项区域 */
 .options-section {
   margin-bottom: 20rpx;
+  flex: 1; /* 让选项区域占据剩余空间 */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; /* 均匀分布选项 */
 }
 
 .option-item {
@@ -117,6 +138,11 @@
   margin-bottom: 20rpx;
   text-align: center;
   transition: all 0.3s ease;
+  flex-shrink: 0; /* 防止选项被压缩 */
+  min-height: 80rpx; /* 确保选项有最小高度 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .option-item:active {
@@ -138,6 +164,9 @@
   font-size: 28rpx;
   color: #333;
   font-weight: 500;
+  word-wrap: break-word; /* 允许长文本换行 */
+  overflow-wrap: break-word; /* 现代浏览器的换行属性 */
+  max-width: 100%; /* 限制最大宽度 */
 }
 
 .option-icon {
@@ -164,7 +193,7 @@
 /* 提示区域 */
 .tip-section {
   text-align: center;
-  margin-bottom: 30rpx;
+  margin-bottom: 20rpx;
 }
 
 .tip-text {
@@ -174,7 +203,7 @@
 
 /* 底部操作 */
 .bottom-actions {
-  margin-bottom: 30rpx;
+  margin-bottom: 20rpx;
 }
 
 .action-btn {

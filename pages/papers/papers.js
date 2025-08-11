@@ -10,6 +10,11 @@ Page({
 
   onLoad() {
     // 统一从数据模块加载，方便首页统计与复用
+    this.loadPapersData()
+  },
+
+  // 加载论文数据
+  loadPapersData() {
     const papers = require('../../utils/papersData.js')
     this.setData({ papers, filteredPapers: papers })
   },
@@ -19,6 +24,9 @@ Page({
     if (this.getTabBar && this.getTabBar()) {
       this.getTabBar().setData({ selected: 3 })
     }
+    
+    // 重新加载论文数据以获取最新的词汇数量
+    this.loadPapersData()
   },
 
   // 搜索输入处理

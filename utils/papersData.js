@@ -1,6 +1,18 @@
 // utils/papersData.js
 // 统一维护论文列表，供首页统计与论文页展示使用
 
+// 动态计算论文词汇数量的函数
+function getPaperWordCount(paperTitle) {
+  try {
+    const app = getApp()
+    const words = app.globalData.words || []
+    return words.filter(word => word.paperTitle === paperTitle).length
+  } catch (e) {
+    console.warn('获取论文词汇数量失败:', e)
+    return 0
+  }
+}
+
 const papers = [
   {
     id: 1,
@@ -10,7 +22,7 @@ const papers = [
     journal: 'NIPS',
     abstract: '这篇论文提出了一种全新的、简单的网络架构——Transformer。Transformer模型架构完全摒弃了循环和卷积，仅依赖于注意力机制来处理输入和输出之间的全局依赖关系。',
     url: 'https://arxiv.org/abs/1706.03762',
-    wordCount: 0, // 从该论文提取的词汇数量
+    get wordCount() { return getPaperWordCount('Attention is all you need') }, // 动态计算词汇数量
     category: 'AI专业词汇',
     background: `在《Attention Is All You Need》这篇论文发表之前，序列转换模型（sequence transduction models）主要由包含编码器和解码器的复杂循环神经网络（RNN）或卷积神经网络（CNN）构成。这些模型在当时取得了最先进的成果，并且通常会通过一种"注意力机制"来连接编码器和解码器。
 
@@ -41,7 +53,7 @@ Transformer模型架构完全摒弃了循环和卷积，仅依赖于注意力机
     journal: 'NIPS',
     abstract: '这篇论文提出了一种名为AlexNet的深度卷积神经网络架构，在ImageNet大规模视觉识别挑战赛中取得了突破性成果，标志着深度学习在计算机视觉领域的"王者归来"。',
     url: 'https://proceedings.neurips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf',
-    wordCount: 28, // 从该论文提取的词汇数量
+    get wordCount() { return getPaperWordCount('ImageNet Classification with Deep Convolutional Neural Networks') }, // 动态计算词汇数量
     category: 'AI专业词汇',
     background: `在2012年之前，尽管机器学习已应用于物体识别，但其性能受限于当时相对较小的数据集（如CIFAR-10/100，量级在数万张图片）。这些数据集足以解决简单的识别任务，但对于现实世界中形态各异的物体，其复杂性远超这些小数据集所能覆盖的范围。虽然学界已认识到需要更大规模的数据集，但直到ImageNet这样拥有数百万张高分辨率、带标签图像的数据库出现，才为训练更大、更强大的模型提供了可能。然而，有了数据，还需要一个有足够学习能力且能有效利用这些数据的模型。卷积神经网络（CNNs）因其对图像特性的良好假设（如统计平稳性和像素局部依赖性）而被认为是理想选择，但其巨大的计算开销使得在大规模高分辨率图像上的应用一直受到限制。`,
     keyConcepts: `这篇论文的核心是提出并验证了一个名为AlexNet的深度卷积神经网络架构。该网络不仅规模巨大（包含约6000万参数和65万个神经元），更重要的是，它集成了一系列创新且高效的技术来应对大规模训练的挑战：

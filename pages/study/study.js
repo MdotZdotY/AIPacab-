@@ -143,6 +143,12 @@ Page({
       const currentWord = words[currentIndex]
       console.log('setCurrentWord - currentWord:', currentWord)
       
+      // 处理meaning字段，移除词性信息，只保留纯中文意思
+      if (currentWord.meaning) {
+        // 移除meaning中的词性信息，格式如 "全连接层 (noun phrase)" -> "全连接层"
+        currentWord.meaning = currentWord.meaning.replace(/\s*\([^)]*\)$/, '').trim()
+      }
+      
       // 生成测试选项
       let options = []
       if (this.data.isTestMode) {
@@ -219,7 +225,17 @@ Page({
   // 生成测试选项
   generateOptions(correctWord) {
     const allWords = app.globalData.words
-    const options = [correctWord.meaning]
+    
+    // 处理meaning字段，确保不包含词性信息
+    const cleanMeaning = correctWord.meaning ? 
+      correctWord.meaning.replace(/\s*\([^)]*\)$/, '').trim() : 
+      correctWord.meaning
+    
+    // 为正确答案添加词性信息
+    const correctOption = correctWord.partOfSpeech ? 
+      `${cleanMeaning} (${correctWord.partOfSpeech})` : 
+      cleanMeaning
+    const options = [correctOption]
     
     console.log('generateOptions - 生成测试选项')
     console.log('- correctWord:', correctWord)
@@ -233,7 +249,16 @@ Page({
     console.log('- shuffled.length:', shuffled.length)
     
     for (let i = 0; i < 3 && i < shuffled.length; i++) {
-      options.push(shuffled[i].meaning)
+      // 处理错误选项的meaning字段，确保不包含词性信息
+      const cleanWrongMeaning = shuffled[i].meaning ? 
+        shuffled[i].meaning.replace(/\s*\([^)]*\)$/, '').trim() : 
+        shuffled[i].meaning
+      
+      // 为错误选项也添加词性信息
+      const wrongOption = shuffled[i].partOfSpeech ? 
+        `${cleanWrongMeaning} (${shuffled[i].partOfSpeech})` : 
+        cleanWrongMeaning
+      options.push(wrongOption)
     }
     
     const finalOptions = this.shuffleArray(options)
@@ -333,7 +358,9 @@ Page({
   selectAnswer(e) {
     const selectedAnswer = e.currentTarget.dataset.answer
     const correctAnswer = this.data.currentWord.meaning
-    const isCorrect = selectedAnswer === correctAnswer
+    // 处理包含词性信息的选项，提取纯含义进行比较
+    const selectedMeaning = selectedAnswer.replace(/\s*\([^)]*\)$/, '') // 移除词性信息
+    const isCorrect = selectedMeaning === correctAnswer
     const { currentWord } = this.data
     
     console.log('selectAnswer - 答题')

@@ -85,19 +85,15 @@ AI词汇学习小程序是一个专注于AI领域专业词汇学习的微信小�
 #### 2.3.1 论文数据
 - **论文总数**: 2篇
 - **论文列表**:
-  1. Attention Is All You Need (2017, NIPS) - 0个词汇
-  2. ImageNet Classification with Deep Convolutional Neural Networks (2012, NIPS) - 28个词汇
-
-#### 2.3.2 词汇数据
-- **总词汇数**: 28个
-- **词汇来源**: ImageNet Classification with Deep Convolutional Neural Networks
+  1. ImageNet Classification with Deep Convolutional Neural Networks - 1个词汇
+  2. Attention is all you need - 15个词汇#### 2.3.2 词汇数据
+- **总词汇数**: 33个
+- **词汇来源**: ImageNet Classification with Deep Convolutional Neural Networks, Attention is all you need
 - **词汇分类**:
-  - GRE高频词: 5个
-  - TOEFL高频词: 7个
-  - IELTS高频词: 5个
-  - AI专业词汇: 11个
-
-#### 2.3.3 词汇数据结构
+  - GRE高频词: 3个
+  - TOEFL高频词: 4个
+  - IELTS高频词: 4个
+  - AI专业词汇: 5个#### 2.3.3 词汇数据结构
 ```javascript
 {
   id: number,                    // 唯一标识符

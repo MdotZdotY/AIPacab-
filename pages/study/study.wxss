@@ -68,6 +68,13 @@
   border-left: 4rpx solid rgba(13, 71, 161, 0.35); /* 降低蓝色边线透明度 */
 }
 
+.part-of-speech {
+  font-size: 32rpx; /* 稍微小于主文字体 */
+  color: #666; /* 使用灰色，与主文字区分 */
+  font-weight: normal; /* 词性信息不需要加粗 */
+  font-style: italic; /* 斜体显示，更加突出 */
+}
+
 .sentence-section {
   margin-bottom: 25rpx; /* 减少底部边距 */
 }
