@@ -76,6 +76,36 @@ Transformer模型架构完全摒弃了循环和卷积，仅依赖于注意力机
 * **技术革命**：它不仅终结了传统手工设计特征方法的统治地位，也向整个学界和业界展示了"更深、更大的网络 + 更大的数据 + 更强的算力（GPU） + 更有效的训练技巧（ReLU/Dropout等）"这一黄金法则。
 
 * **历史意义**：AlexNet的成功直接引爆了深度学习的革命，开启了至今仍在持续的人工智能新浪潮，为后续的深度学习发展奠定了重要基础。`
+  },
+  {
+    id: 3,
+    title: 'Training language models to follow instructions with human feedback',
+    authors: 'Long Ouyang, Jeff Wu, Xu Jiang, Diogo Almeida, Carroll L. Wainwright, Pamela Mishkin, Chong Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray, John Schulman, Jacob Hilton, Fraser Kelton, Luke Miller, Maddie Simens, Amanda Askell, Peter Welinder, Paul Christiano, Jan Leike, Ryan Lowe',
+    year: 2022,
+    journal: 'arXiv',
+    abstract: '这篇论文提出了一种结合人类反馈的训练方法，即基于人类反馈的强化学习（RLHF），来解决大型语言模型的对齐问题，推出了InstructGPT模型并证明了该方法的有效性。',
+    url: 'https://arxiv.org/pdf/2203.02155',
+    get wordCount() { return getPaperWordCount('Training language models to follow instructions with human feedback') }, // 动态计算词汇数量
+    category: 'AI专业词汇',
+    background: `大型语言模型（LLMs）如GPT-3虽然在预训练后获得了强大的语言生成和世界知识，但它们并不总是能很好地理解并遵循用户的具体指令。模型的原始目标（预测下一个词）与用户期望的目标（生成有用、安全、遵循指令的回答）之间存在偏差，这种现象被称为"对齐失败"（alignment problem）。
+
+例如，一个未经对齐的模型可能会生成不真实的内容（幻觉）、包含偏见或有害言论，或者直接拒绝回答无害的问题。传统的做法是通过微调来让模型适应特定任务，但这往往需要大量的标注数据，且无法保证模型能泛化到所有类型的指令。因此，如何让大型语言模型更好地与人类的意图对齐，成为一个亟待解决的关键问题。`,
+    keyConcepts: `为解决对齐问题，该论文提出了一种结合了人类反馈的训练方法，即基于人类反馈的强化学习（Reinforcement Learning from Human Feedback, RLHF）。该方法的核心思想是使用人类偏好作为奖励信号，来训练模型生成更符合期望的输出。整个流程分为三个关键步骤：
+
+* **监督微调 (Supervised Fine-Tuning, SFT)**：首先，收集一批由人类标注员编写的高质量"指令-回答"样本对，用这些数据对预训练的GPT-3模型进行初步的监督微调。这使得模型初步具备了遵循指令的能力。
+
+* **训练奖励模型 (Reward Modeling, RM)**：让SFT模型对同一条指令生成多个不同的回答。然后，让人类标注员对这些回答进行排序，评判哪个更好。利用这些包含人类偏好排序的数据，训练一个独立的"奖励模型"，这个模型学会了预测哪个回答会更受人类偏爱，并为其打分。
+
+* **强化学习微调 (Reinforcement Learning Fine-Tuning)**：将奖励模型作为强化学习环境中的奖励函数。使用近端策略优化（Proximal Policy Optimization, PPO）算法，进一步微调SFT模型。在这一阶段，模型生成一个回答后，会得到奖励模型给出的分数，并根据这个分数更新自己的策略（即参数），从而学会生成能获得更高奖励（即更受人类偏爱）的回答。为了防止模型在迎合奖励模型时偏离原始语言能力太远，还在奖励函数中加入了KL散度惩罚项。`,
+    highlights: `本研究最大的亮点是推出了InstructGPT模型，并系统性地证明了RLHF是解决大型语言模型对齐问题的有效途径。论文通过广泛的实验表明：
+
+* **显著更受人类偏爱**：尽管InstructGPT模型（13亿参数）比GPT-3（1750亿参数）小100多倍，但在遵循指令方面，其输出被人类标注员认为显著优于GPT-3。
+
+* **更真实、更低毒性**：与GPT-3相比，InstructGPT模型在生成内容时产生"幻觉"的频率更低，即更加真实可靠，并且其生成有害或有毒内容的倾向也显著降低。
+
+* **良好的泛化能力**：InstructGPT在公开的NLP数据集上并没有出现严重的性能下降，表明该对齐方法在提升指令遵循能力的同时，并未损害模型本身已有的核心技能。
+
+* **历史意义**：这项工作是AI对齐领域的里程碑，它不仅提供了一套可行的、可扩展的方法论，也直接催生了后续更强大的对话模型（如ChatGPT），为开发更安全、更有用、更负责任的AI系统奠定了坚实的基础。`
   }
 ]
 
