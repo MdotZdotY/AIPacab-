@@ -390,16 +390,30 @@ Page({
       }
     }
 
-    wx.showToast({
-      title: isCorrect ? '回答正确！已掌握' : '回答错误',
-      icon: isCorrect ? 'success' : 'error',
-      duration: 1500
-    })
-
-    // 延迟后进入下一题
-    setTimeout(() => {
-      this.nextWord()
-    }, 1500)
+    if (isCorrect) {
+      wx.showModal({
+        title: '回答正确！',
+        content: '恭喜你！这个词汇已经掌握了！',
+        showCancel: false,
+        confirmText: '继续',
+        success: () => {
+          // 延迟后进入下一题
+          setTimeout(() => {
+            this.nextWord()
+          }, 500)
+        }
+      })
+    } else {
+      wx.showToast({
+        title: '回答错误',
+        icon: 'error',
+        duration: 2000
+      })
+      // 延迟后进入下一题
+      setTimeout(() => {
+        this.nextWord()
+      }, 2000)
+    }
   },
 
   // 更新学习记录

@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: column;
   gap: 20rpx; /* 添加统一的间距 */
+  overflow-x: hidden; /* 防止水平滚动 */
 }
 
 /* 词汇卡片 */
@@ -24,6 +25,8 @@
   flex-direction: column;
   margin-bottom: 220rpx; /* 保持底部边距 */
   box-sizing: border-box; /* 确保padding包含在高度内 */
+  width: 100%; /* 确保卡片占满容器宽度 */
+  flex-shrink: 0; /* 防止卡片被压缩 */
 }
 
 .card-header {

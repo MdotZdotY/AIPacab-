@@ -76,9 +76,13 @@ Transformer模型架构完全摒弃了循环和卷积，仅依赖于注意力机
     const paper = this.data.papers.find(p => p.id === paperId)
     
     if (paper) {
+      // 动态计算词汇数量
+      const wordCount = this.calculateWordCount(paper.title)
+      
       // 处理markdown标记
       const processedPaper = {
         ...paper,
+        wordCount: wordCount,
         keyConcepts: this.removeMarkdown(paper.keyConcepts),
         highlights: this.removeMarkdown(paper.highlights)
       }
@@ -91,6 +95,17 @@ Transformer模型架构完全摒弃了循环和卷积，仅依赖于注意力机
       setTimeout(() => {
         wx.navigateBack()
       }, 1500)
+    }
+  },
+
+  // 计算论文词汇数量
+  calculateWordCount(paperTitle) {
+    try {
+      const words = app.globalData.words || []
+      return words.filter(word => word.paperTitle === paperTitle).length
+    } catch (e) {
+      console.warn('计算论文词汇数量失败:', e)
+      return 0
     }
   },
 

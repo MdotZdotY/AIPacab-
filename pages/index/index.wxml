@@ -31,10 +31,10 @@
 
   <view style="display: flex; flex-direction: row; gap: 20rpx; margin-top: 60rpx;">
     <button style="background: #28a745; color: white; padding: 30rpx; border: none; border-radius: 16rpx; font-size: 32rpx; flex: 1;" bindtap="goToPapers">
-      论文资源
+      读论文
     </button>
     <button style="background: #007bff; color: white; padding: 30rpx; border: none; border-radius: 16rpx; font-size: 32rpx; flex: 1;" bindtap="startStudy">
-      开始学习
+      背单词
     </button>
   </view>
 

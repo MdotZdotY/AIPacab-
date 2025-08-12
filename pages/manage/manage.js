@@ -17,16 +17,7 @@ Page({
       { display: 'AI专业', value: 'AI专业词汇' }
     ],
     totalCount: 0,
-    showAddModal: false,
-    newWord: {
-      word: '',
-      meaning: '',
-      pronunciation: '',
-      sentence: '',
-      translation: '',
-      category: 'AI专业词汇',
-      paperTitle: ''
-    }
+
   },
 
   onLoad() {
@@ -192,105 +183,9 @@ Page({
     })
   },
 
-  // 显示添加词汇模态框
-  showAddWord() {
-    this.setData({
-      showAddModal: true
-    })
-  },
 
-  // 隐藏添加词汇模态框
-  hideAddWord() {
-    this.setData({
-      showAddModal: false,
-      newWord: {
-        word: '',
-        meaning: '',
-        pronunciation: '',
-        sentence: '',
-        translation: '',
-        category: 'AI专业词汇',
-        paperTitle: ''
-      }
-    })
-  },
 
-  // 输入新词汇信息
-  onInputChange(e) {
-    const field = e.currentTarget.dataset.field
-    const value = e.detail.value
-    this.setData({
-      [`newWord.${field}`]: value
-    })
-  },
 
-  // 选择分类
-  onCategoryChange(e) {
-    this.setData({
-      'newWord.category': e.detail.value
-    })
-  },
-
-  // 添加新词汇
-  addWord() {
-    const { newWord } = this.data
-    
-    // 验证必填字段
-    if (!newWord.word || !newWord.meaning) {
-      wx.showToast({
-        title: '请填写词汇和含义',
-        icon: 'none'
-      })
-      return
-    }
-
-    // 检查是否重复
-    const existingWords = app.globalData.words.map(w => w.word.toLowerCase())
-    if (existingWords.includes(newWord.word.toLowerCase())) {
-      wx.showToast({
-        title: '该词汇已存在',
-        icon: 'none'
-      })
-      return
-    }
-
-    // 先修复现有数据的重复ID
-    this.fixDuplicateIds()
-    
-    // 使用词汇管理器获取下一个ID
-    const vocabularyManager = new (require('../../utils/vocabularyManager.js'))()
-    const nextId = vocabularyManager.getNextWordId()
-    
-    const newWordData = {
-      ...newWord,
-      id: nextId,
-      difficulty: 'medium',
-      studyCount: 0,
-      correctCount: 0,
-      lastStudyTime: null,
-      status: 'learning', // learning, review, mastered
-      weeklyStudyCount: 0
-    }
-
-    // 添加到全局数据
-    app.globalData.words.push(newWordData)
-
-    // 保存到本地存储
-    try {
-      wx.setStorageSync('words', app.globalData.words)
-    } catch (e) {
-      console.error('保存词汇数据失败:', e)
-    }
-
-    // 更新页面数据
-    this.loadWords()
-    this.hideAddWord()
-
-    wx.showToast({
-      title: '添加成功',
-      icon: 'success'
-    })
-  },
 
 
 
@@ -306,8 +201,20 @@ Page({
       'mastered': '熟知词库'
     }[word.status] || '未知状态'
     
-    // 构建详细信息内容
-    let content = `含义：${word.meaning}\n例句：${word.sentence}\n分类：${word.category}\n状态：${statusText}\n学习次数：${word.studyCount}\n正确次数：${word.correctCount}\n周学习次数：${word.weeklyStudyCount || 0}`
+    // 构建详细信息内容 - 使用微信小程序支持的换行方式
+    let content = `含义：${word.meaning}
+
+例句：${word.sentence}
+
+分类：${word.category}
+
+状态：${statusText}
+
+学习次数：${word.studyCount}
+
+正确次数：${word.correctCount}
+
+周学习次数：${word.weeklyStudyCount || 0}`
     
     // 如果是复习词库，显示复习统计
     if (word.status === 'review') {
