@@ -16,6 +16,7 @@ function getPaperWordCount(paperTitle) {
 const papers = [
 
 
+
   {
     id: 1,
     title: 'Attention Is All You Need',
@@ -191,6 +192,33 @@ RAG的工作流程是：当接收到一个输入（如一个问题）时，一�
 1.  **识别关键变量**：通过变量选择网络，TFT能够清晰地量化不同输入特征（如特定商品、节假日促销）对预测的重要性，帮助用户理解哪些因素在驱动预测结果。
 2.  **揭示时间模式**：其可解释的注意力机制能够可视化地展示出模型在做预测时关注了哪些历史时间模式。例如，在零售预测中，模型可能会自动关注到去年同期的销售高峰，或是在预测流感爆发时，识别出某些具有周期性或突变性的早期模式。
 论文通过具体的案例分析，展示了如何利用TFT识别出具有持续性影响的时间模式、定位导致模式突变的断点（regime changes），这使得TFT不仅是一个精准的"黑箱"预测器，更是一个强大的商业和科学洞察工具。`
+  },
+  {
+    id: 14,
+    title: 'Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting',
+    authors: 'Haoyi Zhou, Shanghang Zhang, Jieqi Peng, Shuai Zhang, Jianxin Li, Hui Xiong, Wancai Zhang',
+    year: 2020,
+    journal: 'arXiv',
+    abstract: '这篇论文提出了一种名为Informer的新型高效Transformer架构，通过ProbSparse自注意力机制、自注意力蒸馏和生成式解码器三大创新，成功解决了长序列时间序列预测中的效率瓶颈问题。',
+    url: 'https://arxiv.org/pdf/2012.07436',
+    get wordCount() { return getPaperWordCount('Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting') },
+    category: 'AI专业词汇',
+    background: `长序列时间序列预测（Long Sequence Time-series Forecasting, LSTF）在许多现实世界应用中至关重要，例如能源消耗预测、金融市场分析和疾病传播监控。这些任务要求模型不仅能捕捉精确的短期趋势，还要能准确预测遥远的未来。虽然基于Transformer的模型因其自注意力机制在捕捉长期依赖关系方面表现出色，但将其直接应用于LSTF问题时面临三大挑战：
+
+1.  **二次方计算复杂度**：自注意力机制的计算和内存使用量随序列长度成二次方增长，这使得处理长序列变得极其昂贵和缓慢。
+2.  **高内存使用量**：存储长序列的注意力图以及编码器/解码器堆叠的多层网络，会消耗大量内存，限制了模型的深度和序列长度。
+3.  **解码速度缓慢**：传统的Transformer解码器采用逐个时间步生成的自回归方式，这在预测长序列时非常耗时，无法满足实时预测的需求。
+    因此，亟需一种既能保持Transformer捕捉长期依赖能力，又能解决上述效率瓶颈的新模型。`,
+    keyConcepts: `为应对上述挑战，该论文提出了一种名为**Informer**的新型高效Transformer架构，其核心创新在于三个关键概念：
+
+1.  **ProbSparse自注意力机制 (ProbSparse Self-attention)**：这是Informer的核心。作者通过理论分析和实证观察发现，自注意力机制产生的注意力分数分布通常是稀疏的，即只有少数几个“点积对”在贡献主要的注意力权重。基于此，Informer设计了一种*ProbSparse*（概率稀疏）注意力机制，它不再计算所有查询（Query）和键（Key）的点积，而是通过一种高效的近似方法，只选择最重要的“头部的u个”查询进行计算。这种方法将每层的计算复杂度和内存使用量从O(L^2)显著降低到O(L log L)，其中L是序列长度。
+2.  **自注意力蒸馏 (Self-attention Distilling)**：为了进一步降低模型规模和计算成本，Informer在编码器中引入了“注意力蒸馏”操作。在每一层网络中，通过卷积和最大池化（max-pooling）操作，将输入的序列长度减半。这种类似金字塔式的逐层缩减，使得主导的注意力特征得以凸显，并有效减少了网络的参数量和内存占用。
+3.  **生成式解码器 (Generative Style Decoder)**：为了解决传统解码器逐点推理缓慢的问题，Informer设计了一种生成式解码器。它一次性地将所有需要预测的时间步（一个长序列）作为输入，并行地生成所有预测结果，而非逐个生成。这种“一步到位”的方式极大地提升了长序列的预测速度。`,
+    highlights: `本论文最大的亮点在于**为长序列时间序列预测问题提供了一个高效且高性能的解决方案**，成功地将Transformer架构的能力扩展到了以往因计算限制而难以处理的领域。主要亮点包括：
+
+1.  **效率的巨大飞跃**：通过创新的*ProbSparse*自注意力和注意力蒸馏机制，Informer在保持甚至超越传统Transformer预测精度的同时，极大地降低了计算和内存的复杂度，使得处理数千个时间点的长序列成为可能。
+2.  **推理速度的革命性提升**：生成式解码器的设计摆脱了自回归的束缚，实现了长序列预测的并行输出，解决了LSTF任务在实时应用中的速度瓶颈。
+3.  **卓越的实证性能**：论文在四个大规模的真实世界数据集（电力消耗、交通流量、天气、疾病传播）上进行了广泛实验。结果表明，Informer在各项指标上均显著优于当时已有的多种先进模型，充分验证了其在LSTF任务上的有效性和优越性。这项工作为后续的长序列建模研究提供了新的思路和强大的基线。`
   }
 ]
 
