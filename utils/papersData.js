@@ -14,6 +14,7 @@ function getPaperWordCount(paperTitle) {
 }
 
 const papers = [
+
   {
     id: 1,
     title: 'Attention Is All You Need',
@@ -106,6 +107,26 @@ Transformer模型架构完全摒弃了循环和卷积，仅依赖于注意力机
 * **良好的泛化能力**：InstructGPT在公开的NLP数据集上并没有出现严重的性能下降，表明该对齐方法在提升指令遵循能力的同时，并未损害模型本身已有的核心技能。
 
 * **历史意义**：这项工作是AI对齐领域的里程碑，它不仅提供了一套可行的、可扩展的方法论，也直接催生了后续更强大的对话模型（如ChatGPT），为开发更安全、更有用、更负责任的AI系统奠定了坚实的基础。`
+  },
+  {
+    id: 7,
+    title: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks',
+    authors: 'Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir Karpukhin, Naman Goyal, Heinrich Küttler, Mike Lewis, Wen-tau Yih, Tim Rocktäschel, Sebastian Riedel, Douwe Kiela',
+    year: 2020,
+    journal: 'NeurIPS',
+    abstract: '这篇论文提出了一种名为RAG（检索增强生成）的架构，将预训练的序列到序列模型与大规模文档检索机制相结合，在知识密集型NLP任务上取得了显著成果。',
+    url: 'https://arxiv.org/pdf/2005.11401',
+    get wordCount() { return getPaperWordCount('Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks') },
+    category: 'AI专业词汇',
+    background: `在大型语言模型（LLMs）的研究中，一个普遍的发现是，这些模型通过在海量文本上进行预训练，能够在其内部参数中存储大量的“事实知识”。然而，这种完全依赖“参数化记忆”的方式存在几个固有缺陷：首先，模型无法轻易地更新或修正其知识库，一旦世界发生变化，模型就需要昂贵的重新训练；其次，当模型生成一个事实性回答时，很难追溯其信息来源，缺乏可解释性；最后，这种模型有时会产生与事实不符的“幻觉”内容。虽然之前已有工作尝试将模型与外部知识库结合，但大多局限于答案是直接从文本中“抽取”出来的任务，而对于需要模型“生成”新文本的任务（如开放式问答、对话等），如何有效地结合检索与生成，仍是一个开放的研究问题。`,
+    keyConcepts: `为解决上述挑战，该论文提出了一种通用的、可端到端微调的框架——**检索增强生成（Retrieval-Augmented Generation, RAG）**。RAG框架创新性地将两种类型的记忆结合起来：
+1.  **参数化记忆 (Parametric Memory)**：这是一个预训练的序列到序列（seq2seq）模型，如BART。它负责语言生成，其知识存储在模型的权重参数中。
+2.  **非参数化记忆 (Non-Parametric Memory)**：这是一个外部的、可随时访问的知识库，具体实现为一个由稠密向量（dense vectors）构成的维基百科索引。
+RAG的工作流程是：当接收到一个输入（如一个问题）时，一个预训练的神经**检索器（Retriever）**会首先从非参数化记忆（维基百科索引）中检索出最相关的K个文档片段。然后，**生成器（Generator）**会将这些检索到的文档片段与原始输入拼接在一起，作为上下文，从而生成最终的、信息更丰富的回答。论文还探索了两种RAG的实现范式：一种是在生成整个序列时都使用同一批检索到的文档，另一种则允许在生成每个词元（token）时都可以参考不同的文档。`,
+    highlights: `本研究最大的亮点在于**首次为生成式任务提供了一个通用且高效的、结合了参数化与非参数化记忆的框架**，并证明了其在多种知识密集型任务上的卓越性能。主要亮点包括：
+1.  **性能突破**：RAG模型在三个开放域问答基准测试（Open-domain QA）上取得了当时最先进的（State-of-the-Art）成果，其性能不仅超越了纯参数化的seq2seq模型，也优于那些为特定任务设计的“检索-抽取”式架构。
+2.  **生成质量更高**：在语言生成任务上，与强大的纯参数模型BART相比，RAG生成的文本更加具体、多样化，并且事实性更强，显著减少了“幻觉”现象。
+3.  **知识可更新与可解释**：RAG框架的一个关键优势是其“即插即用”的知识库。论文通过实验证明，只需简单地替换外部的文档索引，就可以轻松地更新模型的知识，而无需重新训练整个模型。同时，由于可以查看模型检索到了哪些文档来生成答案，RAG为模型的决策提供了来源依据，增强了可解释性。这项工作为后续的检索增强语言模型研究奠定了坚实的基础。`
   }
 ]
 

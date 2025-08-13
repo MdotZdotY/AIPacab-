@@ -20,14 +20,10 @@ Page({
 
   onLoad() {
     console.log('首页加载，当前词汇数量:', app.globalData.words ? app.globalData.words.length : 0)
+    
     this.loadStats()
     this.loadCategories()
     this.loadRecentWords()
-    
-    // 添加调试信息
-    console.log('首页数据加载完成')
-    console.log('stats:', this.data.stats)
-    console.log('categories:', this.data.categories)
     
     // 如果词汇数量为0，强制显示修复按钮
     if (!app.globalData.words || app.globalData.words.length === 0) {

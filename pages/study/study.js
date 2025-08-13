@@ -164,24 +164,29 @@ Page({
       console.log('setCurrentWord - currentWord:', currentWord)
       
       // 处理meaning字段，移除词性信息，只保留纯中文意思
+      let displayWord = currentWord
       if (currentWord.meaning) {
         // 移除meaning中的词性信息，格式如 "全连接层 (noun phrase)" -> "全连接层"
-        currentWord.meaning = currentWord.meaning.replace(/\s*\([^)]*\)$/, '').trim()
+        const cleanMeaning = currentWord.meaning.replace(/\s*\([^)]*\)$/, '').trim()
+        // 创建当前词汇的副本，避免修改原始数据
+        displayWord = { ...currentWord, meaning: cleanMeaning }
       }
       
       // 生成测试选项
       let options = []
       if (this.data.isTestMode) {
-        options = this.generateOptions(currentWord)
+        options = this.generateOptions(displayWord)
       }
 
       // 调试信息
       console.log('setCurrentWord调试:')
       console.log('- currentIndex:', currentIndex)
       console.log('- words.length:', words.length)
+      console.log('- currentWord.englishMeaning:', displayWord.englishMeaning)
+      console.log('- currentWord.meaning:', displayWord.meaning)
       
       this.setData({
-        currentWord,
+        currentWord: displayWord,
         options,
         // 测试模式下隐藏词义和语义，学习模式和复习模式显示论文来源
         showMeaning: mode !== 'test',

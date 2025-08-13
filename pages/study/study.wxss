@@ -78,6 +78,22 @@
   font-style: italic; /* 斜体显示，更加突出 */
 }
 
+.pronunciation {
+  display: block;
+  font-size: 24rpx;
+  color: #666;
+  font-style: italic;
+}
+
+.english-meaning {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  font-style: normal;
+  margin-top: 10rpx;
+  line-height: 1.4;
+}
+
 .sentence-section {
   margin-bottom: 25rpx; /* 减少底部边距 */
 }

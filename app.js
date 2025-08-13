@@ -459,24 +459,6 @@ App({
       },
       {
         id: 18,
-        word: 'Convolutional Neural Network (CNN)',
-        englishMeaning: 'A class of deep neural networks, most commonly applied to analyzing visual imagery.',
-        meaning: '卷积神经网络 (noun phrase)',
-        partOfSpeech: 'noun phrase',
-        pronunciation: '/ˌkɑːn.vəˈluː.ʃən.əl ˈnʊr.əl ˈnet.wɝːk/',
-        sentence: 'We trained a large, deep convolutional neural network to classify the 1.2 million high-resolution images...',
-        translation: '我们训练了一个大型的深度卷积神经网络来对120万张高分辨率图像进行分类...',
-        paperTitle: 'ImageNet Classification with Deep Convolutional Neural Networks',
-        category: 'AI专业词汇',
-        difficulty: 'hard',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 19,
         word: 'Overfitting',
         englishMeaning: 'The production of an analysis that corresponds too closely or exactly to a particular set of data, and may therefore fail to fit additional data or predict future observations reliably.',
         meaning: '过拟合 (noun)',
@@ -494,7 +476,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 20,
+        id: 19,
         word: 'Regularization',
         englishMeaning: 'A process in machine learning that adds a penalty term to the objective function to discourage complex models, thus avoiding overfitting.',
         meaning: '正则化 (noun)',
@@ -512,7 +494,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 21,
+        id: 20,
         word: 'Softmax',
         englishMeaning: 'A function that takes as input a vector of K real numbers, and normalizes it into a probability distribution consisting of K probabilities proportional to the exponentials of the input numbers.',
         meaning: 'Softmax函数 (归一化指数函数) (noun)',
@@ -530,7 +512,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 22,
+        id: 21,
         word: 'Max-pooling',
         englishMeaning: 'A pooling operation that calculates the maximum value for patches of a feature map, and uses it to create a downsampled feature map.',
         meaning: '最大池化 (noun)',
@@ -548,25 +530,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 23,
-        word: 'ReLU (Rectified Linear Unit)',
-        englishMeaning: 'An activation function defined as the positive part of its argument: f(x) = max(0, x).',
-        meaning: '修正线性单元 (noun)',
-        partOfSpeech: 'noun',
-        pronunciation: '/ˈriː.luː/',
-        sentence: 'Deep convolutional neural networks with ReLUs train several times faster than their equivalents with tanh units.',
-        translation: '带有ReLU的深度卷积神经网络比其带有tanh单元的等效网络训练速度快好几倍。',
-        paperTitle: 'ImageNet Classification with Deep Convolutional Neural Networks',
-        category: 'AI专业词汇',
-        difficulty: 'hard',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 24,
+        id: 22,
         word: 'Dropout',
         englishMeaning: 'A regularization technique for neural networks that prevents co-adaptation of neurons by setting the output of each hidden neuron to zero with a certain probability.',
         meaning: 'Dropout (随机失活) (noun)',
@@ -584,7 +548,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 25,
+        id: 23,
         word: 'Fully-connected layer',
         englishMeaning: 'A layer in an artificial neural network in which every neuron in the layer is connected to every neuron in the preceding layer.',
         meaning: '全连接层 (noun phrase)',
@@ -602,7 +566,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 26,
+        id: 24,
         word: 'Back-propagation',
         englishMeaning: 'An algorithm for supervised learning of artificial neural networks using gradient descent, where the error is back-propagated through the network to adjust weights.',
         meaning: '反向传播 (noun)',
@@ -620,25 +584,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 27,
-        word: 'Stochastic Gradient Descent (SGD)',
-        englishMeaning: 'An iterative method for optimizing an objective function with suitable smoothness properties, where a single or a mini-batch of samples is used to approximate the gradient.',
-        meaning: '随机梯度下降 (noun phrase)',
-        partOfSpeech: 'noun phrase',
-        pronunciation: '/stoʊˈkæs.tɪk ˈɡreɪ.di.ənt dɪˈsent/',
-        sentence: 'We trained our models using stochastic gradient descent with a batch size of 128 examples, momentum of 0.9, and weight decay of 0.0005.',
-        translation: '我们使用随机梯度下降法训练我们的模型，批量大小为128个样本，动量为0.9，权重衰减为0.0005。',
-        paperTitle: 'ImageNet Classification with Deep Convolutional Neural Networks',
-        category: 'AI专业词汇',
-        difficulty: 'hard',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 28,
+        id: 25,
         word: 'Hyper-parameter',
         englishMeaning: 'A parameter whose value is used to control the learning process, and which is set before the learning process begins.',
         meaning: '超参数 (noun)',
@@ -656,7 +602,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 29,
+        id: 26,
         word: 'Dominant',
         englishMeaning: 'Most important, powerful, or influential.',
         meaning: '占主导地位的',
@@ -674,7 +620,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 30,
+        id: 27,
         word: 'Fundamental',
         englishMeaning: 'Forming a necessary base or core; of central importance.',
         meaning: '基础的，根本的',
@@ -692,7 +638,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 31,
+        id: 28,
         word: 'Generalize',
         englishMeaning: 'To make a general or broad statement by inferring from specific cases; to apply a model successfully to new data.',
         meaning: '泛化，归纳',
@@ -710,7 +656,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 32,
+        id: 29,
         word: 'Propose',
         englishMeaning: 'To put forward an idea or plan for consideration or discussion by others.',
         meaning: '提议，提出',
@@ -728,7 +674,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 33,
+        id: 30,
         word: 'Superior',
         englishMeaning: 'Higher in rank, status, or quality.',
         meaning: '更好的，优越的',
@@ -746,7 +692,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 34,
+        id: 31,
         word: 'Achieve',
         englishMeaning: 'To successfully bring about or reach a desired objective, level, or result by effort, skill, or courage.',
         meaning: '实现，达到',
@@ -764,7 +710,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 35,
+        id: 32,
         word: 'Component',
         englishMeaning: 'A part or element of a larger whole.',
         meaning: '组件，组成部分',
@@ -782,7 +728,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 36,
+        id: 33,
         word: 'Establish',
         englishMeaning: 'To set up on a firm or permanent basis; to show something to be true or certain by determining the facts.',
         meaning: '建立，确立',
@@ -800,7 +746,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 37,
+        id: 34,
         word: 'Evaluate',
         englishMeaning: 'To form an idea of the amount, number, or value of; to assess.',
         meaning: '评估，评价',
@@ -818,7 +764,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 38,
+        id: 35,
         word: 'Implement',
         englishMeaning: 'To put a decision, plan, or agreement into effect.',
         meaning: '实现，实施',
@@ -836,7 +782,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 39,
+        id: 36,
         word: 'Parameter',
         englishMeaning: 'A numerical or other measurable factor forming one of a set that defines a system or sets the conditions of its operation.',
         meaning: '参数',
@@ -854,7 +800,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 40,
+        id: 37,
         word: 'Significant',
         englishMeaning: 'Sufficiently great or important to be worthy of attention; noteworthy.',
         meaning: '显著的，重要的',
@@ -872,7 +818,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 41,
+        id: 38,
         word: 'Approach',
         englishMeaning: 'A way of dealing with a situation or problem.',
         meaning: '方法，方式',
@@ -890,7 +836,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 42,
+        id: 39,
         word: 'Architecture',
         englishMeaning: 'The complex or carefully designed structure of something.',
         meaning: '架构，结构',
@@ -908,7 +854,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 43,
+        id: 40,
         word: 'Consist',
         englishMeaning: 'To be composed or made up of.',
         meaning: '由…组成',
@@ -926,7 +872,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 44,
+        id: 41,
         word: 'Despite',
         englishMeaning: 'Without being affected by; in spite of.',
         meaning: '尽管，虽然',
@@ -944,7 +890,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 45,
+        id: 42,
         word: 'Employ',
         englishMeaning: 'To make use of.',
         meaning: '使用，采用',
@@ -962,7 +908,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 46,
+        id: 43,
         word: 'Require',
         englishMeaning: 'To need something or make something necessary.',
         meaning: '需要，要求',
@@ -980,7 +926,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 47,
+        id: 44,
         word: 'Semantic',
         englishMeaning: 'Relating to meaning in language or logic.',
         meaning: '语义的',
@@ -998,7 +944,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 48,
+        id: 45,
         word: 'Structure',
         englishMeaning: 'The arrangement of and relations between the parts or elements of something complex.',
         meaning: '结构',
@@ -1016,7 +962,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 49,
+        id: 46,
         word: 'Attention Mechanism',
         englishMeaning: 'A technique that allows a neural network to focus on specific parts of an input sequence when generating an output.',
         meaning: '注意力机制',
@@ -1034,7 +980,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 50,
+        id: 47,
         word: 'Auto-Regressive',
         englishMeaning: 'A model where the prediction for a given time step is generated based on the outputs from previous time steps.',
         meaning: '自回归',
@@ -1052,7 +998,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 51,
+        id: 48,
         word: 'Decoder',
         englishMeaning: 'The part of an encoder-decoder model that generates the output sequence from the encoded representation.',
         meaning: '解码器',
@@ -1070,7 +1016,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 52,
+        id: 49,
         word: 'Embedding',
         englishMeaning: 'A learned representation for discrete items like words, mapping them to vectors of continuous numbers.',
         meaning: '嵌入',
@@ -1088,7 +1034,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 53,
+        id: 50,
         word: 'Encoder',
         englishMeaning: 'The part of an encoder-decoder model that processes the input sequence and converts it into a continuous representation.',
         meaning: '编码器',
@@ -1106,7 +1052,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 54,
+        id: 51,
         word: 'Feed-Forward Network',
         englishMeaning: 'A type of artificial neural network where connections between units do not form a cycle.',
         meaning: '前馈网络',
@@ -1124,7 +1070,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 55,
+        id: 52,
         word: 'Multi-Head Attention',
         englishMeaning: 'An attention mechanism that runs multiple attention functions in parallel, allowing the model to jointly attend to information from different representation subspaces.',
         meaning: '多头注意力',
@@ -1142,7 +1088,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 56,
+        id: 53,
         word: 'Positional Encoding',
         englishMeaning: 'A technique to inject information about the relative or absolute position of tokens in a sequence.',
         meaning: '位置编码',
@@ -1160,25 +1106,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 57,
-        word: 'Recurrent Neural Network (RNN)',
-        englishMeaning: 'A class of artificial neural networks where connections between nodes form a directed graph along a temporal sequence, allowing it to exhibit temporal dynamic behavior.',
-        meaning: '循环神经网络',
-        partOfSpeech: 'noun phrase',
-        pronunciation: '/rɪˈkɝː.ənt ˈnʊr.əl ˈnet.wɝːk/',
-        sentence: '**Recurrent neural networks**, long short-term memory and gated recurrent neural networks in particular, have been firmly established as state of the art approaches in sequence modeling....',
-        translation: '循环神经网络，特别是长短期记忆网络和门控循环神经网络，已被公认为是在序列建模上的最佳方法....',
-        paperTitle: 'Attention is all you need',
-        category: 'AI专业词汇',
-        difficulty: 'hard',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 58,
+        id: 54,
         word: 'Self-Attention',
         englishMeaning: 'An attention mechanism relating different positions of a single sequence in order to compute a representation of the sequence.',
         meaning: '自注意力',
@@ -1196,25 +1124,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 59,
-        word: 'Sequence-to-Sequence (seq2seq)',
-        englishMeaning: 'A class of models that convert sequences from one domain to sequences in another domain, such as in machine translation.',
-        meaning: '序列到序列',
-        partOfSpeech: 'adjective',
-        pronunciation: '/ˈsiː.kwəns.təˈsiː.kwəns/',
-        sentence: 'In contrast to RNN **sequence-to-sequence** models, the Transformer outperforms the BerkeleyParser....',
-        translation: '与循环神经网络的序列到序列模型相比，Transformer的表现优于伯克利解析器....',
-        paperTitle: 'Attention is all you need',
-        category: 'AI专业词汇',
-        difficulty: 'hard',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 60,
+        id: 55,
         word: 'Transduction',
         englishMeaning: 'The process of converting an input sequence into an output sequence, as seen in tasks like machine translation.',
         meaning: '转换，转导',
@@ -1232,7 +1142,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 61,
+        id: 56,
         word: 'Subsequent',
         englishMeaning: 'Coming after something in time; following.',
         meaning: '随后的，后来的 (adjective)',
@@ -1250,7 +1160,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 62,
+        id: 57,
         word: 'Feasible',
         englishMeaning: 'Possible to do easily or conveniently.',
         meaning: '可行的 (adjective)',
@@ -1268,7 +1178,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 63,
+        id: 58,
         word: 'Analogous',
         englishMeaning: 'Comparable in certain respects, typically in a way that makes clearer the nature of the things compared.',
         meaning: '类似的，可类比的 (adjective)',
@@ -1286,7 +1196,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 64,
+        id: 59,
         word: 'Aggregate',
         englishMeaning: 'Formed or calculated by the combination of many separate units or items; total.',
         meaning: '合计的，总体的 (adjective)',
@@ -1304,7 +1214,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 65,
+        id: 60,
         word: 'Distribution',
         englishMeaning: 'The way in which something is shared out among a group or spread over an area.',
         meaning: '分布 (noun)',
@@ -1322,7 +1232,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 66,
+        id: 61,
         word: 'Demonstration',
         englishMeaning: 'An act of showing that something exists or is true by giving proof or evidence.',
         meaning: '演示，证明 (noun)',
@@ -1340,7 +1250,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 67,
+        id: 62,
         word: 'Initial',
         englishMeaning: 'Existing or occurring at the beginning.',
         meaning: '最初的 (adjective)',
@@ -1358,7 +1268,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 68,
+        id: 63,
         word: 'Generate',
         englishMeaning: 'To produce or create something.',
         meaning: '生成，产生 (verb)',
@@ -1376,7 +1286,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 69,
+        id: 64,
         word: 'Obtain',
         englishMeaning: 'To get, acquire, or secure something.',
         meaning: '获得 (verb)',
@@ -1394,7 +1304,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 70,
+        id: 65,
         word: 'Methodology',
         englishMeaning: 'A system of methods used in a particular area of study or activity.',
         meaning: '方法论 (noun)',
@@ -1412,7 +1322,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 71,
+        id: 66,
         word: 'Policy',
         englishMeaning: 'In reinforcement learning, a strategy that the agent employs to determine the next action based on the current state.',
         meaning: '策略 (在强化学习中) (noun)',
@@ -1430,7 +1340,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 72,
+        id: 67,
         word: 'Explicit',
         englishMeaning: 'Stated clearly and in detail, leaving no room for confusion or doubt.',
         meaning: '明确的，清晰的 (adjective)',
@@ -1448,7 +1358,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 73,
+        id: 68,
         word: 'Ethical',
         englishMeaning: 'Relating to moral principles or the branch of knowledge dealing with these.',
         meaning: '伦理的，道德的 (adjective)',
@@ -1466,7 +1376,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 74,
+        id: 69,
         word: 'Paradigm',
         englishMeaning: 'A typical example or pattern of something; a model or framework.',
         meaning: '范式，典范 (noun)',
@@ -1484,7 +1394,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 75,
+        id: 70,
         word: 'Utilize',
         englishMeaning: 'To make practical and effective use of.',
         meaning: '利用 (verb)',
@@ -1502,7 +1412,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 76,
+        id: 71,
         word: 'Illustrative',
         englishMeaning: 'Serving as an example or explanation.',
         meaning: '作为例证的，解说性的 (adjective)',
@@ -1520,7 +1430,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 77,
+        id: 72,
         word: 'Alignment',
         englishMeaning: 'The process of ensuring that an AI system\'s behavior aligns with human values.',
         meaning: '对齐 (noun)',
@@ -1538,25 +1448,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 78,
-        word: 'Reinforcement Learning from Human Feedback (RLHF)',
-        englishMeaning: 'A technique that uses human preferences to train a reward model.',
-        meaning: '基于人类反馈的强化学习 (noun phrase)',
-        partOfSpeech: 'noun phrase',
-        pronunciation: '/ˌriː.ɪnˌfɔːrs.mənt ˈlɝː.nɪŋ frəm ˈhjuː.mən ˈfiːd.bæk/',
-        sentence: 'This technique, which we call Reinforcement Learning from Human Feedback (RLHF), has been used to fine-tune language models for tasks like summarization and dialogue.',
-        translation: '这项技术，我们称之为“基于人类反馈的强化学习（RLHF）”，已被用于微调语言模型以完成摘要和对话等任务。',
-        paperTitle: 'Training language models to follow instructions with human feedback',
-        category: 'TOEFL高频词',
-        difficulty: 'hard',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 79,
+        id: 73,
         word: 'Fine-tuning',
         englishMeaning: 'The process of taking a pre-trained model and training it further on a smaller, task-specific dataset.',
         meaning: '微调 (noun)',
@@ -1574,7 +1466,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 80,
+        id: 74,
         word: 'Pre-training',
         englishMeaning: 'The initial phase of training a large model on a vast amount of unlabeled data to learn general representations of language or other data types.',
         meaning: '预训练 (noun)',
@@ -1592,7 +1484,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 81,
+        id: 75,
         word: 'Prompt',
         englishMeaning: 'An input given to a language model to elicit a specific kind of response or to instruct it to perform a task.',
         meaning: '提示 (noun)',
@@ -1610,61 +1502,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 82,
-        word: 'Reward Model (RM)',
-        englishMeaning: 'A model trained to predict a scalar reward value, typically based on human preferences, which represents how good a given output is.',
-        meaning: '奖励模型 (noun phrase)',
-        partOfSpeech: 'noun phrase',
-        pronunciation: '/rɪˈwɔːrd ˈmɑː.dəl/',
-        sentence: 'Then, we train a reward model that takes in a prompt and a response, and outputs a scalar reward.',
-        translation: '然后，我们训练一个奖励模型，它接收一个提示和一个回复作为输入，并输出一个标量奖励值。',
-        paperTitle: 'Training language models to follow instructions with human feedback',
-        category: 'TOEFL高频词',
-        difficulty: 'hard',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 83,
-        word: 'Proximal Policy Optimization (PPO)',
-        englishMeaning: 'A reinforcement learning algorithm that improves the policy of an agent by taking small, constrained steps to ensure stable learning.',
-        meaning: '近端策略优化 (noun phrase)',
-        partOfSpeech: 'noun phrase',
-        pronunciation: '/ˈprɑːk.sə.məl ˈpɑː.lə.si ˌɑːp.tə.məˈzeɪ.ʃən/',
-        sentence: 'Finally, we use this reward model to fine-tune the SFT model using the PPO algorithm.',
-        translation: '最后，我们使用这个奖励模型和PPO算法来微调SFT模型。',
-        paperTitle: 'Training language models to follow instructions with human feedback',
-        category: 'TOEFL高频词',
-        difficulty: 'hard',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 84,
-        word: 'Supervised Fine-Tuning (SFT)',
-        englishMeaning: 'The process of fine-tuning a pre-trained model on a labeled dataset where each input has a corresponding correct output.',
-        meaning: '监督微调 (noun phrase)',
-        partOfSpeech: 'noun phrase',
-        pronunciation: '/ˈsuː.pɚ.vaɪzd faɪn ˈtuː.nɪŋ/',
-        sentence: 'We refer to models fine-tuned via this process as “Supervised Fine-Tuning (SFT)” models.',
-        translation: '我们将通过此过程微调的模型称为“监督微调（SFT）”模型。',
-        paperTitle: 'Training language models to follow instructions with human feedback',
-        category: 'TOEFL高频词',
-        difficulty: 'hard',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 85,
+        id: 76,
         word: 'Hallucination',
         englishMeaning: 'In AI, the generation of information that is nonsensical, factually incorrect, or disconnected from the provided source data.',
         meaning: '幻觉 (指模型虚构信息) (noun)',
@@ -1682,7 +1520,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 86,
+        id: 77,
         word: 'Toxicity',
         englishMeaning: 'The quality of being harmful, offensive, or malicious, often used to describe language generated by AI.',
         meaning: '毒性 (指内容的有害性) (noun)',
@@ -1700,7 +1538,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 87,
+        id: 78,
         word: 'Bias',
         englishMeaning: 'In AI, systematic prejudice in the model\'s outputs or behavior.',
         meaning: '偏见 (noun)',
@@ -1710,6 +1548,402 @@ App({
         translation: '我们进行偏见评估的目标是了解我们的模型在处理与不同人口群体相关的输入时的行为。',
         paperTitle: 'Training language models to follow instructions with human feedback',
         category: 'TOEFL高频词',
+        difficulty: 'easy',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 79,
+        word: 'Substantial',
+        englishMeaning: 'Considerable in quantity or significance; large in amount.',
+        meaning: '大量的，实质性的 (adjective)',
+        partOfSpeech: 'adjective',
+        pronunciation: '/səbˈstæn.ʃəl/',
+        sentence: 'Pre-trained neural language models have been shown to learn a substantial amount of in-depth knowledge from data.',
+        translation: '预训练的神经语言模型已被证明能从数据中学到大量的深度知识。',
+        paperTitle: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks',
+        category: 'GRE高频词',
+        difficulty: 'easy',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 80,
+        word: 'Provenance',
+        englishMeaning: 'The place of origin or earliest known history of something.',
+        meaning: '来源，出处 (noun)',
+        partOfSpeech: 'noun',
+        pronunciation: '/ˈprɑː.və.nəns/',
+        sentence: 'Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems.',
+        translation: '此外，为其决策提供来源依据以及更新其世界知识仍然是开放的研究问题。',
+        paperTitle: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks',
+        category: 'GRE高频词',
+        difficulty: 'easy',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 81,
+        word: 'Mitigate',
+        englishMeaning: 'To make something less severe, harmful, or painful.',
+        meaning: '减轻，缓和 (verb)',
+        partOfSpeech: 'verb',
+        pronunciation: '/ˈmɪt.ɪ.ɡeɪt/',
+        sentence: 'RAG models can mitigate the problem of hallucination by providing access to external knowledge.',
+        translation: 'RAG模型可以通过提供外部知识访问来减轻幻觉问题。',
+        paperTitle: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks',
+        category: 'GRE高频词',
+        difficulty: 'easy',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 82,
+        word: 'Precisely',
+        englishMeaning: 'Exactly or accurately; with exactness and accuracy.',
+        meaning: '精确地 (adverb)',
+        partOfSpeech: 'adverb',
+        pronunciation: '/prɪˈsaɪs.li/',
+        sentence: 'The model can precisely retrieve relevant documents for the given query.',
+        translation: '模型可以精确地检索给定查询的相关文档。',
+        paperTitle: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks',
+        category: 'TOEFL高频词',
+        difficulty: 'easy',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 83,
+        word: 'Formulation',
+        englishMeaning: 'The way in which something is expressed or put into words.',
+        meaning: '构想，公式化表达 (noun)',
+        partOfSpeech: 'noun',
+        pronunciation: '/ˌfɔːr.mjuˈleɪ.ʃən/',
+        sentence: 'The formulation of the retrieval-augmented generation approach combines parametric and non-parametric memory.',
+        translation: '检索增强生成方法的构想结合了参数化和非参数化记忆。',
+        paperTitle: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks',
+        category: 'TOEFL高频词',
+        difficulty: 'easy',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 84,
+        word: 'Diverse',
+        englishMeaning: 'Showing a great deal of variety; very different.',
+        meaning: '多样的 (adjective)',
+        partOfSpeech: 'adjective',
+        pronunciation: '/daɪˈvɜːrs/',
+        sentence: 'The model can access diverse sources of information through the retrieval mechanism.',
+        translation: '模型可以通过检索机制访问多样化的信息源。',
+        paperTitle: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks',
+        category: 'TOEFL高频词',
+        difficulty: 'easy',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 85,
+        word: 'Validate',
+        englishMeaning: 'To check or prove the accuracy or validity of something.',
+        meaning: '验证 (verb)',
+        partOfSpeech: 'verb',
+        pronunciation: '/ˈvæl.ɪ.deɪt/',
+        sentence: 'We validate our approach on multiple knowledge-intensive tasks.',
+        translation: '我们在多个知识密集型任务上验证了我们的方法。',
+        paperTitle: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks',
+        category: 'TOEFL高频词',
+        difficulty: 'easy',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 86,
+        word: 'Unify',
+        englishMeaning: 'To combine or integrate into a single system or whole.',
+        meaning: '统一，整合 (verb)',
+        partOfSpeech: 'verb',
+        pronunciation: '/ˈjuː.nɪ.faɪ/',
+        sentence: 'RAG unifies the retrieval and generation processes in a single model.',
+        translation: 'RAG在单个模型中统一了检索和生成过程。',
+        paperTitle: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks',
+        category: 'TOEFL高频词',
+        difficulty: 'easy',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 87,
+        word: 'Demonstrate',
+        englishMeaning: 'To show or prove something clearly and convincingly.',
+        meaning: '展示，证明 (verb)',
+        partOfSpeech: 'verb',
+        pronunciation: '/ˈdem.ən.streɪt/',
+        sentence: 'Our experiments demonstrate the effectiveness of the retrieval-augmented approach.',
+        translation: '我们的实验证明了检索增强方法的有效性。',
+        paperTitle: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks',
+        category: 'TOEFL高频词',
+        difficulty: 'easy',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 88,
+        word: 'Recipe',
+        englishMeaning: 'A set of instructions or method for achieving a particular result.',
+        meaning: '方案，方法 (引申义) (noun)',
+        partOfSpeech: 'noun',
+        pronunciation: '/ˈres.ɪ.pi/',
+        sentence: 'The paper provides a recipe for building effective retrieval-augmented models.',
+        translation: '该论文提供了构建有效检索增强模型的方案。',
+        paperTitle: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks',
+        category: 'IELTS高频词',
+        difficulty: 'easy',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 89,
+        word: 'Crucially',
+        englishMeaning: 'In a way that is extremely important or decisive.',
+        meaning: '至关重要地 (adverb)',
+        partOfSpeech: 'adverb',
+        pronunciation: '/ˈkruː.ʃəl.i/',
+        sentence: 'Crucially, the model can access external knowledge during generation.',
+        translation: '至关重要的是，模型在生成过程中可以访问外部知识。',
+        paperTitle: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks',
+        category: 'IELTS高频词',
+        difficulty: 'easy',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 90,
+        word: 'Isolate',
+        englishMeaning: 'To separate or set apart from others; to consider separately.',
+        meaning: '孤立，单独考虑 (verb)',
+        partOfSpeech: 'verb',
+        pronunciation: '/ˈaɪ.sə.leɪt/',
+        sentence: 'We isolate the effects of retrieval by comparing with baseline models.',
+        translation: '我们通过与基线模型比较来孤立检索的效果。',
+        paperTitle: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks',
+        category: 'IELTS高频词',
+        difficulty: 'easy',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 91,
+        word: 'Procedure',
+        englishMeaning: 'A series of actions conducted in a certain order or manner.',
+        meaning: '程序，步骤 (noun)',
+        partOfSpeech: 'noun',
+        pronunciation: '/prəˈsiː.dʒər/',
+        sentence: 'The training procedure involves jointly optimizing the retriever and generator.',
+        translation: '训练程序涉及联合优化检索器和生成器。',
+        paperTitle: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks',
+        category: 'IELTS高频词',
+        difficulty: 'easy',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 92,
+        word: 'Downstream Task',
+        englishMeaning: 'A task that uses the output or features from a pre-trained model.',
+        meaning: '下游任务 (noun phrase)',
+        partOfSpeech: 'noun phrase',
+        pronunciation: '/ˈdaʊn.striːm tæsk/',
+        sentence: 'The model is evaluated on various downstream tasks.',
+        translation: '模型在各种下游任务上进行评估。',
+        paperTitle: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks',
+        category: 'AI专业词汇',
+        difficulty: 'easy',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 93,
+        word: 'Parametric Memory',
+        englishMeaning: 'Knowledge stored in the parameters of a neural network model.',
+        meaning: '参数化记忆 (noun phrase)',
+        partOfSpeech: 'noun phrase',
+        pronunciation: '/ˌper.əˈmet.rɪk ˈmem.ər.i/',
+        sentence: 'Parametric memory is stored in the model parameters.',
+        translation: '参数化记忆存储在模型参数中。',
+        paperTitle: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks',
+        category: 'AI专业词汇',
+        difficulty: 'easy',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 94,
+        word: 'Non-parametric Memory',
+        englishMeaning: 'Knowledge stored externally and accessed through retrieval mechanisms.',
+        meaning: '非参数化记忆 (noun phrase)',
+        partOfSpeech: 'noun phrase',
+        pronunciation: '/nɒn ˌper.əˈmet.rɪk ˈmem.ər.i/',
+        sentence: 'Non-parametric memory is accessed with a pre-trained neural retriever.',
+        translation: '非参数化记忆通过预训练的神经检索器进行访问。',
+        paperTitle: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks',
+        category: 'AI专业词汇',
+        difficulty: 'easy',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 95,
+        word: 'Retriever',
+        englishMeaning: 'A component that searches for and retrieves relevant information from a knowledge base.',
+        meaning: '检索器 (noun)',
+        partOfSpeech: 'noun',
+        pronunciation: '/rɪˈtriː.vər/',
+        sentence: 'The retriever component finds relevant documents for the input query.',
+        translation: '检索器组件为输入查询找到相关文档。',
+        paperTitle: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks',
+        category: 'AI专业词汇',
+        difficulty: 'easy',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 96,
+        word: 'Extractive',
+        englishMeaning: 'Relating to or involving the extraction of specific text segments from source documents.',
+        meaning: '抽取式 (adjective)',
+        partOfSpeech: 'adjective',
+        pronunciation: '/ɪkˈstræk.tɪv/',
+        sentence: 'We compare RAG to the popular extractive QA paradigm...',
+        translation: '我们将RAG与流行的抽取式问答范式进行比较...',
+        paperTitle: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks',
+        category: 'AI专业词汇',
+        difficulty: 'easy',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 97,
+        word: 'Abstractive',
+        englishMeaning: 'Relating to or involving the generation of new text that may not appear verbatim in the source.',
+        meaning: '抽象式，生成式 (adjective)',
+        partOfSpeech: 'adjective',
+        pronunciation: '/æbˈstræk.tɪv/',
+        sentence: 'To test RAG\'s natural language generation (NLG) in a knowledge-intensive setting, we use the MSMARCO NLG task v2.1.',
+        translation: '为了在知识密集型环境中测试RAG的自然语言生成（NLG）能力，我们使用了MSMARCO NLG v2.1任务。',
+        paperTitle: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks',
+        category: 'AI专业词汇',
+        difficulty: 'easy',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 98,
+        word: 'Marginalize',
+        englishMeaning: 'To sum or integrate over a variable to obtain a marginal distribution.',
+        meaning: '边缘化 (求边缘概率) (verb)',
+        partOfSpeech: 'verb',
+        pronunciation: '/ˈmɑːr.dʒɪ.nəl.aɪz/',
+        sentence: 'For final prediction y, we treat z as a latent variable and marginalize over seq2seq predictions given different documents.',
+        translation: '对于最终的预测y，我们将z视为一个潜变量，并在给定不同文档的情况下，对seq2seq的预测进行边缘化处理。',
+        paperTitle: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks',
+        category: 'AI专业词汇',
+        difficulty: 'easy',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 99,
+        word: 'Latent Variable',
+        englishMeaning: 'A variable that is not directly observed but is inferred from other observed variables.',
+        meaning: '潜变量，隐变量 (noun phrase)',
+        partOfSpeech: 'noun phrase',
+        pronunciation: '/ˈleɪ.tənt ˈver.i.ə.bəl/',
+        sentence: 'To train the retriever and generator end-to-end, we treat the retrieved document as a latent variable.',
+        translation: '为了端到端地训练检索器和生成器，我们将检索到的文档视为一个潜变量。',
+        paperTitle: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks',
+        category: 'AI专业词汇',
+        difficulty: 'easy',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 100,
+        word: 'Ablation',
+        englishMeaning: 'A study that removes components of a system to understand their contribution to performance.',
+        meaning: '消融研究 (noun)',
+        partOfSpeech: 'noun',
+        pronunciation: '/əˈbleɪ.ʃən/',
+        sentence: 'To assess the effectiveness of the retrieval mechanism, we run ablations where we freeze the retriever during training.',
+        translation: '为了评估检索机制的有效性，我们进行了消融实验，在训练期间冻结了检索器。',
+        paperTitle: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks',
+        category: 'AI专业词汇',
         difficulty: 'easy',
         studyCount: 0,
         correctCount: 0,
