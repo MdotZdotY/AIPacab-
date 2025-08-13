@@ -55,7 +55,7 @@ Page({
       totalWords: words.length,
       papersCount: papers.length,
       correctRate: 0, // 保留字段，但不再使用
-      studyDays: Math.max(this.calculateStudyDays(), localStats.studyDays)
+      studyDays: localStats.studyDays // 直接使用持久化的学习天数
     }
     
     console.log('统计数据:', statsData)

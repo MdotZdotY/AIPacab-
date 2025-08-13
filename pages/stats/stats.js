@@ -109,7 +109,7 @@ Page({
         masteredWords: masteredWords.length,
         studiedWords: studiedWords.length,
         correctRate: totalStudy > 0 ? Math.round((totalCorrect / totalStudy) * 100) : 0,
-        studyDays: this.calculateStudyDays(),
+        studyDays: localStats.studyDays,
         totalStudyHours,
         weeklyAvgHours,
         papersRead,

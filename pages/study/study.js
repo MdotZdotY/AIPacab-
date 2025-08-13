@@ -62,6 +62,26 @@ Page({
     if (this.getTabBar && this.getTabBar()) {
       this.getTabBar().setData({ selected: 1 })
     }
+    
+    // 重新启动学习会话计时
+    try {
+      if (this._statsSession) {
+        this._statsSession.startSession()
+        console.log('重新启动学习会话计时')
+      }
+    } catch (e) {
+      console.warn('重新启动学习会话失败:', e)
+    }
+  },
+
+  onHide() {
+    // 页面隐藏时结束学习会话计时
+    try {
+      if (this._statsSession) this._statsSession.endSession()
+    } catch (e) {
+      console.warn('结束学习会话失败:', e)
+    }
+    console.log('学习页面隐藏，已结束学习会话')
   },
 
 
