@@ -15,6 +15,7 @@ function getPaperWordCount(paperTitle) {
 
 const papers = [
 
+
   {
     id: 1,
     title: 'Attention Is All You Need',
@@ -149,6 +150,24 @@ RAG的工作流程是：当接收到一个输入（如一个问题）时，一�
 
 通过对每年随机抽样的200篇CVPR论文进行标注和分析，论文旨在揭示这些维度在过去20年间的演变模式与趋势。`,
     highlights: `本研究最大的亮点在于首次对"惨痛的教训"这一AI领域的宏观指导原则进行了大规模、长周期的量化实证分析。它不仅验证了该原则在计算机视觉领域的有效性，还揭示了该领域研究范式的重大转变。研究结果清晰地显示，CVPR的研究趋势显著地从依赖人类专家知识和手工特征，转向了拥抱通用学习算法和大规模计算。这项工作为理解AI研究的成功策略提供了宝贵的数据支持，并为未来计算机视觉乃至更广泛的人工智能领域的研究重点和方法论选择提供了重要参考。其创新的分析方法也为使用LLM进行科学计量学和科研趋势分析开辟了新的道路。`
+  },
+  {
+    id: 11,
+    title: 'Language Models are Few-Shot Learners',
+    authors: 'Tom B. Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared D. Kaplan, Prafulla Dhariwal, Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda Askell, Sandhini Agarwal, Ariel Herbert-Voss, Gretchen Krueger, Tom Henighan, Rewon Child, Aditya Ramesh, Daniel M. Ziegler, Jeffrey Wu, Clemens Winter, Christopher Hesse, Mark Chen, Eric Sigler, Mateusz Litwin, Scott Gray, Benjamin Chess, Jack Clark, Christopher Berner, Sam McCandlish, Alec Radford, Ilya Sutskever, Dario Amodei',
+    year: 2020,
+    journal: 'arXiv',
+    abstract: '这篇论文探索并证明了模型规模是实现强大的少样本学习能力的关键因素，推出了拥有1750亿参数的GPT-3模型，并展示了其在40多个NLP基准任务上的强大少样本学习能力。',
+    url: 'https://arxiv.org/pdf/2005.14165',
+    get wordCount() { return getPaperWordCount('Language Models are Few-Shot Learners') },
+    category: 'AI专业词汇',
+    background: `在大型语言模型（LLM）领域，主流的研究范式是通过预训练（pre-training）和微调（fine-tuning）来适应特定任务。这种范式虽然在许多NLP基准测试中取得了巨大成功，但存在几个关键问题：首先，每个特定任务都需要一个庞大的、经过标注的数据集来进行微调，这在很多实际应用中是昂贵且不切实际的；其次，这种做法偏离了人类学习语言任务的方式——人类通常只需要几个例子甚至简单的指令就能掌握新任务；最后，不断为新任务重新训练模型也导致了计算资源的巨大消耗。因此，研究界一直在探索如何让模型能够像人类一样，在几乎没有或只有少量示例的情况下快速学习新任务，即实现“少样本学习”（Few-Shot Learning）。`,
+    keyConcepts: `这篇论文的核心是探索并证明了**模型规模（Scale）**是实现强大的少样本学习能力的关键因素。作者提出了一个核心概念：“**in-context learning**”（语境学习）。与需要通过梯度更新来调整模型权重的微调不同，语境学习是在推理（inference）阶段进行的，模型通过简单地将任务描述和少量示例（shots）作为输入上下文的一部分，就能理解并执行新任务，而无需任何参数更新。论文系统地研究了三种语境学习的设定：
+1.  **Zero-shot**：只给模型提供任务的自然语言描述，不提供任何示例。
+2.  **One-shot**：除了任务描述，还提供一个任务示例。
+3.  **Few-shot**：提供任务描述和几个（通常是10到100个）示例。
+论文的核心假设是，随着模型参数量、数据集大小和计算量的增加，模型的少样本学习能力会显著提升。`,
+    highlights: `这篇论文最大的亮点是推出了**GPT-3**，一个拥有1750亿参数的自回归语言模型，其规模远超当时任何已知的密集型语言模型。通过在40多个NLP基准任务上的广泛测试，论文展示了GPT-3强大的少样本学习能力。在许多任务上，GPT-3在**zero-shot**和**one-shot**设置下的表现就已具备竞争力，而在**few-shot**设置下，其性能有时甚至能超越当时经过特定任务微调的SOTA（State-of-the-Art）模型。此外，论文还展示了GPT-3执行一些需要快速推理或“举一反三”能力的任务，例如在句子中使用新造词、解开词序混乱的单词以及执行算术运算，这些都进一步证明了其强大的泛化能力。这项工作明确指出，通过极大地扩展模型规模，语言模型本身就能发展出强大的、通用的任务学习能力，为后续的LLM研究和应用（如指令微调和思维链提示）奠定了基础。`
   }
 ]
 
