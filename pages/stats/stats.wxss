@@ -1,4 +1,5 @@
 /* pages/stats/stats.wxss */
+/* 只给页面顶部添加最小的调整 */
 .container {
   padding: 20rpx; /* 整页统一左右边距 */
   background-color: #F5F7FA;
@@ -8,6 +9,18 @@
   padding-bottom: calc(180rpx + constant(safe-area-inset-bottom));
 }
 
+/* 基础样式 - 适用于模拟器 */
+.overview-section:first-child {
+  margin-top: 0; /* 模拟器中保持正常位置 */
+}
+
+/* 针对真机的特殊调整 */
+@media screen and (max-width: 393px) {
+  .overview-section:first-child {
+    margin-top: -40rpx; /* 在真机上向上移动40rpx */
+  }
+}
+
 /* 概览区域 */
 .overview-section {
   margin-bottom: 24rpx; /* 收紧区块下间距 */
@@ -15,7 +28,7 @@
 
 /* 顶部学习概览向下挪动一点 */
 .overview-top {
-  margin-top: 48rpx; /* 下移距离保持 */
+  margin-top: 20rpx; /* 减少顶部间距，与其他页面保持一致 */
   margin-bottom: 0rpx; /* 紧贴下一区域 */
 }
 
