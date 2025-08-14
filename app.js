@@ -629,24 +629,7 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
-      {
-        id: 38,
-        word: 'Approach',
-        englishMeaning: 'A way of dealing with a situation or problem.',
-        meaning: '方法，方式',
-        partOfSpeech: 'noun',
-        pronunciation: '/əˈproʊtʃ/',
-        sentence: 'Recurrent neural networks... have been firmly established as state of the art approaches in sequence modeling and transduction problems....',
-        translation: '循环神经网络...已被公认为是在序列建模和转换问题上的最佳方法....',
-        paperTitle: 'Attention is all you need',
-        category: 'IELTS高频词',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
+      
       {
         id: 39,
         word: 'Architecture',
@@ -1403,24 +1386,7 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
-      {
-        id: 106,
-        word: 'Alignment',
-        englishMeaning: 'A position of agreement or alliance.',
-        meaning: '对齐，一致 (noun)',
-        partOfSpeech: 'noun',
-        pronunciation: '/əˈlaɪn.mənt/',
-        sentence: 'This study examines the alignment of Conference on Computer Vision and Pattern Recognition (CVPR) research with the principles of the "bitter lesson".',
-        translation: '本研究旨在考察计算机视觉与模式识别会议（CVPR）的研究与"惨痛的教训"原则的一致性。',
-        paperTitle: 'Learning the Bitter Lesson: Empirical Evidence from 20 Years of CVPR Proceedings',
-        category: 'TOEFL高频词',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
+      
       {
         id: 107,
         word: 'Principle',
@@ -1511,24 +1477,7 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
-      {
-        id: 112,
-        word: 'Utilize',
-        englishMeaning: 'To make practical and effective use of.',
-        meaning: '利用',
-        partOfSpeech: 'verb',
-        pronunciation: '/ˈjuː.t̬əl.aɪz/',
-        sentence: 'Most real-world forecasting problems also contain static covariates, which we utilize to select the appropriate feature representations and better model their interactions.',
-        translation: '大多数现实世界的预测问题也包含静态协变量，我们利用它们来选择合适的特征表示并更好地对其交互进行建模。',
-        paperTitle: 'Temporal Fusion Transformers for Interpretable Multi-horizon Time Series Forecasting',
-        category: 'TOEFL高频词',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
+      
       {
         id: 113,
         word: 'Contribute',
@@ -1565,24 +1514,7 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
-      {
-        id: 115,
-        word: 'Methodology',
-        englishMeaning: 'A system of methods used in a particular area of study or activity.',
-        meaning: '方法论 (noun)',
-        partOfSpeech: 'noun',
-        pronunciation: '/ˌmeθ.əˈdɑː.lə.dʒi/',
-        sentence: 'Our methodology leverages state-of-the-art natural language processing techniques.',
-        translation: '我们的方法论利用了最先进的自然语言处理技术。',
-        paperTitle: 'Learning the Bitter Lesson: Empirical Evidence from 20 Years of CVPR Proceedings',
-        category: 'IELTS高频词',
-        difficulty: 'easy',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
+      
       {
         id: 116,
         word: 'Implications',
@@ -1907,24 +1839,7 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
-      {
-        id: 134,
-        word: 'Qualitative',
-        englishMeaning: 'Relating to, measuring, or measured by the quality of something rather than its quantity.',
-        meaning: '定性的，性质上的',
-        partOfSpeech: 'adjective',
-        pronunciation: '/ˈkwɑː.lə.teɪ.t̬ɪv/',
-        sentence: 'To get a more qualitative sense of what GPT-3 can do and what its limitations are, we also include a variety of more synthetic and qualitative tasks in Appendix G.',
-        translation: '为了更定性地了解GPT-3能做什么以及其局限性，我们还在附录G中加入了一系列更具综合性和定性的任务。',
-        paperTitle: 'Language Models are Few-Shot Learners',
-        category: 'AI专业词汇',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
+      
       {
         id: 135,
         word: 'Paradigm',
@@ -2087,24 +2002,7 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
-      {
-        id: 1755071328295,
-        word: 'Prohibitively',
-        englishMeaning: 'In a way that prevents something from being done or used, especially because of cost or difficulty.',
-        meaning: '禁止性地，令人望而却步地',
-        partOfSpeech: 'adverb',
-        pronunciation: '/proʊˈhɪb.ɪ.tɪv.li/',
-        sentence: 'The computational cost becomes prohibitively expensive for long sequences.',
-        translation: '对于长序列，计算成本变得令人望而却步地昂贵。',
-        paperTitle: 'Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting',
-        category: 'GRE高频词',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
+      
       {
         id: 1755071328296,
         word: 'Limitation',
@@ -2123,150 +2021,14 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
-      {
-        id: 1755071328297,
-        word: 'Significant',
-        englishMeaning: 'Sufficiently great or important to be worthy of attention; noteworthy.',
-        meaning: '显著的，重要的',
-        partOfSpeech: 'adjective',
-        pronunciation: '/sɪɡˈnɪf.ɪ.kənt/',
-        sentence: 'We demonstrate significant performance improvements over existing benchmarks.',
-        translation: '我们展示了相较于现有基准的显著性能提升。',
-        paperTitle: 'Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting',
-        category: 'TOEFL高频词',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 1755071328298,
-        word: 'Component',
-        englishMeaning: 'A part or element of a larger whole.',
-        meaning: '组件，组成部分',
-        partOfSpeech: 'noun',
-        pronunciation: '/kəmˈpoʊ.nənt/',
-        sentence: 'We perform ablation analysis to evaluate the contribution of each component of Informer.',
-        translation: '我们进行消融分析以评估Informer每个组件的贡献。',
-        paperTitle: 'Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting',
-        category: 'TOEFL高频词',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 1755071328299,
-        word: 'Utilize',
-        englishMeaning: 'To make practical and effective use of something.',
-        meaning: '利用，使用',
-        partOfSpeech: 'verb',
-        pronunciation: '/ˈjuː.tə.laɪz/',
-        sentence: 'Informer utilizes ProbSparse self-attention to reduce computational complexity.',
-        translation: 'Informer利用ProbSparse自注意力机制来降低计算复杂度。',
-        paperTitle: 'Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting',
-        category: 'TOEFL高频词',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 1755071328300,
-        word: 'Efficient',
-        englishMeaning: 'Achieving maximum productivity with minimum wasted effort or expense.',
-        meaning: '高效的，有效的',
-        partOfSpeech: 'adjective',
-        pronunciation: '/ɪˈfɪʃ.ənt/',
-        sentence: 'Informer provides an efficient solution for long sequence time-series forecasting.',
-        translation: 'Informer为长序列时间序列预测提供了一个高效的解决方案。',
-        paperTitle: 'Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting',
-        category: 'TOEFL高频词',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 1755071328301,
-        word: 'Dominate',
-        englishMeaning: 'To have power and influence over someone or something.',
-        meaning: '支配，主导',
-        partOfSpeech: 'verb',
-        pronunciation: '/ˈdɑː.mə.neɪt/',
-        sentence: 'Transformer has dominated the field of natural language processing.',
-        translation: 'Transformer主导了自然语言处理领域。',
-        paperTitle: 'Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting',
-        category: 'TOEFL高频词',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 1755071328302,
-        word: 'Require',
-        englishMeaning: 'To need something or make something necessary.',
-        meaning: '需要，要求',
-        partOfSpeech: 'verb',
-        pronunciation: '/rɪˈkwaɪr/',
-        sentence: 'Long sequence time-series forecasting requires efficient attention mechanisms.',
-        translation: '长序列时间序列预测需要高效的注意力机制。',
-        paperTitle: 'Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting',
-        category: 'TOEFL高频词',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 1755071328303,
-        word: 'Generate',
-        englishMeaning: 'To produce or create something.',
-        meaning: '生成，产生',
-        partOfSpeech: 'verb',
-        pronunciation: '/ˈdʒen.ə.reɪt/',
-        sentence: 'The decoder receives long sequence inputs, including the start token and the target sequence, then generates outputs in a generative way.',
-        translation: '解码器接收长序列输入，包括起始词元和目标序列，然后以生成的方式产出输出。',
-        paperTitle: 'Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting',
-        category: 'TOEFL高频词',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 1755071328304,
-        word: 'Architecture',
-        englishMeaning: 'The complex or carefully designed structure of something.',
-        meaning: '架构，结构',
-        partOfSpeech: 'noun',
-        pronunciation: '/ˈɑːr.kə.tek.tʃɚ/',
-        sentence: 'We propose a novel attention-based architecture which addresses these challenges...',
-        translation: '我们提出了一种新颖的、基于注意力的架构来应对这些挑战...',
-        paperTitle: 'Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting',
-        category: 'IELTS高频词',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
+      
+      
+      
+      
+      
+      
+      
+      
       {
         id: 1755071328305,
         word: 'Incorporate',
@@ -2285,24 +2047,7 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
-      {
-        id: 1755071328306,
-        word: 'Demonstrate',
-        englishMeaning: 'To clearly show the existence or truth of something by giving proof or evidence.',
-        meaning: '展示，证明',
-        partOfSpeech: 'verb',
-        pronunciation: '/ˈdem.ən.streɪt/',
-        sentence: 'Using a range of real-world datasets, we demonstrate significant performance improvements over existing benchmarks.',
-        translation: '通过一系列真实世界的数据集，我们展示了相较于现有基准的显著性能提升。',
-        paperTitle: 'Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting',
-        category: 'IELTS高频词',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
+      
       {
         id: 1755071328307,
         word: 'Interaction',
@@ -2357,24 +2102,7 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
-      {
-        id: 1755071328310,
-        word: 'Evaluate',
-        englishMeaning: 'To form an idea of the amount, number, or value of; to assess.',
-        meaning: '评估',
-        partOfSpeech: 'verb',
-        pronunciation: '/ɪˈvæl.ju.eɪt/',
-        sentence: 'We also perform a full ablation analysis to evaluate the contribution of each component of Informer.',
-        translation: '我们还进行了一次完整的消融分析，以评估Informer各个组件的贡献。',
-        paperTitle: 'Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting',
-        category: 'IELTS高频词',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
+      
       {
         id: 1755071328311,
         word: 'Multi-horizon Forecasting',
@@ -2411,24 +2139,7 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
-      {
-        id: 1755071328313,
-        word: 'Self-attention',
-        englishMeaning: 'A mechanism that allows a model to focus on different parts of the input sequence when processing each element.',
-        meaning: '自注意力机制',
-        partOfSpeech: 'noun',
-        pronunciation: '/ˌself əˈten.ʃən/',
-        sentence: 'We propose a ProbSparse self-attention mechanism to reduce computational complexity.',
-        translation: '我们提出了一种ProbSparse自注意力机制来降低计算复杂度。',
-        paperTitle: 'Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting',
-        category: 'AI专业词汇',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
+      
       {
         id: 1755071328314,
         word: 'Transformer',
@@ -2447,60 +2158,9 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
-      {
-        id: 1755071328315,
-        word: 'Encoder',
-        englishMeaning: 'A component of a neural network that processes input data and converts it into a representation.',
-        meaning: '编码器',
-        partOfSpeech: 'noun',
-        pronunciation: '/ɪnˈkoʊ.dər/',
-        sentence: 'The encoder processes the input sequence and produces a representation.',
-        translation: '编码器处理输入序列并产生表示。',
-        paperTitle: 'Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting',
-        category: 'AI专业词汇',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 1755071328316,
-        word: 'Decoder',
-        englishMeaning: 'A component of a neural network that generates output from encoded representations.',
-        meaning: '解码器',
-        partOfSpeech: 'noun',
-        pronunciation: '/diːˈkoʊ.dər/',
-        sentence: 'The decoder receives long sequence inputs and generates outputs in a generative way.',
-        translation: '解码器接收长序列输入并以生成的方式产生输出。',
-        paperTitle: 'Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting',
-        category: 'AI专业词汇',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 1755071328317,
-        word: 'State-of-the-art',
-        englishMeaning: 'The most advanced or sophisticated level of development in a particular field.',
-        meaning: '最先进的，最前沿的',
-        partOfSpeech: 'adjective',
-        pronunciation: '/ˌsteɪt əv ði ˈɑːrt/',
-        sentence: 'Our empirical results show that Informer achieves state-of-the-art performance.',
-        translation: '我们的实证结果表明，Informer达到了最先进的性能。',
-        paperTitle: 'Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting',
-        category: 'AI专业词汇',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
+      
+      
+      
       {
         id: 1755071328318,
         word: 'Benchmark',
@@ -2591,42 +2251,8 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
-      {
-        id: 1755071328290,
-        word: 'Hypothesis',
-        englishMeaning: 'A supposition or proposed explanation made on the basis of limited evidence as a starting point for further investigation.',
-        meaning: '假设',
-        partOfSpeech: 'noun',
-        pronunciation: '/haɪˈpɑː.θə.sɪs/',
-        sentence: 'This hypothesis is supported by the results in [KC20].',
-        translation: '这个假设得到了[KC20]中结果的支持。',
-        paperTitle: 'Language Models are Few-Shot Learners',
-        category: 'GRE高频词',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 139,
-        word: 'Hypothesis',
-        englishMeaning: 'A supposition or proposed explanation made on the basis of limited evidence as a starting point for further investigation.',
-        meaning: '假设',
-        partOfSpeech: 'noun',
-        pronunciation: '/haɪˈpɑː.θə.sɪs/',
-        sentence: 'This hypothesis is supported by the results in [KC20].',
-        translation: '这个假设得到了[KC20]中结果的支持。',
-        paperTitle: 'Temporal Fusion Transformers for Interpretable Multi-horizon Time Series Forecasting',
-        category: 'GRE高频词',
-        difficulty: 'hard',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
+      
+      
       {
         id: 140,
         word: 'Heterogeneous',
@@ -2645,42 +2271,8 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
-      {
-        id: 141,
-        word: 'Ablation',
-        englishMeaning: 'In machine learning, an ablation study involves systematically removing parts of a model or algorithm to understand the contribution of each component.',
-        meaning: '消融研究 (指通过移除模型部分来分析其贡献的实验)',
-        partOfSpeech: 'noun',
-        pronunciation: '/əˈbleɪ.ʃən/',
-        sentence: 'We also perform a full ablation analysis to evaluate the contribution of each component of Temporal Fusion Transformer.',
-        translation: '我们还进行了一次完整的消融分析，以评估时间融合变换器各个组件的贡献。',
-        paperTitle: 'Temporal Fusion Transformers for Interpretable Multi-horizon Time Series Forecasting',
-        category: 'GRE高频词',
-        difficulty: 'hard',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 142,
-        word: 'Ubiquitous',
-        englishMeaning: 'Present, appearing, or found everywhere.',
-        meaning: '无处不在的，普遍存在的',
-        partOfSpeech: 'adjective',
-        pronunciation: '/juːˈbɪk.wə.t̬əs/',
-        sentence: 'With the ubiquitous nature of time series data in the modern world, forecasting is an important task in many domains...',
-        translation: '随着时间序列数据在现代世界中的无处不在，预测在许多领域都是一项重要任务...',
-        paperTitle: 'Temporal Fusion Transformers for Interpretable Multi-horizon Time Series Forecasting',
-        category: 'GRE高频词',
-        difficulty: 'hard',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
+      
+      
       {
         id: 143,
         word: 'Novel',
@@ -2717,42 +2309,8 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
-      {
-        id: 145,
-        word: 'Component',
-        englishMeaning: 'A part or element of a larger whole.',
-        meaning: '组件，组成部分',
-        partOfSpeech: 'noun',
-        pronunciation: '/kəmˈpoʊ.nənt/',
-        sentence: 'This section details each of the main components of Temporal Fusion Transformer, from bottom to top.',
-        translation: '本节从下至上详细介绍了时间融合变换器的每一个主要组件。',
-        paperTitle: 'Temporal Fusion Transformers for Interpretable Multi-horizon Time Series Forecasting',
-        category: 'TOEFL高频词',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 146,
-        word: 'Utilize',
-        englishMeaning: 'To make practical and effective use of.',
-        meaning: '利用',
-        partOfSpeech: 'verb',
-        pronunciation: '/ˈjuː.t̬əl.aɪz/',
-        sentence: 'Most real-world forecasting problems also contain static covariates, which we utilize to select the appropriate feature representations and better model their interactions.',
-        translation: '大多数现实世界的预测问题也包含静态协变量，我们利用它们来选择合适的特征表示并更好地对其交互进行建模。',
-        paperTitle: 'Temporal Fusion Transformers for Interpretable Multi-horizon Time Series Forecasting',
-        category: 'TOEFL高频词',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
+      
+      
       {
         id: 147,
         word: 'Enhancement',
@@ -2771,24 +2329,7 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
-      {
-        id: 148,
-        word: 'Comprehensive',
-        englishMeaning: 'Complete; including all or nearly all elements or aspects of something.',
-        meaning: '全面的，综合的',
-        partOfSpeech: 'adjective',
-        pronunciation: '/ˌkɑːm.prəˈhen.sɪv/',
-        sentence: 'We provide a comprehensive study on a variety of real-world datasets, and show that TFT achieves a new state-of-the-art.',
-        translation: '我们对各种真实世界的数据集进行了全面的研究，并表明TFT达到了新的技术水平。',
-        paperTitle: 'Temporal Fusion Transformers for Interpretable Multi-horizon Time Series Forecasting',
-        category: 'TOEFL高频词',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
+      
       {
         id: 149,
         word: 'Quantile',
@@ -2825,96 +2366,11 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
-      {
-        id: 151,
-        word: 'Diverse',
-        englishMeaning: 'Showing a great deal of variety; very different.',
-        meaning: '多样的',
-        partOfSpeech: 'adjective',
-        pronunciation: '/dɪˈvɝːs/',
-        sentence: 'To handle this, our architecture uses separate variable selection networks to select relevant features at each time step for a diverse set of input types.',
-        translation: '为了处理这个问题，我们的架构使用独立的变量选择网络，为各种不同类型的输入在每个时间步选择相关的特征。',
-        paperTitle: 'Temporal Fusion Transformers for Interpretable Multi-horizon Time Series Forecasting',
-        category: 'TOEFL高频词',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 152,
-        word: 'Architecture',
-        englishMeaning: 'The complex or carefully designed structure of something.',
-        meaning: '架构，结构',
-        partOfSpeech: 'noun',
-        pronunciation: '/ˈɑːr.kə.tek.tʃɚ/',
-        sentence: 'We propose a novel attention-based architecture which addresses these challenges...',
-        translation: '我们提出了一种新颖的、基于注意力的架构来应对这些挑战...',
-        paperTitle: 'Temporal Fusion Transformers for Interpretable Multi-horizon Time Series Forecasting',
-        category: 'IELTS高频词',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 153,
-        word: 'Incorporate',
-        englishMeaning: 'To take in or contain something as part of a whole; to include.',
-        meaning: '包含，并入',
-        partOfSpeech: 'verb',
-        pronunciation: '/ɪnˈkɔːr.pə.reɪt/',
-        sentence: 'In particular, our proposed model, the Temporal Fusion Transformer (TFT), is designed to incorporate the best ideas from recurrent neural networks (RNNs) and transformers.',
-        translation: '特别是，我们提出的模型——时间融合变换器（TFT），旨在融合循环神经网络（RNN）和变换器的最佳思想。',
-        paperTitle: 'Temporal Fusion Transformers for Interpretable Multi-horizon Time Series Forecasting',
-        category: 'IELTS高频词',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 154,
-        word: 'Demonstrate',
-        englishMeaning: 'To clearly show the existence or truth of something by giving proof or evidence.',
-        meaning: '展示，证明',
-        partOfSpeech: 'verb',
-        pronunciation: '/ˈdem.ən.streɪt/',
-        sentence: 'Using a range of real-world datasets, we demonstrate significant performance improvements over existing benchmarks.',
-        translation: '通过一系列真实世界的数据集，我们展示了相较于现有基准的显著性能提升。',
-        paperTitle: 'Temporal Fusion Transformers for Interpretable Multi-horizon Time Series Forecasting',
-        category: 'IELTS高频词',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 155,
-        word: 'Interaction',
-        englishMeaning: 'Communication or direct involvement with someone or something.',
-        meaning: '交互，相互作用',
-        partOfSpeech: 'noun',
-        pronunciation: '/ˌɪn.t̬ɚˈæk.ʃən/',
-        sentence: 'We also demonstrate how TFT can be used to understand the importance of different features and visualize temporal interactions.',
-        translation: '我们还演示了如何使用TFT来理解不同特征的重要性并可视化时间上的相互作用。',
-        paperTitle: 'Temporal Fusion Transformers for Interpretable Multi-horizon Time Series Forecasting',
-        category: 'IELTS高频词',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
+      
+      
+      
+      
+      
       {
         id: 156,
         word: 'Persistent',
@@ -2933,24 +2389,7 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
-      {
-        id: 157,
-        word: 'Significant',
-        englishMeaning: 'Sufficiently great or important to be worthy of attention; noteworthy.',
-        meaning: '显著的，重要的',
-        partOfSpeech: 'adjective',
-        pronunciation: '/sɪɡˈnɪf.ə.kənt/',
-        sentence: 'We demonstrate significant performance improvements over existing benchmarks.',
-        translation: '我们展示了相较于现有基准的显著性能提升。',
-        paperTitle: 'Temporal Fusion Transformers for Interpretable Multi-horizon Time Series Forecasting',
-        category: 'IELTS高频词',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
+      
       {
         id: 158,
         word: 'Domain',
@@ -2969,78 +2408,10 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
-      {
-        id: 159,
-        word: 'Time Series Forecasting',
-        englishMeaning: 'A method for predicting future values based on previously observed values over time.',
-        meaning: '时间序列预测',
-        partOfSpeech: 'noun phrase',
-        pronunciation: '/taɪm ˈsɪə.riːz ˈfɔːr.kæst.ɪŋ/',
-        sentence: 'Multi-horizon time series forecasting often requires a model to be aware of inputs of various natures.',
-        translation: '多步时间序列预测通常要求模型能够感知各种性质的输入。',
-        paperTitle: 'Temporal Fusion Transformers for Interpretable Multi-horizon Time Series Forecasting',
-        category: 'AI专业词汇',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 160,
-        word: 'Multi-horizon Forecasting',
-        englishMeaning: 'The prediction of a time series for multiple steps into the future.',
-        meaning: '多步预测',
-        partOfSpeech: 'noun phrase',
-        pronunciation: '/ˈmʌl.ti həˈraɪ.zən ˈfɔːr.kæst.ɪŋ/',
-        sentence: 'We propose a novel interpretable deep learning model for multi-horizon forecasting.',
-        translation: '我们为多步预测提出了一种新颖的、可解释的深度学习模型。',
-        paperTitle: 'Temporal Fusion Transformers for Interpretable Multi-horizon Time Series Forecasting',
-        category: 'AI专业词汇',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 161,
-        word: 'Recurrent Neural Network (RNN)',
-        englishMeaning: 'A class of artificial neural networks where connections between nodes form a directed graph along a temporal sequence, allowing it to exhibit temporal dynamic behavior.',
-        meaning: '循环神经网络',
-        partOfSpeech: 'noun phrase',
-        pronunciation: '/rɪˈkɝː.ənt ˈnʊr.əl ˈnet.wɝːk/',
-        sentence: 'In particular, recurrent neural networks (RNNs) have become a popular choice for time series forecasting...',
-        translation: '特别是，循环神经网络（RNN）已成为时间序列预测的流行选择...',
-        paperTitle: 'Temporal Fusion Transformers for Interpretable Multi-horizon Time Series Forecasting',
-        category: 'AI专业词汇',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 162,
-        word: 'Self-attention',
-        englishMeaning: 'An attention mechanism relating different positions of a single sequence in order to compute a representation of the sequence.',
-        meaning: '自注意力',
-        partOfSpeech: 'noun',
-        pronunciation: '/self əˈten.ʃən/',
-        sentence: 'On the other hand, self-attention mechanisms, popularized by the Transformer architecture, have been shown to be very effective in learning long-term dependencies.',
-        translation: '另一方面，由Transformer架构推广的自注意力机制，已被证明在学习长期依赖关系方面非常有效。',
-        paperTitle: 'Temporal Fusion Transformers for Interpretable Multi-horizon Time Series Forecasting',
-        category: 'AI专业词汇',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
+      
+      
+      
+      
       {
         id: 163,
         word: 'Covariate',
@@ -3077,24 +2448,7 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
-      {
-        id: 165,
-        word: 'Benchmark',
-        englishMeaning: 'A standard or point of reference against which things may be compared or assessed.',
-        meaning: '基准',
-        partOfSpeech: 'noun',
-        pronunciation: '/ˈbentʃ.mɑːrk/',
-        sentence: 'We demonstrate significant performance improvements over existing benchmarks.',
-        translation: '我们展示了相较于现有基准的显著性能提升。',
-        paperTitle: 'Temporal Fusion Transformers for Interpretable Multi-horizon Time Series Forecasting',
-        category: 'AI专业词汇',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
+      
       {
         id: 166,
         word: 'Gating Mechanism',
@@ -3149,60 +2503,9 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
-      {
-        id: 169,
-        word: 'Transformer',
-        englishMeaning: 'A deep learning model architecture that uses self-attention, differentially weighting the significance of each part of the input data.',
-        meaning: 'Transformer模型',
-        partOfSpeech: 'noun',
-        pronunciation: '/trænsˈfɔːr.mɚ/',
-        sentence: 'In particular, our proposed model, the Temporal Fusion Transformer (TFT), is designed to incorporate the best ideas from recurrent neural networks (RNNs) and transformers.',
-        translation: '特别是，我们提出的模型——时间融合变换器（TFT），旨在融合循环神经网络（RNN）和变换器的最佳思想。',
-        paperTitle: 'Temporal Fusion Transformers for Interpretable Multi-horizon Time Series Forecasting',
-        category: 'AI专业词汇',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 170,
-        word: 'Hypothesis',
-        englishMeaning: 'A supposition or proposed explanation made on the basis of limited evidence as a starting point for further investigation.',
-        meaning: '假设',
-        partOfSpeech: 'noun',
-        pronunciation: '/haɪˈpɑː.θə.sɪs/',
-        sentence: 'This hypothesis is supported by the results in [KC20], and our results show that it continues to hold for the larger models studied here.',
-        translation: '这一假设得到了[KC20]中结果的支持，而我们的结果表明，它对于本文研究的更大型模型仍然成立。',
-        paperTitle: 'Language Models are Few-Shot Learners',
-        category: 'AI专业词汇',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 140,
-        word: 'Require',
-        englishMeaning: 'To need something or make something necessary.',
-        meaning: '需要，要求',
-        partOfSpeech: 'verb',
-        pronunciation: '/rɪˈkwaɪər/',
-        sentence: 'However, this approach still requires task-specific data and task-specific fine-tuning.',
-        translation: '然而，这种方法仍然需要特定于任务的数据和特定于任务的微调。',
-        paperTitle: 'Language Models are Few-Shot Learners',
-        category: 'AI专业词汇',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
+      
+      
+      
       {
         id: 141,
         word: 'Distinguish',
@@ -3239,42 +2542,8 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
-      {
-        id: 143,
-        word: 'Evaluate',
-        englishMeaning: 'To form an idea of the amount, number, or value of; to assess.',
-        meaning: '评估，评价',
-        partOfSpeech: 'verb',
-        pronunciation: '/ɪˈvæl.ju.eɪt/',
-        sentence: 'We evaluate all models on over two dozen NLP datasets, as well as several novel tasks designed to test in-context learning...',
-        translation: '我们在二十多个NLP数据集上以及几个为测试语境学习而设计的新颖任务上评估了所有模型...',
-        paperTitle: 'Language Models are Few-Shot Learners',
-        category: 'AI专业词汇',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 144,
-        word: 'Approach',
-        englishMeaning: 'A way of dealing with a situation or problem.',
-        meaning: '方法，途径',
-        partOfSpeech: 'noun',
-        pronunciation: '/əˈproʊtʃ/',
-        sentence: 'However, this approach still requires task-specific data and task-specific fine-tuning.',
-        translation: '然而，这种方法仍然需要特定于任务的数据和特定于任务的微调。',
-        paperTitle: 'Language Models are Few-Shot Learners',
-        category: 'AI专业词汇',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
+      
+      
       {
         id: 145,
         word: 'Context',
@@ -3293,24 +2562,7 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
-      {
-        id: 146,
-        word: 'Demonstrate',
-        englishMeaning: 'To clearly show the existence or truth of something by giving proof or evidence.',
-        meaning: '展示，证明',
-        partOfSpeech: 'verb',
-        pronunciation: '/ˈdem.ən.streɪt/',
-        sentence: 'Using a range of real-world datasets, we demonstrate significant performance improvements over existing benchmarks.',
-        translation: '通过一系列真实世界的数据集，我们展示了相较于现有基准的显著性能提升。',
-        paperTitle: 'Temporal Fusion Transformers for Interpretable Multi-horizon Time Series Forecasting',
-        category: 'IELTS高频词',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
+      
       {
         id: 147,
         word: 'Primary',
@@ -3347,24 +2599,7 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
-      {
-        id: 149,
-        word: 'Limitation',
-        englishMeaning: 'A limiting rule or circumstance; a restriction.',
-        meaning: '局限性，限制',
-        partOfSpeech: 'noun',
-        pronunciation: '/ˌlɪm.əˈteɪ.ʃən/',
-        sentence: 'To get a more qualitative sense of what GPT-3 can do and what its limitations are, we also include a variety of more synthetic and qualitative tasks...',
-        translation: '为了更定性地了解GPT-3能做什么以及其局限性，我们还加入了一系列更具综合性和定性的任务...',
-        paperTitle: 'Language Models are Few-Shot Learners',
-        category: 'AI专业词汇',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
+      
       {
         id: 150,
         word: 'Performance',
@@ -3491,24 +2726,7 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
-      {
-        id: 157,
-        word: 'Transformer',
-        englishMeaning: 'A deep learning model architecture that uses self-attention, differentially weighting the significance of each part of the input data.',
-        meaning: 'Transformer模型',
-        partOfSpeech: 'noun',
-        pronunciation: '/trænsˈfɔːr.mɚ/',
-        sentence: 'In particular, our proposed model, the Temporal Fusion Transformer (TFT), is designed to incorporate the best ideas from recurrent neural networks (RNNs) and transformers.',
-        translation: '特别是，我们提出的模型——时间融合变换器（TFT），旨在融合循环神经网络（RNN）和变换器的最佳思想。',
-        paperTitle: 'Temporal Fusion Transformers for Interpretable Multi-horizon Time Series Forecasting',
-        category: 'AI专业词汇',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
+      
       {
         id: 158,
         word: 'Pre-training',
@@ -3563,24 +2781,7 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
-      {
-        id: 161,
-        word: 'Architecture',
-        englishMeaning: 'The complex or carefully designed structure of something.',
-        meaning: '架构，结构',
-        partOfSpeech: 'noun',
-        pronunciation: '/ˈɑːr.kə.tek.tʃɚ/',
-        sentence: 'We propose a novel attention-based architecture which addresses these challenges...',
-        translation: '我们提出了一种新颖的、基于注意力的架构来应对这些挑战...',
-        paperTitle: 'Temporal Fusion Transformers for Interpretable Multi-horizon Time Series Forecasting',
-        category: 'IELTS高频词',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
+      
       {
         id: 162,
         word: 'Incur',
@@ -3851,24 +3052,7 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
-      {
-        id: 177,
-        word: 'Isolate',
-        englishMeaning: 'To cause (a person or place) to be or remain alone or apart from others.',
-        meaning: '隔离 (verb)',
-        partOfSpeech: 'verb',
-        pronunciation: '/ˈaɪ.sə.leɪt/',
-        sentence: 'One possible mitigation strategy is to isolate models and serve ensembles.',
-        translation: '一种可能的缓解策略是隔离模型并提供集成模型服务。',
-        paperTitle: 'Machine Learning: The High-Interest Credit Card of Technical Debt',
-        category: 'IELTS高频词',
-        difficulty: 'medium',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
+      
       {
         id: 178,
         word: 'Dependency',

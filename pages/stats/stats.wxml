@@ -62,4 +62,9 @@
       <text class="share-text">分享学习</text>
     </button>
   </view>
+
+  <!-- 版本信息 -->
+  <view class="version-info">
+    <text class="version-text">Version 1.0 | 2025.8.15</text>
+  </view>
 </view>

@@ -32,9 +32,9 @@
   margin-bottom: 0rpx; /* 紧贴下一区域 */
 }
 
-/* 分类统计向上收紧与上方的间距 */
+/* 分类统计向下移动，增加与上方的间距 */
 .overview-categories {
-  margin-top: -24rpx; /* 再次收紧与上方的垂直间距 */
+  margin-top: 24rpx; /* 增加与上方的垂直间距，从-24rpx改为24rpx */
   margin-bottom: 16rpx; /* 降低与分享按钮的间距 */
 }
 
@@ -268,4 +268,16 @@
 
 .share-text {
   font-weight: 500;
+}
+
+/* 版本信息 */
+.version-info {
+  margin-top: 60rpx;
+  text-align: center;
+  padding-bottom: 20rpx;
+}
+
+.version-text {
+  font-size: 24rpx;
+  color: #999;
 }

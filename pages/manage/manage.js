@@ -160,6 +160,13 @@ Page({
         word && word.meaning && word.meaning.includes(keyword) ||
         word && word.sentence && word.sentence.toLowerCase().includes(keyword)
       )
+      
+      // 智能排序：按匹配优先级排序
+      filtered.sort((a, b) => {
+        const aScore = this.calculateSearchScore(a, keyword)
+        const bScore = this.calculateSearchScore(b, keyword)
+        return bScore - aScore // 降序排列，分数高的在前
+      })
     }
 
     // 按分类筛选
@@ -167,20 +174,57 @@ Page({
       filtered = filtered.filter(word => word && word.category === this.data.activeCategory)
     }
 
-    // 确保筛选后的数据没有重复ID
+    // 去重：按词汇名称去重，保留第一个出现的
     const uniqueFiltered = []
-    const seenIds = new Set()
+    const seenWords = new Set()
     
     filtered.forEach(word => {
-      if (word && word.id && !seenIds.has(word.id)) {
-        seenIds.add(word.id)
-        uniqueFiltered.push(word)
+      if (word && word.word) {
+        const wordKey = word.word.toLowerCase()
+        if (!seenWords.has(wordKey)) {
+          seenWords.add(wordKey)
+          uniqueFiltered.push(word)
+        }
       }
     })
 
     this.setData({
       filteredWords: uniqueFiltered
     })
+  },
+
+  // 计算搜索匹配分数
+  calculateSearchScore(word, keyword) {
+    let score = 0
+    const wordLower = word.word ? word.word.toLowerCase() : ''
+    const meaning = word.meaning || ''
+    const sentence = word.sentence ? word.sentence.toLowerCase() : ''
+    
+    // 单词开头匹配：最高优先级 (100分)
+    if (wordLower.startsWith(keyword)) {
+      score += 100
+    }
+    // 单词包含匹配：高优先级 (80分)
+    else if (wordLower.includes(keyword)) {
+      score += 80
+    }
+    
+    // 中文含义匹配：中等优先级 (50分)
+    if (meaning.includes(keyword)) {
+      score += 50
+    }
+    
+    // 例句匹配：较低优先级 (30分)
+    if (sentence.includes(keyword)) {
+      score += 30
+    }
+    
+    // 单词长度奖励：短单词优先 (额外奖励)
+    if (wordLower.startsWith(keyword)) {
+      score += (10 - wordLower.length) * 2 // 短单词额外加分
+    }
+    
+    return score
   },
 
 
