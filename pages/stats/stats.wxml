@@ -48,23 +48,30 @@
     </view>
   </view>
 
-  
-
-  
-
-  
-
-  
-
-  <!-- 分享按钮 -->
+  <!-- 分享区域 -->
   <view class="share-section">
-    <button class="share-btn" open-type="share">
-      <text class="share-text">分享学习</text>
-    </button>
+    <view class="share-buttons">
+      <!-- 分享给好友 -->
+      <button class="share-btn share-friend" open-type="share">
+        <text class="share-text">分享给好友</text>
+      </button>
+      <!-- 生成朋友圈卡片 -->
+      <button class="share-btn share-moments" bindtap="generateShareCard">
+        <text class="share-text">生成朋友圈卡片</text>
+      </button>
+    </view>
   </view>
 
   <!-- 版本信息 -->
   <view class="version-info">
     <text class="version-text">Version 1.0 | 2025.8.15</text>
   </view>
+
+  <!-- 隐藏的Canvas用于生成分享卡片 -->
+  <canvas 
+    type="2d"
+    id="shareCanvas" 
+    class="share-canvas"
+    style="width: 350px; height: 500px; position: fixed; top: -9999px; left: -9999px;"
+  ></canvas>
 </view>

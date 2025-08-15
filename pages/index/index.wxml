@@ -30,10 +30,10 @@
   </view>
 
   <view style="display: flex; flex-direction: row; gap: 20rpx; margin-top: 60rpx;">
-    <button style="background: #28a745; color: white; padding: 30rpx; border: none; border-radius: 16rpx; font-size: 32rpx; flex: 1;" bindtap="goToPapers">
+    <button style="background: linear-gradient(135deg, #4caf50, #2e7d32); color: white; padding: 30rpx; border: none; border-radius: 16rpx; font-size: 32rpx; flex: 1; box-shadow: 0 4rpx 12rpx rgba(76, 175, 80, 0.3);" bindtap="goToPapers">
       读论文
     </button>
-    <button style="background: #007bff; color: white; padding: 30rpx; border: none; border-radius: 16rpx; font-size: 32rpx; flex: 1;" bindtap="startStudy">
+    <button style="background: linear-gradient(135deg, #1976d2, #0d47a1); color: white; padding: 30rpx; border: none; border-radius: 16rpx; font-size: 32rpx; flex: 1; box-shadow: 0 4rpx 12rpx rgba(25, 118, 210, 0.3);" bindtap="startStudy">
       背单词
     </button>
   </view>

@@ -30,6 +30,26 @@
       {
         "type": "folder",
         "value": "temp"
+      },
+      {
+        "type": "folder",
+        "value": "temp/debug"
+      },
+      {
+        "type": "folder",
+        "value": "temp/test"
+      },
+      {
+        "type": "folder",
+        "value": "temp/minimal-test"
+      },
+      {
+        "type": "folder",
+        "value": "temp/simple-test"
+      },
+      {
+        "type": "folder",
+        "value": "temp/test-cloud"
       }
     ],
     "include": []

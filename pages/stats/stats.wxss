@@ -253,21 +253,42 @@
   margin: 8rpx 0 48rpx 0; /* 增加底部留白，远离底部导航 */
 }
 
+.share-buttons {
+  display: flex;
+  gap: 20rpx;
+}
+
 .share-btn {
-  width: 100%;
+  flex: 1;
   height: 80rpx;
-  background: linear-gradient(135deg, #1976d2, #42a5f5);
   border-radius: 40rpx;
   border: none;
-  color: white;
   font-size: 28rpx;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.share-friend {
+  background: linear-gradient(135deg, #1976d2, #42a5f5);
+  color: white;
+}
+
+.share-moments {
+  background: linear-gradient(135deg, #4caf50, #66bb6a);
+  color: white;
+}
+
 .share-text {
   font-weight: 500;
+}
+
+/* Canvas样式 */
+.share-canvas {
+  position: fixed;
+  top: -9999rpx;
+  left: -9999rpx;
+  z-index: -1;
 }
 
 /* 版本信息 */

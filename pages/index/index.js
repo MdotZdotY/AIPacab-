@@ -171,19 +171,7 @@ Page({
     })
   },
 
-  // 跳转到调试页面
-  goToDebug() {
-    wx.navigateTo({
-      url: '/pages/debug/debug'
-    })
-  },
 
-  // 跳转到简单测试页面
-  goToSimpleTest() {
-    wx.navigateTo({
-      url: '/pages/simple-test/simple-test'
-    })
-  },
 
   // 刷新页面
   refreshPage() {
