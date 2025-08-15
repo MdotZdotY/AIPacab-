@@ -1,2 +1,4 @@
 <!--pages/debug/debug.wxml-->
-<view>Debug page removed</view>
+<view class="container">
+  <text>Debug Page</text>
+</view>

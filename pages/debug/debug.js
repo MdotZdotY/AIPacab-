@@ -3,7 +3,7 @@ Page({
   data: {},
   onLoad() {
     wx.showToast({
-      title: 'Debug page removed',
+      title: 'Debug page',
       icon: 'none'
     })
     setTimeout(() => {

@@ -77,7 +77,8 @@ Page({
       filteredWords: words,
       totalCount: words.length
     })
-    this.filterWords()
+    // 在默认状态下不需要调用filterWords，因为filteredWords已经设置为所有词汇
+    // this.filterWords()
   },
 
   // 修复重复ID
@@ -174,22 +175,27 @@ Page({
       filtered = filtered.filter(word => word && word.category === this.data.activeCategory)
     }
 
-    // 去重：按词汇名称去重，保留第一个出现的
-    const uniqueFiltered = []
-    const seenWords = new Set()
-    
-    filtered.forEach(word => {
-      if (word && word.word) {
-        const wordKey = word.word.toLowerCase()
-        if (!seenWords.has(wordKey)) {
-          seenWords.add(wordKey)
-          uniqueFiltered.push(word)
+    // 只有在有搜索关键词或分类筛选时才去重，默认状态下不去重
+    if (this.data.searchKeyword || this.data.activeCategory) {
+      // 去重：按词汇名称去重，保留第一个出现的
+      const uniqueFiltered = []
+      const seenWords = new Set()
+      
+      filtered.forEach(word => {
+        if (word && word.word) {
+          const wordKey = word.word.toLowerCase()
+          if (!seenWords.has(wordKey)) {
+            seenWords.add(wordKey)
+            uniqueFiltered.push(word)
+          }
         }
-      }
-    })
+      })
+      
+      filtered = uniqueFiltered
+    }
 
     this.setData({
-      filteredWords: uniqueFiltered
+      filteredWords: filtered
     })
   },
 

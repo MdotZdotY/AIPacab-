@@ -16,7 +16,6 @@ function getPaperWordCount(paperTitle) {
 const papers = [
 
 
-
   {
     id: 1,
     title: 'Attention Is All You Need',
@@ -48,6 +47,8 @@ Transformer模型架构完全摒弃了循环和卷积，仅依赖于注意力机
 * **出色的泛化能力**： 论文还证明了Transformer模型可以很好地泛化到其他任务，例如，在训练数据量或大或小的情况下，都成功地应用于英语成分句法分析。
 * **更优的可解释性**： 作为附带的好处，自注意力机制可以产生更具可解释性的模型。通过对模型中注意力分布的可视化，可以观察到不同的注意力头明显学会了执行不同的任务，其中许多头的行为似乎与句子的句法和语义结构有关。`
   },
+
+
   {
     id: 2,
     title: 'ImageNet Classification with Deep Convolutional Neural Networks',
@@ -80,6 +81,8 @@ Transformer模型架构完全摒弃了循环和卷积，仅依赖于注意力机
 
 * **历史意义**：AlexNet的成功直接引爆了深度学习的革命，开启了至今仍在持续的人工智能新浪潮，为后续的深度学习发展奠定了重要基础。`
   },
+
+
   {
     id: 3,
     title: 'Training language models to follow instructions with human feedback',
@@ -110,8 +113,10 @@ Transformer模型架构完全摒弃了循环和卷积，仅依赖于注意力机
 
 * **历史意义**：这项工作是AI对齐领域的里程碑，它不仅提供了一套可行的、可扩展的方法论，也直接催生了后续更强大的对话模型（如ChatGPT），为开发更安全、更有用、更负责任的AI系统奠定了坚实的基础。`
   },
+
+
   {
-    id: 7,
+    id: 4,
     title: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks',
     authors: 'Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir Karpukhin, Naman Goyal, Heinrich Küttler, Mike Lewis, Wen-tau Yih, Tim Rocktäschel, Sebastian Riedel, Douwe Kiela',
     year: 2020,
@@ -130,6 +135,8 @@ RAG的工作流程是：当接收到一个输入（如一个问题）时，一�
 2.  **生成质量更高**：在语言生成任务上，与强大的纯参数模型BART相比，RAG生成的文本更加具体、多样化，并且事实性更强，显著减少了“幻觉”现象。
 3.  **知识可更新与可解释**：RAG框架的一个关键优势是其“即插即用”的知识库。论文通过实验证明，只需简单地替换外部的文档索引，就可以轻松地更新模型的知识，而无需重新训练整个模型。同时，由于可以查看模型检索到了哪些文档来生成答案，RAG为模型的决策提供了来源依据，增强了可解释性。这项工作为后续的检索增强语言模型研究奠定了坚实的基础。`
   },
+
+
   {
     id: 5,
     title: 'Learning the Bitter Lesson: Empirical Evidence from 20 Years of CVPR Proceedings',
@@ -152,8 +159,10 @@ RAG的工作流程是：当接收到一个输入（如一个问题）时，一�
 通过对每年随机抽样的200篇CVPR论文进行标注和分析，论文旨在揭示这些维度在过去20年间的演变模式与趋势。`,
     highlights: `本研究最大的亮点在于首次对"惨痛的教训"这一AI领域的宏观指导原则进行了大规模、长周期的量化实证分析。它不仅验证了该原则在计算机视觉领域的有效性，还揭示了该领域研究范式的重大转变。研究结果清晰地显示，CVPR的研究趋势显著地从依赖人类专家知识和手工特征，转向了拥抱通用学习算法和大规模计算。这项工作为理解AI研究的成功策略提供了宝贵的数据支持，并为未来计算机视觉乃至更广泛的人工智能领域的研究重点和方法论选择提供了重要参考。其创新的分析方法也为使用LLM进行科学计量学和科研趋势分析开辟了新的道路。`
   },
+
+
   {
-    id: 11,
+    id: 6,
     title: 'Language Models are Few-Shot Learners',
     authors: 'Tom B. Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared D. Kaplan, Prafulla Dhariwal, Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda Askell, Sandhini Agarwal, Ariel Herbert-Voss, Gretchen Krueger, Tom Henighan, Rewon Child, Aditya Ramesh, Daniel M. Ziegler, Jeffrey Wu, Clemens Winter, Christopher Hesse, Mark Chen, Eric Sigler, Mateusz Litwin, Scott Gray, Benjamin Chess, Jack Clark, Christopher Berner, Sam McCandlish, Alec Radford, Ilya Sutskever, Dario Amodei',
     year: 2020,
@@ -169,10 +178,11 @@ RAG的工作流程是：当接收到一个输入（如一个问题）时，一�
 3.  **Few-shot**：提供任务描述和几个（通常是10到100个）示例。
 论文的核心假设是，随着模型参数量、数据集大小和计算量的增加，模型的少样本学习能力会显著提升。`,
     highlights: `这篇论文最大的亮点是推出了**GPT-3**，一个拥有1750亿参数的自回归语言模型，其规模远超当时任何已知的密集型语言模型。通过在40多个NLP基准任务上的广泛测试，论文展示了GPT-3强大的少样本学习能力。在许多任务上，GPT-3在**zero-shot**和**one-shot**设置下的表现就已具备竞争力，而在**few-shot**设置下，其性能有时甚至能超越当时经过特定任务微调的SOTA（State-of-the-Art）模型。此外，论文还展示了GPT-3执行一些需要快速推理或“举一反三”能力的任务，例如在句子中使用新造词、解开词序混乱的单词以及执行算术运算，这些都进一步证明了其强大的泛化能力。这项工作明确指出，通过极大地扩展模型规模，语言模型本身就能发展出强大的、通用的任务学习能力，为后续的LLM研究和应用（如指令微调和思维链提示）奠定了基础。`
-  }
-,
+  },
+
+
   {
-    id: 13,
+    id: 7,
     title: 'Temporal Fusion Transformers for Interpretable Multi-horizon Time Series Forecasting',
     authors: 'Bryan Lim, Sercan Ö. Arik, Nicolas Loeff, Tomas Pfister',
     year: 2019,
@@ -193,8 +203,10 @@ RAG的工作流程是：当接收到一个输入（如一个问题）时，一�
 2.  **揭示时间模式**：其可解释的注意力机制能够可视化地展示出模型在做预测时关注了哪些历史时间模式。例如，在零售预测中，模型可能会自动关注到去年同期的销售高峰，或是在预测流感爆发时，识别出某些具有周期性或突变性的早期模式。
 论文通过具体的案例分析，展示了如何利用TFT识别出具有持续性影响的时间模式、定位导致模式突变的断点（regime changes），这使得TFT不仅是一个精准的"黑箱"预测器，更是一个强大的商业和科学洞察工具。`
   },
+
+
   {
-    id: 14,
+    id: 8,
     title: 'Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting',
     authors: 'Haoyi Zhou, Shanghang Zhang, Jieqi Peng, Shuai Zhang, Jianxin Li, Hui Xiong, Wancai Zhang',
     year: 2020,
@@ -220,8 +232,10 @@ RAG的工作流程是：当接收到一个输入（如一个问题）时，一�
 2.  **推理速度的革命性提升**：生成式解码器的设计摆脱了自回归的束缚，实现了长序列预测的并行输出，解决了LSTF任务在实时应用中的速度瓶颈。
 3.  **卓越的实证性能**：论文在四个大规模的真实世界数据集（电力消耗、交通流量、天气、疾病传播）上进行了广泛实验。结果表明，Informer在各项指标上均显著优于当时已有的多种先进模型，充分验证了其在LSTF任务上的有效性和优越性。这项工作为后续的长序列建模研究提供了新的思路和强大的基线。`
   },
+
+
   {
-    id: 15,
+    id: 9,
     title: 'Machine Learning: The High-Interest Credit Card of Technical Debt',
     authors: 'D. Sculley, Gary Holt, Daniel Golovin, Eugene Davydov, Todd Phillips, Dietmar Ebner, Vinay Chaudhary, Michael Young, Jean-Francois Crespo, Dan Dennison',
     year: 2014,
@@ -250,8 +264,10 @@ RAG的工作流程是：当接收到一个输入（如一个问题）时，一�
 
 3. **实践指导意义**：论文不仅指出了问题，还针对每种技术债务提出了具体的缓解策略，如隔离模型、加强监控、自动化特征管理、重构胶水代码等。这些建议至今仍是构建和维护大规模、健康的机器学习系统的黄金法则。文章最后强调，一个成熟的ML系统中，真正的ML代码可能只占5%，而剩下的95%都是围绕它的基础设施和胶水代码，这一观点极大地影响了后续ML系统工程（MLOps）领域的发展。`
   },
+
+
   {
-    id: 16,
+    id: 10,
     title: 'Chain-of-Thought Prompting Elicits Reasoning in Large Language Models',
     authors: 'Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Brian Ichter, Fei Xia, Ed Chi, Quoc Le, Denny Zhou',
     year: 2022,
@@ -266,7 +282,30 @@ RAG的工作流程是：当接收到一个输入（如一个问题）时，一�
 1.  **显著提升复杂推理性能**：论文通过在算术、常识和符号推理三大类基准任务上的广泛实验证明，CoT提示能够让大型语言模型（如LaMDA 137B, PaLM 540B）的性能获得巨大提升，在多个任务上甚至达到了当时的业界最佳水平（State-of-the-Art），超越了那些经过专门微调的模型。
 2.  **揭示了模型规模的重要性**：研究明确指出，思维链提示的效果与模型规模密切相关。对于较小的模型，CoT提示几乎没有帮助甚至会降低性能；而当模型规模超过某个阈值后，其性能会随着规模的增大而急剧提升。这为"模型越大，能力越强"的观点提供了强有力的支持，并指明了通往更强通用人工智能的一条可能路径。
 3.  **方法简单且通用**：CoT提示是一种"开箱即用"的方法，它不需要为每个任务都去收集和标注大量的训练数据，具有很强的通用性和灵活性。这项工作深刻地改变了后续NLP领域与大型语言模型交互的方式，并催生了大量基于思维链的后续研究。`
+  },
+
+
+  {
+    id: 11,
+    title: 'Wide & Deep Learning for Recommender Systems',
+    authors: 'Heng-Tze Cheng, Levent Koc, Jeremiah Harmsen, Tal Shaked, Tushar Chandra, Hrishi Aradhye, Glen Anderson, Greg Corrado, Wei Chai, Mustafa Ispir, Rohan Anil, Zakaria Haque, Lichan Hong, Vihan Jain, Xiaobing Liu, Hemal Shah',
+    year: 2016,
+    journal: 'arXiv',
+    abstract: '这篇论文提出了一种名为Wide & Deep的混合模型框架，通过联合训练线性模型和深度神经网络，成功地将记忆能力和泛化能力结合在一起，为现代大规模推荐系统树立了新的范式。',
+    url: 'https://arxiv.org/pdf/1606.07792',
+    get wordCount() { return getPaperWordCount('Wide & Deep Learning for Recommender Systems') },
+    category: 'AI专业词汇',
+    background: `推荐系统是现代在线服务的核心，其面临一个根本性的双重挑战：既要具备良好的**记忆（Memorization）**能力，又要具备出色的**泛化（Generalization）**能力。记忆能力指的是系统能够直接学习并利用历史数据中频繁出现的物品或特征组合，从而推荐与用户已有行为高度相关的物品。泛化能力则指的是系统能够探索和推荐用户从未接触过的新物品，发现那些在历史数据中很少或从未出现的特征组合。传统的广义线性模型（如逻辑回归）擅长处理大规模稀疏特征，记忆能力强且可解释，但需要大量的人工特征工程，且难以学习到数据中隐藏的复杂模式，泛化能力较弱。而深度神经网络（DNNs）通过学习低维稠密的嵌入向量，能够发现特征间意想不到的关联，泛化能力强，但对于稀疏且高阶的特征组合，可能会过度泛化，推荐一些不那么相关的物品。`,
+    keyConcepts: `为同时解决记忆和泛化两大挑战，该论文提出了一种名为**Wide & Deep**的混合模型框架。这个框架创新性地将两种不同类型的模型进行联合训练（joint training），使其优势互补。其核心概念包括：
+1.  **Wide部分 (The Wide Component)**：这是一个广义线性模型，其主要作用是实现"记忆"。它直接使用原始的、高维稀疏的特征（如用户安装过的应用、曝光过的应用）以及这些特征的**交叉积变换（cross-product transformation）**作为输入。交叉积特征（例如，AND(user_installed_app=A, impression_app=B)）能够非常有效地捕捉那些频繁共现的特征组合，从而为推荐提供直接、强力的相关性信号。
+2.  **Deep部分 (The Deep Component)**：这是一个前馈神经网络（Feed-Forward Neural Network），其主要作用是实现"泛化"。它将原始特征（特别是那些类别特征，如应用类别、用户语言等）首先转换为低维的、稠密的**嵌入向量（embedding vectors）**。然后，这些嵌入向量被输入到多层隐藏的ReLU网络中，模型通过这种方式学习到特征之间高度非线性的、在原始数据中不那么明显的复杂关系，从而发现新的、可能相关的特征组合。
+3.  **联合训练 (Joint Training)**：Wide & Deep模型并非简单地将两个独立模型的结果进行集成（ensemble），而是将它们的输出在最终的逻辑回归层进行加权求和，并使用一个联合的目标函数（通常是log loss）进行端到端的训练。这意味着在训练过程中，Wide部分和Deep部分的参数是同时被优化的。这种联合训练的方式使得模型能够根据数据自动权衡记忆和泛化的重要性。`,
+    highlights: `本研究最大的亮点在于其**提出了一种优雅、有效且高度可扩展的框架，成功地将线性模型的记忆能力和深度模型的泛化能力结合在一起**，为现代大规模推荐系统树立了一个全新的范式。
+1.  **架构的通用性与影响力**：Wide & Deep框架非常灵活，可以轻松地应用于各种包含大量稀疏特征的推荐和排序场景。它不仅仅是一个具体的模型，更是一种重要的设计思想，启发了后续大量的研究，成为现代推荐系统架构的基石之一。
+2.  **工业级的成功应用**：论文详细介绍了该模型在Google Play应用商店推荐系统中的实现和部署。通过在线A/B测试，Wide & Deep模型相比于单独的Wide模型或Deep模型，在应用获取率上取得了显著的提升（+3.9%），证明了其在真实、海量工业场景下的巨大商业价值。
+3.  **开源与普及**：该模型的核心思想和实现已被集成到主流的机器学习框架（如TensorFlow）中，极大地推动了其在学术界和工业界的普及和应用，成为推荐系统领域从业者必学的经典模型之一。`
   }
+
 ]
 
 module.exports = papers

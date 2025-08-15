@@ -7,8 +7,7 @@
     "pages/import/import",
     
     "pages/papers/papers",
-    "pages/paper-detail/paper-detail",
-    "pages/debug/debug"
+    "pages/paper-detail/paper-detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
