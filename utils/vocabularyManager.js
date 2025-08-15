@@ -6,7 +6,8 @@ class VocabularyManager {
     this.categories = {
       'GRE高频词汇': 'GRE高频词',
       'TOEFL高频词汇': 'TOEFL高频词', 
-      'AI领域常用及专有词汇': 'AI专业词汇'
+      'AI领域常用及专有词汇': 'AI专业词汇',
+      'IELTS高频词汇': 'IELTS高频词'
     }
   }
 

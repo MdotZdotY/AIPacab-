@@ -142,6 +142,7 @@ App({
     // 词汇数据 - 从Attention Is All You Need论文中提取
         // 词汇数据 - 从论文中提取
     words: [
+
       {
         id: 1,
         word: 'Considerably',
@@ -431,7 +432,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 17,
+        id: 18,
         word: 'Overfitting',
         englishMeaning: 'The production of an analysis that corresponds too closely or exactly to a particular set of data, and may therefore fail to fit additional data or predict future observations reliably.',
         meaning: '过拟合 (noun)',
@@ -449,7 +450,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 18,
+        id: 20,
         word: 'Softmax',
         englishMeaning: 'A function that takes as input a vector of K real numbers, and normalizes it into a probability distribution consisting of K probabilities proportional to the exponentials of the input numbers.',
         meaning: 'Softmax函数 (归一化指数函数) (noun)',
@@ -467,7 +468,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 19,
+        id: 22,
         word: 'Dropout',
         englishMeaning: 'A regularization technique for neural networks that prevents co-adaptation of neurons by setting the output of each hidden neuron to zero with a certain probability.',
         meaning: 'Dropout (随机失活) (noun)',
@@ -485,7 +486,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 20,
+        id: 24,
         word: 'Back-propagation',
         englishMeaning: 'An algorithm for supervised learning of artificial neural networks using gradient descent, where the error is back-propagated through the network to adjust weights.',
         meaning: '反向传播 (noun)',
@@ -503,7 +504,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 21,
+        id: 31,
         word: 'Achieve',
         englishMeaning: 'To successfully bring about or reach a desired objective, level, or result by effort, skill, or courage.',
         meaning: '实现，达到',
@@ -521,7 +522,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 22,
+        id: 32,
         word: 'Component',
         englishMeaning: 'A part or element of a larger whole.',
         meaning: '组件，组成部分',
@@ -539,7 +540,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 23,
+        id: 33,
         word: 'Establish',
         englishMeaning: 'To set up on a firm or permanent basis; to show something to be true or certain by determining the facts.',
         meaning: '建立，确立',
@@ -557,7 +558,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 24,
+        id: 34,
         word: 'Evaluate',
         englishMeaning: 'To form an idea of the amount, number, or value of; to assess.',
         meaning: '评估，评价',
@@ -575,7 +576,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 25,
+        id: 35,
         word: 'Implement',
         englishMeaning: 'To put a decision, plan, or agreement into effect.',
         meaning: '实现，实施',
@@ -593,7 +594,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 26,
+        id: 36,
         word: 'Parameter',
         englishMeaning: 'A numerical or other measurable factor forming one of a set that defines a system or sets the conditions of its operation.',
         meaning: '参数',
@@ -611,7 +612,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 27,
+        id: 37,
         word: 'Significant',
         englishMeaning: 'Sufficiently great or important to be worthy of attention; noteworthy.',
         meaning: '显著的，重要的',
@@ -628,8 +629,9 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
+      
       {
-        id: 28,
+        id: 39,
         word: 'Architecture',
         englishMeaning: 'The complex or carefully designed structure of something.',
         meaning: '架构，结构',
@@ -647,7 +649,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 29,
+        id: 40,
         word: 'Consist',
         englishMeaning: 'To be composed or made up of.',
         meaning: '由…组成',
@@ -665,7 +667,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 30,
+        id: 41,
         word: 'Despite',
         englishMeaning: 'Without being affected by; in spite of.',
         meaning: '尽管，虽然',
@@ -683,7 +685,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 31,
+        id: 42,
         word: 'Employ',
         englishMeaning: 'To make use of.',
         meaning: '使用，采用',
@@ -701,7 +703,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 32,
+        id: 43,
         word: 'Require',
         englishMeaning: 'To need something or make something necessary.',
         meaning: '需要，要求',
@@ -719,7 +721,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 33,
+        id: 44,
         word: 'Semantic',
         englishMeaning: 'Relating to meaning in language or logic.',
         meaning: '语义的',
@@ -737,7 +739,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 34,
+        id: 45,
         word: 'Structure',
         englishMeaning: 'The arrangement of and relations between the parts or elements of something complex.',
         meaning: '结构',
@@ -755,7 +757,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 35,
+        id: 46,
         word: 'Attention Mechanism',
         englishMeaning: 'A technique that allows a neural network to focus on specific parts of an input sequence when generating an output.',
         meaning: '注意力机制',
@@ -773,7 +775,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 36,
+        id: 47,
         word: 'Auto-Regressive',
         englishMeaning: 'A model where the prediction for a given time step is generated based on the outputs from previous time steps.',
         meaning: '自回归',
@@ -791,7 +793,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 37,
+        id: 48,
         word: 'Decoder',
         englishMeaning: 'The part of an encoder-decoder model that generates the output sequence from the encoded representation.',
         meaning: '解码器',
@@ -809,7 +811,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 38,
+        id: 49,
         word: 'Embedding',
         englishMeaning: 'A learned representation for discrete items like words, mapping them to vectors of continuous numbers.',
         meaning: '嵌入',
@@ -827,7 +829,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 39,
+        id: 50,
         word: 'Encoder',
         englishMeaning: 'The part of an encoder-decoder model that processes the input sequence and converts it into a continuous representation.',
         meaning: '编码器',
@@ -845,7 +847,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 40,
+        id: 51,
         word: 'Feed-Forward Network',
         englishMeaning: 'A type of artificial neural network where connections between units do not form a cycle.',
         meaning: '前馈网络',
@@ -863,7 +865,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 41,
+        id: 52,
         word: 'Multi-Head Attention',
         englishMeaning: 'An attention mechanism that runs multiple attention functions in parallel, allowing the model to jointly attend to information from different representation subspaces.',
         meaning: '多头注意力',
@@ -881,7 +883,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 42,
+        id: 53,
         word: 'Positional Encoding',
         englishMeaning: 'A technique to inject information about the relative or absolute position of tokens in a sequence.',
         meaning: '位置编码',
@@ -899,7 +901,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 43,
+        id: 54,
         word: 'Self-Attention',
         englishMeaning: 'An attention mechanism relating different positions of a single sequence in order to compute a representation of the sequence.',
         meaning: '自注意力',
@@ -917,7 +919,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 44,
+        id: 55,
         word: 'Transduction',
         englishMeaning: 'The process of converting an input sequence into an output sequence, as seen in tasks like machine translation.',
         meaning: '转换，转导',
@@ -935,7 +937,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 45,
+        id: 56,
         word: 'Subsequent',
         englishMeaning: 'Coming after something in time; following.',
         meaning: '随后的，后来的 (adjective)',
@@ -953,7 +955,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 46,
+        id: 57,
         word: 'Feasible',
         englishMeaning: 'Possible to do easily or conveniently.',
         meaning: '可行的 (adjective)',
@@ -971,7 +973,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 47,
+        id: 58,
         word: 'Analogous',
         englishMeaning: 'Comparable in certain respects, typically in a way that makes clearer the nature of the things compared.',
         meaning: '类似的，可类比的 (adjective)',
@@ -989,7 +991,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 48,
+        id: 64,
         word: 'Obtain',
         englishMeaning: 'To get, acquire, or secure something.',
         meaning: '获得 (verb)',
@@ -1007,7 +1009,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 49,
+        id: 65,
         word: 'Methodology',
         englishMeaning: 'A system of methods used in a particular area of study or activity.',
         meaning: '方法论 (noun)',
@@ -1025,7 +1027,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 50,
+        id: 66,
         word: 'Policy',
         englishMeaning: 'In reinforcement learning, a strategy that the agent employs to determine the next action based on the current state.',
         meaning: '策略 (在强化学习中) (noun)',
@@ -1043,7 +1045,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 51,
+        id: 67,
         word: 'Explicit',
         englishMeaning: 'Stated clearly and in detail, leaving no room for confusion or doubt.',
         meaning: '明确的，清晰的 (adjective)',
@@ -1061,7 +1063,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 52,
+        id: 68,
         word: 'Ethical',
         englishMeaning: 'Relating to moral principles or the branch of knowledge dealing with these.',
         meaning: '伦理的，道德的 (adjective)',
@@ -1079,7 +1081,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 53,
+        id: 70,
         word: 'Utilize',
         englishMeaning: 'To make practical and effective use of.',
         meaning: '利用',
@@ -1097,7 +1099,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 54,
+        id: 72,
         word: 'Alignment',
         englishMeaning: 'The process of ensuring that an AI system\'s behavior aligns with human values.',
         meaning: '对齐 (noun)',
@@ -1115,7 +1117,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 55,
+        id: 81,
         word: 'Mitigate',
         englishMeaning: 'To make something less severe, harmful, or painful.',
         meaning: '减轻，缓和 (verb)',
@@ -1133,7 +1135,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 56,
+        id: 82,
         word: 'Precisely',
         englishMeaning: 'Exactly or accurately; with exactness and accuracy.',
         meaning: '精确地 (adverb)',
@@ -1151,7 +1153,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 57,
+        id: 83,
         word: 'Formulation',
         englishMeaning: 'The way in which something is expressed or put into words.',
         meaning: '构想，公式化表达 (noun)',
@@ -1169,7 +1171,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 58,
+        id: 84,
         word: 'Diverse',
         englishMeaning: 'Showing a great deal of variety; very different.',
         meaning: '多样的',
@@ -1187,7 +1189,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 59,
+        id: 85,
         word: 'Validate',
         englishMeaning: 'To check or prove the accuracy or validity of something.',
         meaning: '验证 (verb)',
@@ -1205,7 +1207,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 60,
+        id: 86,
         word: 'Unify',
         englishMeaning: 'To combine or integrate into a single system or whole.',
         meaning: '统一，整合 (verb)',
@@ -1223,7 +1225,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 61,
+        id: 87,
         word: 'Demonstrate',
         englishMeaning: 'To clearly show the existence or truth of something by giving proof or evidence.',
         meaning: '展示，证明',
@@ -1241,7 +1243,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 62,
+        id: 88,
         word: 'Recipe',
         englishMeaning: 'A set of instructions or method for achieving a particular result.',
         meaning: '方案，方法 (引申义) (noun)',
@@ -1259,7 +1261,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 63,
+        id: 89,
         word: 'Crucially',
         englishMeaning: 'In a way that is extremely important or decisive.',
         meaning: '至关重要地 (adverb)',
@@ -1277,7 +1279,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 64,
+        id: 90,
         word: 'Isolate',
         englishMeaning: 'To separate or set apart from others; to consider separately.',
         meaning: '孤立，单独考虑 (verb)',
@@ -1295,7 +1297,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 65,
+        id: 91,
         word: 'Procedure',
         englishMeaning: 'A series of actions conducted in a certain order or manner.',
         meaning: '程序，步骤 (noun)',
@@ -1313,7 +1315,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 66,
+        id: 92,
         word: 'Downstream Task',
         englishMeaning: 'A task that uses the output or features from a pre-trained model.',
         meaning: '下游任务 (noun phrase)',
@@ -1331,7 +1333,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 67,
+        id: 94,
         word: 'Non-parametric Memory',
         englishMeaning: 'Knowledge stored externally and accessed through retrieval mechanisms.',
         meaning: '非参数化记忆 (noun phrase)',
@@ -1349,7 +1351,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 68,
+        id: 96,
         word: 'Extractive',
         englishMeaning: 'Relating to or involving the extraction of specific text segments from source documents.',
         meaning: '抽取式 (adjective)',
@@ -1367,7 +1369,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 69,
+        id: 98,
         word: 'Marginalize',
         englishMeaning: 'To sum or integrate over a variable to obtain a marginal distribution.',
         meaning: '边缘化 (求边缘概率) (verb)',
@@ -1384,8 +1386,9 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
+      
       {
-        id: 70,
+        id: 107,
         word: 'Principle',
         englishMeaning: 'A fundamental truth or proposition that serves as the foundation for a system of belief or behavior or for a chain of reasoning.',
         meaning: '原则，原理 (noun)',
@@ -1403,7 +1406,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 71,
+        id: 108,
         word: 'Comprehensive',
         englishMeaning: 'Complete; including all or nearly all elements or aspects of something.',
         meaning: '全面的，综合的',
@@ -1421,7 +1424,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 72,
+        id: 109,
         word: 'Reveal',
         englishMeaning: 'To make previously unknown or secret information known to others.',
         meaning: '揭示，显示 (verb)',
@@ -1439,7 +1442,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 73,
+        id: 110,
         word: 'Assess',
         englishMeaning: 'To evaluate or estimate the nature, ability, or quality of.',
         meaning: '评估，评定 (verb)',
@@ -1457,7 +1460,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 74,
+        id: 111,
         word: 'Evolution',
         englishMeaning: 'The gradual development of something.',
         meaning: '演变，进化 (noun)',
@@ -1474,8 +1477,9 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
+      
       {
-        id: 75,
+        id: 113,
         word: 'Contribute',
         englishMeaning: 'To give something in order to help achieve or provide something.',
         meaning: '贡献 (verb)',
@@ -1493,7 +1497,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 76,
+        id: 114,
         word: 'Examines',
         englishMeaning: 'To inspect (someone or something) in detail to determine their nature or condition; investigate thoroughly.',
         meaning: '检查，研究 (verb)',
@@ -1510,8 +1514,9 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
+      
       {
-        id: 77,
+        id: 116,
         word: 'Implications',
         englishMeaning: 'The conclusion that can be drawn from something although it is not explicitly stated; a likely consequence of something.',
         meaning: '含义，可能的影响 (noun)',
@@ -1529,7 +1534,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 78,
+        id: 117,
         word: 'Dialogue',
         englishMeaning: 'A discussion between two or more people or groups, especially one directed toward exploration of a particular subject or resolution of a problem.',
         meaning: '对话 (noun)',
@@ -1547,7 +1552,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 79,
+        id: 118,
         word: 'Span',
         englishMeaning: 'The full extent of something from end to end; the amount of time over which something exists or happens.',
         meaning: '时间跨度 (noun)',
@@ -1565,7 +1570,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 80,
+        id: 119,
         word: 'Adoption',
         englishMeaning: 'The action or fact of choosing to take up, follow, or use something.',
         meaning: '采用 (noun)',
@@ -1583,7 +1588,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 81,
+        id: 120,
         word: 'Exemplify',
         englishMeaning: 'To be a typical example of.',
         meaning: '例证，是...的典范 (verb)',
@@ -1601,7 +1606,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 82,
+        id: 121,
         word: 'Heuristics',
         englishMeaning: 'A practical approach to problem-solving or self-discovery that is not guaranteed to be optimal or perfect, but is sufficient for the immediate goals.',
         meaning: '启发式；启发法 (noun)',
@@ -1619,7 +1624,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 83,
+        id: 122,
         word: 'Paradigm Shift',
         englishMeaning: 'A fundamental change in the basic concepts and experimental practices of a scientific discipline.',
         meaning: '范式转移 (noun phrase)',
@@ -1637,7 +1642,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 84,
+        id: 123,
         word: 'Hand-crafted features',
         englishMeaning: 'In traditional machine learning, features of data that are designed and engineered by human experts based on domain knowledge.',
         meaning: '手工设计特征 (noun phrase)',
@@ -1655,7 +1660,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 85,
+        id: 124,
         word: 'Large Language Models (LLMs)',
         englishMeaning: 'A type of artificial intelligence model trained on vast amounts of text data to understand and generate human-like language.',
         meaning: '大型语言模型 (noun phrase)',
@@ -1673,7 +1678,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 86,
+        id: 125,
         word: 'State-of-the-art',
         englishMeaning: 'The highest level of general development, as of a device, technique, or scientific field, achieved at a particular time.',
         meaning: '最先进的水平 (noun)',
@@ -1691,7 +1696,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 87,
+        id: 126,
         word: 'Natural Language Processing (NLP)',
         englishMeaning: 'A field of artificial intelligence that deals with the interaction between computers and humans using natural language.',
         meaning: '自然语言处理 (noun phrase)',
@@ -1709,7 +1714,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 88,
+        id: 127,
         word: 'Deep Learning',
         englishMeaning: 'A subfield of machine learning based on artificial neural networks with multiple layers between the input and output layers.',
         meaning: '深度学习 (noun)',
@@ -1727,7 +1732,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 89,
+        id: 128,
         word: 'Convolutional Neural Networks (CNNs)',
         englishMeaning: 'A class of deep neural networks, most commonly applied to analyzing visual imagery.',
         meaning: '卷积神经网络 (noun phrase)',
@@ -1745,7 +1750,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 90,
+        id: 129,
         word: 'Domain-specific',
         englishMeaning: 'Relating or specific to a particular field of knowledge.',
         meaning: '领域特定的 (adjective)',
@@ -1763,7 +1768,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 91,
+        id: 130,
         word: 'Object Detection',
         englishMeaning: 'A computer technology related to computer vision and image processing that deals with detecting instances of semantic objects of a certain class in digital images and videos.',
         meaning: '物体检测 (noun phrase)',
@@ -1781,7 +1786,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 92,
+        id: 131,
         word: 'Image Classification',
         englishMeaning: 'The process of categorizing and labeling groups of pixels or vectors within an image based on specific rules.',
         meaning: '图像分类 (noun phrase)',
@@ -1799,7 +1804,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 93,
+        id: 132,
         word: 'Agnostic',
         englishMeaning: 'Not holding a firm opinion or belief on a particular matter; in a computing context, designed to be compatible with different systems.',
         meaning: '不可知论的；（在技术中指）与平台无关的，通用的',
@@ -1817,7 +1822,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 94,
+        id: 133,
         word: 'Artifact',
         englishMeaning: 'An object made by a human being, typically an item of cultural or historical interest; in data science, it can refer to a systematic error or bias.',
         meaning: '人工制品；（数据中的）伪影，系统性偏差',
@@ -1834,8 +1839,9 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
+      
       {
-        id: 95,
+        id: 135,
         word: 'Paradigm',
         englishMeaning: 'A typical example or pattern of something; a model or framework.',
         meaning: '范式，典范',
@@ -1853,7 +1859,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 96,
+        id: 136,
         word: 'Conjecture',
         englishMeaning: 'An opinion or conclusion formed on the basis of incomplete information.',
         meaning: '推测，猜想',
@@ -1871,7 +1877,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 97,
+        id: 137,
         word: 'Dominate',
         englishMeaning: 'To be the most important or conspicuous person or thing.',
         meaning: '主导，支配',
@@ -1889,7 +1895,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 98,
+        id: 138,
         word: 'Generate',
         englishMeaning: 'To produce or create something.',
         meaning: '生成，产生',
@@ -1907,7 +1913,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 99,
+        id: 139,
         word: 'Hypothesis',
         englishMeaning: 'A supposition or proposed explanation made on the basis of limited evidence as a starting point for further investigation.',
         meaning: '假设',
@@ -1925,7 +1931,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 100,
+        id: 1755071328291,
         word: 'Ubiquitous',
         englishMeaning: 'Present, appearing, or found everywhere.',
         meaning: '无处不在的，普遍存在的',
@@ -1943,7 +1949,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 101,
+        id: 1755071328292,
         word: 'Ablation',
         englishMeaning: 'In machine learning, a study wherein components of an AI system are removed or replaced to determine their impact on the performance of the system.',
         meaning: '消融研究',
@@ -1961,7 +1967,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 102,
+        id: 1755071328293,
         word: 'Robust',
         englishMeaning: 'Strong and healthy; able to withstand or overcome adverse conditions.',
         meaning: '强健的，稳健的',
@@ -1979,7 +1985,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 103,
+        id: 1755071328294,
         word: 'Empirical',
         englishMeaning: 'Based on, concerned with, or verifiable by observation or experience rather than theory or pure logic.',
         meaning: '经验的，实证的',
@@ -1996,8 +2002,9 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
+      
       {
-        id: 104,
+        id: 1755071328296,
         word: 'Limitation',
         englishMeaning: 'A restriction or constraint; a weakness or shortcoming.',
         meaning: '限制，局限性',
@@ -2014,8 +2021,16 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
+      
+      
+      
+      
+      
+      
+      
+      
       {
-        id: 105,
+        id: 1755071328305,
         word: 'Incorporate',
         englishMeaning: 'To take in or contain something as part of a whole; to include.',
         meaning: '包含，并入',
@@ -2032,8 +2047,9 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
+      
       {
-        id: 106,
+        id: 1755071328307,
         word: 'Interaction',
         englishMeaning: 'Communication or direct involvement with someone or something.',
         meaning: '交互，相互作用',
@@ -2051,7 +2067,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 107,
+        id: 1755071328308,
         word: 'Challenge',
         englishMeaning: 'A task or situation that tests someone\'s abilities.',
         meaning: '挑战',
@@ -2069,7 +2085,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 108,
+        id: 1755071328309,
         word: 'Propose',
         englishMeaning: 'To put forward an idea or plan for consideration.',
         meaning: '提出，提议',
@@ -2086,8 +2102,9 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
+      
       {
-        id: 109,
+        id: 1755071328311,
         word: 'Multi-horizon Forecasting',
         englishMeaning: 'The prediction of a time series for multiple steps into the future.',
         meaning: '多步预测',
@@ -2105,7 +2122,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 110,
+        id: 1755071328312,
         word: 'Recurrent Neural Network (RNN)',
         englishMeaning: 'A class of artificial neural networks where connections between nodes form a directed graph along a temporal sequence.',
         meaning: '循环神经网络',
@@ -2122,8 +2139,9 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
+      
       {
-        id: 111,
+        id: 1755071328314,
         word: 'Transformer',
         englishMeaning: 'A deep learning model architecture based on self-attention mechanisms.',
         meaning: '变换器',
@@ -2140,8 +2158,11 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
+      
+      
+      
       {
-        id: 112,
+        id: 1755071328318,
         word: 'Benchmark',
         englishMeaning: 'A standard or point of reference against which things may be compared or assessed.',
         meaning: '基准，标准',
@@ -2159,7 +2180,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 113,
+        id: 1755071328319,
         word: 'Autoregressive decoding',
         englishMeaning: 'A decoding method where each output is generated based on previous outputs.',
         meaning: '自回归解码',
@@ -2177,7 +2198,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 114,
+        id: 1755071328320,
         word: 'Hyperparameter',
         englishMeaning: 'A parameter whose value is used to control the learning process and which is set before the learning process begins.',
         meaning: '超参数',
@@ -2195,7 +2216,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 115,
+        id: 1755071328321,
         word: 'Time Series Forecasting',
         englishMeaning: 'A method for predicting future values based on previously observed values over time.',
         meaning: '时间序列预测',
@@ -2213,7 +2234,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 116,
+        id: 1755071328322,
         word: 'Long Sequence Time-series Forecasting (LSTF)',
         englishMeaning: 'The task of making predictions for a time series over a long future horizon.',
         meaning: '长序列时间序列预测',
@@ -2230,8 +2251,10 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
+      
+      
       {
-        id: 117,
+        id: 140,
         word: 'Heterogeneous',
         englishMeaning: 'Diverse in character or content.',
         meaning: '异构的，多种多样的',
@@ -2248,8 +2271,10 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
+      
+      
       {
-        id: 118,
+        id: 143,
         word: 'Novel',
         englishMeaning: 'New or unusual in an interesting way.',
         meaning: '新颖的',
@@ -2267,7 +2292,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 119,
+        id: 144,
         word: 'Regime',
         englishMeaning: 'A particular way of operating or organizing a system; a pattern.',
         meaning: '模式，状况',
@@ -2284,8 +2309,10 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
+      
+      
       {
-        id: 120,
+        id: 147,
         word: 'Enhancement',
         englishMeaning: 'An increase or improvement in quality, value, or extent.',
         meaning: '增强，提升',
@@ -2302,8 +2329,9 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
+      
       {
-        id: 121,
+        id: 149,
         word: 'Quantile',
         englishMeaning: 'Each of any set of values of a variate which divide a frequency distribution into equal groups, each containing the same fraction of the total population.',
         meaning: '分位数',
@@ -2321,7 +2349,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 122,
+        id: 150,
         word: 'Simultaneously',
         englishMeaning: 'At the same time.',
         meaning: '同时地',
@@ -2338,8 +2366,13 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
+      
+      
+      
+      
+      
       {
-        id: 123,
+        id: 156,
         word: 'Persistent',
         englishMeaning: 'Continuing firmly or obstinately in a course of action in spite of difficulty or opposition.',
         meaning: '持续的',
@@ -2356,8 +2389,9 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
+      
       {
-        id: 124,
+        id: 158,
         word: 'Domain',
         englishMeaning: 'A specified sphere of activity or knowledge.',
         meaning: '领域',
@@ -2374,8 +2408,12 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
+      
+      
+      
+      
       {
-        id: 125,
+        id: 163,
         word: 'Covariate',
         englishMeaning: 'A variable that is possibly predictive of the outcome under study. A covariate may be of direct interest or it may be a confounding variable or an effect modifier.',
         meaning: '协变量',
@@ -2393,7 +2431,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 126,
+        id: 164,
         word: 'Interpretable',
         englishMeaning: 'Capable of being understood; intelligible. In AI, it refers to models whose decisions can be explained.',
         meaning: '可解释的',
@@ -2410,8 +2448,9 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
+      
       {
-        id: 127,
+        id: 166,
         word: 'Gating Mechanism',
         englishMeaning: 'A mechanism in neural networks that controls the flow of information.',
         meaning: '门控机制',
@@ -2429,7 +2468,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 128,
+        id: 167,
         word: 'Residual Connection',
         englishMeaning: 'A connection in a neural network that skips one or more layers, which helps in training deeper models by allowing gradients to flow through the network more easily.',
         meaning: '残差连接',
@@ -2447,7 +2486,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 129,
+        id: 168,
         word: 'Long Short-Term Memory (LSTM)',
         englishMeaning: 'A type of recurrent neural network (RNN) capable of learning long-term dependencies.',
         meaning: '长短期记忆网络',
@@ -2464,8 +2503,11 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
+      
+      
+      
       {
-        id: 130,
+        id: 141,
         word: 'Distinguish',
         englishMeaning: 'To recognize or treat (someone or something) as different.',
         meaning: '区分，辨别',
@@ -2483,7 +2525,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 131,
+        id: 142,
         word: 'Specific',
         englishMeaning: 'Clearly defined or identified.',
         meaning: '特定的，明确的',
@@ -2500,8 +2542,10 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
+      
+      
       {
-        id: 132,
+        id: 145,
         word: 'Context',
         englishMeaning: 'The circumstances that form the setting for an event, statement, or idea, and in terms of which it can be fully understood and assessed.',
         meaning: '上下文，背景',
@@ -2518,8 +2562,9 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
+      
       {
-        id: 133,
+        id: 147,
         word: 'Primary',
         englishMeaning: 'Of chief importance; principal.',
         meaning: '主要的',
@@ -2537,7 +2582,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 134,
+        id: 148,
         word: 'Benefit',
         englishMeaning: 'An advantage or profit gained from something.',
         meaning: '益处，好处',
@@ -2554,8 +2599,9 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
+      
       {
-        id: 135,
+        id: 150,
         word: 'Performance',
         englishMeaning: 'The action or process of carrying out or accomplishing an action, task, or function.',
         meaning: '性能，表现',
@@ -2573,7 +2619,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 136,
+        id: 151,
         word: 'Potential',
         englishMeaning: 'Having or showing the capacity to become or develop into something in the future.',
         meaning: '潜在的，潜能',
@@ -2591,7 +2637,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 137,
+        id: 152,
         word: 'Autoregressive',
         englishMeaning: 'A model where the prediction for a given time step is generated based on the data from previous time steps.',
         meaning: '自回归',
@@ -2609,7 +2655,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 138,
+        id: 153,
         word: 'Fine-tuning',
         englishMeaning: 'The process of taking a pre-trained model and training it further on a smaller, task-specific dataset to adapt it to that particular task.',
         meaning: '微调',
@@ -2627,7 +2673,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 139,
+        id: 154,
         word: 'Few-Shot Learning',
         englishMeaning: 'A machine learning approach where a model is trained to make predictions on new tasks using only a small number of examples.',
         meaning: '少样本学习',
@@ -2645,7 +2691,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 140,
+        id: 155,
         word: 'Zero-Shot Learning',
         englishMeaning: 'A type of learning where a model can perform a task without having seen any examples of that task during its training.',
         meaning: '零样本学习',
@@ -2663,7 +2709,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 141,
+        id: 156,
         word: 'One-Shot Learning',
         englishMeaning: 'A setting in machine learning where a model must learn to perform a task from a single example.',
         meaning: '单样本学习',
@@ -2680,8 +2726,9 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
+      
       {
-        id: 142,
+        id: 158,
         word: 'Pre-training',
         englishMeaning: 'The initial phase of training a large model on a vast amount of unlabeled data to learn general representations of language or other data types.',
         meaning: '预训练',
@@ -2699,7 +2746,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 143,
+        id: 159,
         word: 'Corpus',
         englishMeaning: 'A collection of written or spoken material in machine-readable form, assembled for the purpose of linguistic research.',
         meaning: '语料库',
@@ -2717,7 +2764,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 144,
+        id: 160,
         word: 'Dataset',
         englishMeaning: 'A collection of related sets of information that is composed of separate elements but can be manipulated as a unit by a computer.',
         meaning: '数据集',
@@ -2734,8 +2781,9 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
+      
       {
-        id: 145,
+        id: 162,
         word: 'Incur',
         englishMeaning: 'To become subject to (something unwelcome or unpleasant) as a result of one\'s own behavior or actions.',
         meaning: '招致，蒙受 (verb)',
@@ -2753,7 +2801,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 146,
+        id: 163,
         word: 'Brittleness',
         englishMeaning: 'The quality of being hard but liable to break or shatter easily.',
         meaning: '脆弱性 (noun)',
@@ -2771,7 +2819,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 147,
+        id: 164,
         word: 'Deleterious',
         englishMeaning: 'Causing harm or damage.',
         meaning: '有害的 (adjective)',
@@ -2789,7 +2837,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 148,
+        id: 165,
         word: 'Innocuous',
         englishMeaning: 'Not harmful or offensive.',
         meaning: '无害的 (adjective)',
@@ -2807,7 +2855,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 149,
+        id: 166,
         word: 'Symptomatic',
         englishMeaning: 'Serving as a symptom or sign, especially of something undesirable.',
         meaning: '作为…的症状，有代表性的 (adjective)',
@@ -2825,7 +2873,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 150,
+        id: 167,
         word: 'Quantify',
         englishMeaning: 'To express or measure the quantity of.',
         meaning: '量化 (verb)',
@@ -2843,7 +2891,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 151,
+        id: 168,
         word: 'Refactor',
         englishMeaning: 'To restructure existing computer code without changing its external behavior.',
         meaning: '重构 (verb)',
@@ -2861,7 +2909,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 152,
+        id: 169,
         word: 'Accumulate',
         englishMeaning: 'To gather or build up.',
         meaning: '积累 (verb)',
@@ -2879,7 +2927,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 153,
+        id: 170,
         word: 'Mitigation',
         englishMeaning: 'The action of reducing the severity, seriousness, or painfulness of something.',
         meaning: '缓解，减轻 (noun)',
@@ -2897,7 +2945,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 154,
+        id: 171,
         word: 'Vulnerable',
         englishMeaning: 'Susceptible to physical or emotional attack or harm.',
         meaning: '易受攻击的，脆弱的 (adjective)',
@@ -2915,7 +2963,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 155,
+        id: 172,
         word: 'Holistically',
         englishMeaning: 'In a way that deals with or treats the whole of something or someone and not just a part.',
         meaning: '整体地 (adverb)',
@@ -2933,7 +2981,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 156,
+        id: 173,
         word: 'Ephemeral',
         englishMeaning: 'Lasting for a very short time.',
         meaning: '短暂的，瞬息的 (adjective)',
@@ -2951,7 +2999,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 157,
+        id: 174,
         word: 'Assert',
         englishMeaning: 'To state a fact or belief confidently and forcefully.',
         meaning: '断言 (verb)',
@@ -2969,7 +3017,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 158,
+        id: 175,
         word: 'Framework',
         englishMeaning: 'A basic structure underlying a system, concept, or text.',
         meaning: '框架 (noun)',
@@ -2987,7 +3035,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 159,
+        id: 176,
         word: 'Strategy',
         englishMeaning: 'A plan of action designed to achieve a long-term or overall aim.',
         meaning: '策略 (noun)',
@@ -3004,8 +3052,9 @@ App({
         status: 'learning',
         weeklyStudyCount: 0
       },
+      
       {
-        id: 160,
+        id: 178,
         word: 'Dependency',
         englishMeaning: 'The state of relying on or being controlled by someone or something else.',
         meaning: '依赖 (noun)',
@@ -3023,7 +3072,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 161,
+        id: 179,
         word: 'Diagnose',
         englishMeaning: 'To identify the nature of (an illness or other problem) by examination of the symptoms.',
         meaning: '诊断 (verb)',
@@ -3041,7 +3090,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 162,
+        id: 180,
         word: 'Redundant',
         englishMeaning: 'Not or no longer needed or useful; superfluous.',
         meaning: '冗余的 (adjective)',
@@ -3059,7 +3108,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 163,
+        id: 181,
         word: 'Collaborate',
         englishMeaning: 'To work jointly on an activity, especially to produce or create something.',
         meaning: '合作 (verb)',
@@ -3077,7 +3126,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 164,
+        id: 182,
         word: 'Monitor',
         englishMeaning: 'To observe and check the progress or quality of (something) over a period of time; keep under systematic review.',
         meaning: '监控 (verb)',
@@ -3095,7 +3144,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 165,
+        id: 183,
         word: 'Technical Debt',
         englishMeaning: 'The implied cost of rework caused by choosing an easy (limited) solution now instead of using a better approach that would take longer.',
         meaning: '技术债务 (noun phrase)',
@@ -3113,7 +3162,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 166,
+        id: 184,
         word: 'Entanglement',
         englishMeaning: 'In this paper\'s context, the property of ML systems where changing any single component (like a feature or hyperparameter) can have wide-ranging and unpredictable effects on the entire system.',
         meaning: '纠缠 (noun)',
@@ -3131,7 +3180,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 167,
+        id: 185,
         word: 'Feedback Loop',
         englishMeaning: 'A situation where part of the output of a system is used for new input, which can affect the system\'s behavior over time.',
         meaning: '反馈循环 (noun phrase)',
@@ -3149,7 +3198,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 168,
+        id: 186,
         word: 'Glue Code',
         englishMeaning: 'Code that serves solely to connect different, often incompatible, software components.',
         meaning: '胶水代码 (noun phrase)',
@@ -3167,7 +3216,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 169,
+        id: 187,
         word: 'Pipeline Jungles',
         englishMeaning: 'A term coined in this paper for complex, tangled, and hard-to-maintain data processing pipelines.',
         meaning: '流水线丛林 (noun phrase)',
@@ -3185,7 +3234,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 170,
+        id: 188,
         word: 'Anti-pattern',
         englishMeaning: 'A common response to a recurring problem that is usually ineffective and risks being counterproductive.',
         meaning: '反模式 (noun)',
@@ -3203,7 +3252,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 171,
+        id: 189,
         word: 'Hyper-parameter',
         englishMeaning: 'A parameter whose value is used to control the learning process, and which is set before the learning process begins.',
         meaning: '超参数 (noun)',
@@ -3221,7 +3270,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 172,
+        id: 190,
         word: 'Ensemble',
         englishMeaning: 'A machine learning method where multiple models are trained to solve the same problem and combined to get better results.',
         meaning: '集成模型 (noun)',
@@ -3239,7 +3288,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 173,
+        id: 191,
         word: 'Calibration',
         englishMeaning: 'The process of adjusting a model\'s output probabilities to better reflect the true likelihood of events.',
         meaning: '校准 (noun)',
@@ -3257,7 +3306,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 174,
+        id: 192,
         word: 'Elicit',
         englishMeaning: 'To evoke or draw out (a response, answer, or fact) from someone in reaction to one\'s own actions or questions.',
         meaning: '引出，诱发 (verb)',
@@ -3275,7 +3324,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 175,
+        id: 193,
         word: 'Ablation',
         englishMeaning: 'In machine learning, a study wherein components of an AI system are removed or replaced to determine their impact on the performance of the system.',
         meaning: '消融研究 (noun)',
@@ -3293,7 +3342,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 176,
+        id: 194,
         word: 'Robustness',
         englishMeaning: 'The quality of being strong and healthy; in a technical sense, the ability of a system to cope with errors during execution.',
         meaning: '鲁棒性，稳健性 (noun)',
@@ -3311,7 +3360,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 177,
+        id: 195,
         word: 'Spurious',
         englishMeaning: 'Not being what it purports to be; false or fake.',
         meaning: '虚假的，伪造的 (adjective)',
@@ -3329,7 +3378,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 178,
+        id: 196,
         word: 'Coherent',
         englishMeaning: '(of an argument, theory, or policy) logical and consistent.',
         meaning: '连贯的，一致的 (adjective)',
@@ -3347,7 +3396,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 179,
+        id: 197,
         word: 'Intermediate',
         englishMeaning: 'Coming between two things in time, place, order, character, etc.',
         meaning: '中间的 (adjective)',
@@ -3365,7 +3414,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 180,
+        id: 198,
         word: 'Mechanism',
         englishMeaning: 'A system of parts working together in a machine; a piece of machinery.',
         meaning: '机制 (noun)',
@@ -3383,7 +3432,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 181,
+        id: 199,
         word: 'Evaluate',
         englishMeaning: 'To form an idea of the amount, number, or value of; to assess.',
         meaning: '评估 (verb)',
@@ -3401,7 +3450,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 182,
+        id: 200,
         word: 'Outperform',
         englishMeaning: 'To perform better than.',
         meaning: '表现优于 (verb)',
@@ -3419,7 +3468,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 183,
+        id: 201,
         word: 'Intuitive',
         englishMeaning: 'Using or based on what one feels to be true even without conscious reasoning; instinctive.',
         meaning: '直观的 (adjective)',
@@ -3437,7 +3486,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 184,
+        id: 202,
         word: 'Challenge',
         englishMeaning: 'A task or situation that tests someone\'s abilities.',
         meaning: '挑战 (noun)',
@@ -3455,7 +3504,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 185,
+        id: 203,
         word: 'Diverse',
         englishMeaning: 'Showing a great deal of variety; very different.',
         meaning: '多样的 (adjective)',
@@ -3473,7 +3522,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 186,
+        id: 204,
         word: 'Analyze',
         englishMeaning: 'To examine (something) methodically and in detail, typically in order to explain and interpret it.',
         meaning: '分析 (verb)',
@@ -3491,7 +3540,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 187,
+        id: 205,
         word: 'Crucial',
         englishMeaning: 'Decisive or critical, especially in the success or failure of something.',
         meaning: '至关重要的 (adjective)',
@@ -3509,7 +3558,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 188,
+        id: 206,
         word: 'Hypothesis',
         englishMeaning: 'A supposition or proposed explanation made on the basis of limited evidence as a starting point for further investigation.',
         meaning: '假设 (noun)',
@@ -3527,7 +3576,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 189,
+        id: 207,
         word: 'Generate',
         englishMeaning: 'To produce or create.',
         meaning: '生成 (verb)',
@@ -3545,7 +3594,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 190,
+        id: 208,
         word: 'Trend',
         englishMeaning: 'A general direction in which something is developing or changing.',
         meaning: '趋势 (noun)',
@@ -3563,7 +3612,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 191,
+        id: 209,
         word: 'Illustrate',
         englishMeaning: 'To serve as an example of.',
         meaning: '阐明，举例说明 (verb)',
@@ -3581,7 +3630,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 192,
+        id: 210,
         word: 'Contrast',
         englishMeaning: 'The state of being strikingly different from something else.',
         meaning: '对比 (noun)',
@@ -3599,7 +3648,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 193,
+        id: 211,
         word: 'Furthermore',
         englishMeaning: 'In addition; besides.',
         meaning: '此外 (adverb)',
@@ -3617,7 +3666,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 194,
+        id: 212,
         word: 'Chain-of-Thought (CoT)',
         englishMeaning: 'A series of intermediate reasoning steps that lead to the final answer of a multi-step problem.',
         meaning: '思维链 (noun phrase)',
@@ -3635,7 +3684,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 195,
+        id: 213,
         word: 'Prompting',
         englishMeaning: 'The technique of providing a language model with a few examples of a task to steer it to perform that task.',
         meaning: '提示 (noun)',
@@ -3653,7 +3702,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 196,
+        id: 214,
         word: 'Large Language Model (LLM)',
         englishMeaning: 'A type of artificial intelligence model trained on vast amounts of text data to understand and generate human-like language.',
         meaning: '大型语言模型 (noun phrase)',
@@ -3671,7 +3720,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 197,
+        id: 215,
         word: 'Fine-tuning',
         englishMeaning: 'The process of taking a pre-trained model and training it further on a smaller, task-specific dataset.',
         meaning: '微调 (noun)',
@@ -3689,7 +3738,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 198,
+        id: 216,
         word: 'In-context learning',
         englishMeaning: 'The ability of a language model to learn a task from a few examples provided in the prompt, without any weight updates.',
         meaning: '语境学习 (noun phrase)',
@@ -3707,7 +3756,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 199,
+        id: 217,
         word: 'Few-shot',
         englishMeaning: 'A setting in machine learning where a model learns from a small number of examples.',
         meaning: '少样本 (adjective)',
@@ -3725,7 +3774,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 200,
+        id: 218,
         word: 'Emergent Ability',
         englishMeaning: 'An ability that is not present in smaller models but appears in larger models.',
         meaning: '新兴能力 (noun phrase)',
@@ -3743,7 +3792,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 201,
+        id: 219,
         word: 'State-of-the-art (SOTA)',
         englishMeaning: 'The highest level of general development achieved in a particular field at a specific time.',
         meaning: '最先进的水平 (noun / adjective)',
@@ -3761,7 +3810,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 202,
+        id: 220,
         word: 'Benchmark',
         englishMeaning: 'A standard or point of reference against which things may be compared or assessed.',
         meaning: '基准测试 (noun)',
@@ -3779,7 +3828,7 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 203,
+        id: 221,
         word: 'Parameter',
         englishMeaning: 'A numerical or other measurable factor forming one of a set that defines a system or sets the conditions of its operation.',
         meaning: '参数 (noun)',
