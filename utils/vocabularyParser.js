@@ -6,7 +6,8 @@ class VocabularyParser {
     this.categories = {
       'GRE高频词汇': 'GRE高频词',
       'TOEFL高频词汇': 'TOEFL高频词', 
-      'AI领域常用及专有词汇': 'AI专业词汇'
+      'AI领域常用及专有词汇': 'AI专业词汇',
+      'IELTS高频词汇': 'IELTS高频词'
     }
   }
 
@@ -21,7 +22,7 @@ class VocabularyParser {
       const line = lines[i].trim()
       
       // 检测分类标题
-      if (line.includes('GRE高频词汇') || line.includes('TOEFL高频词汇') || line.includes('AI领域常用及专有词汇')) {
+      if (line.includes('GRE高频词汇') || line.includes('TOEFL高频词汇') || line.includes('AI领域常用及专有词汇') || line.includes('IELTS高频词汇')) {
         currentCategory = this.categories[line] || line
         continue
       }

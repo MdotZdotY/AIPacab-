@@ -156,7 +156,7 @@
   display: block;
   font-size: 32rpx;
   font-weight: bold;
-  color: #333;
+  color: #0D47A1; /* 与论文页标题颜色保持一致 */
   margin-bottom: 8rpx;
 }
 

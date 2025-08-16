@@ -51,7 +51,7 @@
 .word {
   font-size: 52rpx; /* 稍微增大字体 */
   font-weight: bold;
-  color: #0D47A1;
+  color: #0D47A1; /* 与论文页标题颜色保持一致 */
   margin-right: 20rpx;
 }
 

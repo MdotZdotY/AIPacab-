@@ -10,10 +10,7 @@
       <text class="search-icon">🔍</text>
     </view>
 
-    <!-- 添加词汇按钮 -->
-    <view class="add-fab" bindtap="showAddWord" hover-class="fab-active">
-      <text class="fab-plus">+</text>
-    </view>
+
   </view>
 
   <!-- 分类筛选 + 统计信息（同一卡片） -->
@@ -73,86 +70,7 @@
     </view>
   </scroll-view>
 
-  <!-- 添加词汇模态框 -->
-  <view class="modal-overlay" wx:if="{{showAddModal}}" bindtap="hideAddWord">
-    <view class="modal-content" catchtap="stopPropagation">
-      <view class="modal-header">
-        <text class="modal-title">添加新词汇</text>
-        <text class="modal-close" bindtap="hideAddWord">×</text>
-      </view>
-      
-      <view class="form-section">
-        <view class="form-item">
-          <text class="form-label">词汇 *</text>
-          <input class="form-input" 
-                 placeholder="输入英文词汇"
-                 value="{{newWord.word}}"
-                 bindinput="onInputChange"
-                 data-field="word" />
-        </view>
-        
-        <view class="form-item">
-          <text class="form-label">含义 *</text>
-          <input class="form-input" 
-                 placeholder="输入中文含义"
-                 value="{{newWord.meaning}}"
-                 bindinput="onInputChange"
-                 data-field="meaning" />
-        </view>
-        
-        <view class="form-item">
-          <text class="form-label">音标</text>
-          <input class="form-input" 
-                 placeholder="输入音标"
-                 value="{{newWord.pronunciation}}"
-                 bindinput="onInputChange"
-                 data-field="pronunciation" />
-        </view>
-        
-        <view class="form-item">
-          <text class="form-label">例句</text>
-          <textarea class="form-textarea" 
-                    placeholder="输入例句"
-                    value="{{newWord.sentence}}"
-                    bindinput="onInputChange"
-                    data-field="sentence" />
-        </view>
-        
-        <view class="form-item">
-          <text class="form-label">翻译</text>
-          <textarea class="form-textarea" 
-                    placeholder="输入例句翻译"
-                    value="{{newWord.translation}}"
-                    bindinput="onInputChange"
-                    data-field="translation" />
-        </view>
-        
-        <view class="form-item">
-          <text class="form-label">分类</text>
-          <picker class="form-picker" 
-                  range="{{categories}}" 
-                  value="{{categories.indexOf(newWord.category)}}"
-                  bindchange="onCategoryChange">
-            <view class="picker-text">{{newWord.category}}</view>
-          </picker>
-        </view>
-        
-        <view class="form-item">
-          <text class="form-label">论文来源</text>
-          <input class="form-input" 
-                 placeholder="输入论文标题"
-                 value="{{newWord.paperTitle}}"
-                 bindinput="onInputChange"
-                 data-field="paperTitle" />
-        </view>
-      </view>
-      
-      <view class="modal-actions">
-        <button class="modal-btn cancel" bindtap="hideAddWord">取消</button>
-        <button class="modal-btn confirm" bindtap="addWord">添加</button>
-      </view>
-    </view>
-  </view>
+
 
 
 </view>
