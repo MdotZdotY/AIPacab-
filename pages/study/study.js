@@ -19,7 +19,11 @@ Page({
     isTestMode: false,
     isEmptyState: false, // 是否显示空状态
     emptyMessage: '', // 空状态主消息
-    emptySubMessage: '' // 空状态副消息
+    emptySubMessage: '', // 空状态副消息
+    // 用户手动设置的按钮状态标志
+    userSetMeaning: false,
+    userSetTranslation: false,
+    userSetPaperInfo: false
   },
 
   onLoad() {
@@ -82,6 +86,13 @@ Page({
       console.warn('结束学习会话失败:', e)
     }
     console.log('学习页面隐藏，已结束学习会话')
+    
+    // 页面隐藏时重置用户手动设置标志，下次进入时恢复默认状态
+    this.setData({
+      userSetMeaning: false,
+      userSetTranslation: false,
+      userSetPaperInfo: false
+    })
   },
 
 
@@ -185,15 +196,25 @@ Page({
       console.log('- currentWord.englishMeaning:', displayWord.englishMeaning)
       console.log('- currentWord.meaning:', displayWord.meaning)
       
-      this.setData({
+      // 准备要设置的数据
+      const setDataObj = {
         currentWord: displayWord,
         options,
-        // 测试模式下隐藏词义和语义，学习模式和复习模式显示论文来源
-        showMeaning: mode !== 'test',
-        showTranslation: mode !== 'test',
-        showPaperInfo: mode !== 'test',
         isEmptyState: false // 重置空状态
-      })
+      }
+      
+      // 只有当用户未手动设置按钮状态时，才应用默认状态
+      if (!this.data.userSetMeaning) {
+        setDataObj.showMeaning = mode !== 'test'
+      }
+      if (!this.data.userSetTranslation) {
+        setDataObj.showTranslation = mode !== 'test'
+      }
+      if (!this.data.userSetPaperInfo) {
+        setDataObj.showPaperInfo = mode !== 'test'
+      }
+      
+      this.setData(setDataObj)
       console.log('setCurrentWord - 设置完成')
     } else {
       console.log('setCurrentWord - 索引超出范围，currentIndex:', currentIndex, 'words.length:', words.length)
@@ -313,7 +334,11 @@ Page({
       mode,
       modeText,
       currentIndex: 0,
-      isTestMode: mode === 'test'
+      isTestMode: mode === 'test',
+      // 切换模式时重置用户手动设置标志，恢复默认行为
+      userSetMeaning: false,
+      userSetTranslation: false,
+      userSetPaperInfo: false
     })
 
     this.loadWords()
@@ -322,21 +347,24 @@ Page({
   // 显示/隐藏含义
   toggleMeaning() {
     this.setData({
-      showMeaning: !this.data.showMeaning
+      showMeaning: !this.data.showMeaning,
+      userSetMeaning: true // 标记用户已手动设置此状态
     })
   },
 
   // 显示/隐藏翻译
   toggleTranslation() {
     this.setData({
-      showTranslation: !this.data.showTranslation
+      showTranslation: !this.data.showTranslation,
+      userSetTranslation: true // 标记用户已手动设置此状态
     })
   },
 
   // 显示/隐藏论文信息
   togglePaperInfo() {
     this.setData({
-      showPaperInfo: !this.data.showPaperInfo
+      showPaperInfo: !this.data.showPaperInfo,
+      userSetPaperInfo: true // 标记用户已手动设置此状态
     })
   },
 
@@ -653,5 +681,12 @@ Page({
       if (this._statsSession) this._statsSession.endSession()
     } catch (e) {}
     console.log('学习页面卸载')
+    
+    // 页面卸载时重置用户手动设置标志
+    this.setData({
+      userSetMeaning: false,
+      userSetTranslation: false,
+      userSetPaperInfo: false
+    })
   }
 })

@@ -127,14 +127,14 @@
 }
 
 .word-list-inner {
-  padding-bottom: 20rpx;     /* 底部留白 */
+  padding: 0 0 20rpx 0;     /* 只设置底部留白，左右padding为0确保与分类卡片对齐 */
 }
 
 .word-item {
   background: white;
   border-radius: 16rpx;
   padding: 30rpx;
-  margin-bottom: 20rpx;
+  margin: 0 0 20rpx 0;  /* 明确设置左右外边距为0，确保与分类卡片宽度一致 */
   box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
