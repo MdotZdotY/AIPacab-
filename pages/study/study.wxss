@@ -58,7 +58,33 @@
 .pronunciation-icon {
   font-size: 32rpx;
   color: #0D47A1;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
+
+.pronunciation-icon.playing {
+  animation: pulse 1s infinite;
+  color: #4CAF50;
+}
+
+.pronunciation-icon.error {
+  color: #F44336;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5rpx); }
+  75% { transform: translateX(5rpx); }
+}
+
+
 
 .word-meaning {
   font-size: 38rpx; /* 稍微增大字体 */
@@ -190,6 +216,8 @@
   background: #0D47A1;
   color: white;
 }
+
+
 
 /* 导航按钮 */
 .navigation-buttons {

@@ -1,4 +1,0 @@
-<!--pages/debug/debug.wxml-->
-<view class="container">
-  <text>Debug Page</text>
-</view>
