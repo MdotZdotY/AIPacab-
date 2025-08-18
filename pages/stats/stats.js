@@ -466,9 +466,24 @@ Page({
     ctx.fill()
     ctx.stroke()
 
-    // 绘制二维码
+    // 绘制左侧宣传文字
+    const textX = 40
+    const textCenterY = qrY + 40
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.95)'
+    ctx.font = 'bold 14px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+    ctx.textAlign = 'left'
+    ctx.textBaseline = 'middle'
+    ctx.fillText('扫码体验小程序', textX, textCenterY - 10)
+    
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.7)'
+    ctx.font = '12px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+    ctx.textBaseline = 'middle'
+    ctx.fillText('开启你的AI论文词汇学习之旅', textX, textCenterY + 8)
+    ctx.fillText('随时随地，高效学习', textX, textCenterY + 22)
+
+    // 绘制右侧二维码
     const qrSize = 64
-    const qrX = 40
+    const qrX = width - 104  // 从右侧开始计算位置
     const qrCenterY = qrY + 40
     
     // 二维码背景
@@ -485,20 +500,6 @@ Page({
         }
       }
     }
-
-    // 绘制二维码右侧文字
-    const textX = qrX + qrSize + 16
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.95)'
-    ctx.font = 'bold 14px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
-    ctx.textAlign = 'left'
-    ctx.textBaseline = 'middle'
-    ctx.fillText('扫码体验小程序', textX, qrCenterY - 10)
-    
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.7)'
-    ctx.font = '12px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
-    ctx.textBaseline = 'middle'
-    ctx.fillText('开启你的AI论文词汇学习之旅', textX, qrCenterY + 8)
-    ctx.fillText('随时随地，高效学习', textX, qrCenterY + 22)
   },
 
   // 绘制底部品牌信息

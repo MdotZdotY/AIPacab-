@@ -23,7 +23,7 @@
   height: 1000rpx; /* 稍微增加卡片高度，从950rpx增加到1000rpx */
   display: flex;
   flex-direction: column;
-  margin-bottom: 220rpx; /* 保持底部边距 */
+  margin-bottom: 180rpx; /* 减少底部边距，从220rpx减少到180rpx，为词汇内容留出更多空间 */
   box-sizing: border-box; /* 确保padding包含在高度内 */
   width: 100%; /* 确保卡片占满容器宽度 */
   flex-shrink: 0; /* 防止卡片被压缩 */
@@ -41,11 +41,12 @@
 
 .word-text {
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* 改为顶部对齐，让小喇叭与词汇第一行对齐 */
   justify-content: center;
-  margin-bottom: 30rpx; /* 减少底部边距 */
+  margin-bottom: 40rpx; /* 增加底部边距，为长词组留出更多空间 */
   cursor: pointer;
-  min-height: 80rpx; /* 确保词汇区域有固定高度 */
+  min-height: 120rpx; /* 增加最小高度，确保长词组有足够显示空间 */
+  padding: 10rpx 0; /* 添加上下内边距 */
 }
 
 .word {
@@ -53,6 +54,10 @@
   font-weight: bold;
   color: #0D47A1; /* 与论文页标题颜色保持一致 */
   margin-right: 20rpx;
+  line-height: 1.4; /* 增加行高，确保多行文本有足够间距 */
+  text-align: center; /* 确保文本居中对齐 */
+  word-wrap: break-word; /* 允许长单词换行 */
+  max-width: 100%; /* 确保文本不会超出容器宽度 */
 }
 
 .pronunciation-icon {
@@ -60,6 +65,8 @@
   color: #0D47A1;
   transition: all 0.3s ease;
   cursor: pointer;
+  margin-top: -16rpx; /* 再向上调整4rpx，总共向上调整16rpx */
+  flex-shrink: 0; /* 防止小喇叭被压缩 */
 }
 
 .pronunciation-icon.playing {
@@ -188,23 +195,23 @@
 .control-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 15rpx;
+  gap: 10rpx; /* 减少按钮间距，从15rpx减少到10rpx */
   margin-top: auto; /* 推到底部 */
-  margin-bottom: 40rpx; /* 增加底部间距，从20rpx增加到40rpx */
+  margin-bottom: 10rpx; /* 减少底部间距，从20rpx减少到10rpx，让按钮更靠近底部 */
   box-sizing: border-box;
   justify-content: center;
-  padding-top: 20rpx; /* 添加顶部内边距 */
-  padding-bottom: 20rpx; /* 添加底部内边距 */
+  padding-top: 10rpx; /* 减少顶部内边距，从20rpx减少到10rpx */
+  padding-bottom: 10rpx; /* 减少底部内边距，从20rpx减少到10rpx */
 }
 
 .control-btn {
   flex: 1;
-  height: 56rpx; /* 稍微减小按钮高度，从60rpx减小到56rpx */
-  border-radius: 28rpx; /* 相应调整圆角 */
+  height: 48rpx; /* 进一步减小按钮高度，从56rpx减小到48rpx */
+  border-radius: 24rpx; /* 相应调整圆角 */
   border: 2rpx solid #0D47A1;
   background: white;
   color: #0D47A1;
-  font-size: 22rpx;
+  font-size: 20rpx; /* 稍微减小字体大小，从22rpx减小到20rpx */
   box-sizing: border-box;
   min-width: 0;
   display: flex;

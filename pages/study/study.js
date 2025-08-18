@@ -29,9 +29,7 @@ Page({
   },
 
   onLoad() {
-    console.log('onLoad 被调用')
-    console.log('app.globalData:', app.globalData)
-    console.log('app.globalData.words:', app.globalData.words)
+    // 初始化学习页面
 
     // 初始化发音播放器
     this.initAudioPlayer()
@@ -113,7 +111,7 @@ Page({
   },
 
   onShow() {
-    console.log('onShow 被调用')
+    // 页面显示时重新加载数据
     // 页面显示时刷新词汇列表
     this.loadWords()
     if (this.getTabBar && this.getTabBar()) {
@@ -124,7 +122,6 @@ Page({
     try {
       if (this._statsSession) {
         this._statsSession.startSession()
-        console.log('重新启动学习会话计时')
       }
     } catch (e) {
       console.warn('重新启动学习会话失败:', e)
@@ -138,7 +135,7 @@ Page({
     } catch (e) {
       console.warn('结束学习会话失败:', e)
     }
-    console.log('学习页面隐藏，已结束学习会话')
+    // 学习页面隐藏，已结束学习会话
     
     // 页面隐藏时重置用户手动设置标志，下次进入时恢复默认状态
     this.setData({
@@ -153,7 +150,6 @@ Page({
   // 加载词汇
   loadWords() {
     const words = app.globalData.words
-    console.log('总词汇数:', words.length)
     
     // 确保所有词汇都有正确的status字段
     words.forEach(word => {
@@ -172,29 +168,22 @@ Page({
       case 'review':
         // 复习模式：从复习词库中获取词汇
         filteredWords = words.filter(word => word.status === 'review')
-        console.log('复习模式词汇数:', filteredWords.length)
         break
       case 'test':
         // 测试模式：从复习词库中随机获取词汇
         filteredWords = words.filter(word => word.status === 'review')
         this.shuffleArray(filteredWords)
         this.setData({ isTestMode: true })
-        console.log('测试模式词汇数:', filteredWords.length)
         break
       case 'learning':
         // 学习模式：显示学习词库中的词汇
         filteredWords = words.filter(word => word.status === 'learning')
         this.shuffleArray(filteredWords)
-        console.log('学习模式词汇数:', filteredWords.length)
         break
       default:
         // 默认模式：显示学习词库中的词汇
         filteredWords = words.filter(word => word.status === 'learning')
-        console.log('默认模式词汇数:', filteredWords.length)
     }
-
-    console.log('当前模式:', this.data.mode)
-    console.log('筛选后词汇数:', filteredWords.length)
 
     this.setData({
       words: filteredWords,
@@ -213,19 +202,16 @@ Page({
   // 设置当前词汇
   setCurrentWord() {
     const { words, currentIndex, mode } = this.data
-    console.log('setCurrentWord - words.length:', words.length)
-    console.log('setCurrentWord - currentIndex:', currentIndex)
-    console.log('setCurrentWord - mode:', mode)
     
     if (words.length === 0) {
-      console.log('setCurrentWord - 词汇列表为空')
+      // 词汇列表为空
       this.showEmptyState()
       return
     }
     
     if (currentIndex < words.length) {
       const currentWord = words[currentIndex]
-      console.log('setCurrentWord - currentWord:', currentWord)
+      // 设置当前词汇数据
       
       // 处理meaning字段，移除词性信息，只保留纯中文意思
       let displayWord = currentWord
@@ -243,11 +229,7 @@ Page({
       }
 
       // 调试信息
-      console.log('setCurrentWord调试:')
-      console.log('- currentIndex:', currentIndex)
-      console.log('- words.length:', words.length)
-      console.log('- currentWord.englishMeaning:', displayWord.englishMeaning)
-      console.log('- currentWord.meaning:', displayWord.meaning)
+          // 设置当前词汇显示数据
       
       // 准备要设置的数据
       const setDataObj = {
@@ -268,7 +250,7 @@ Page({
       }
       
       this.setData(setDataObj)
-      console.log('setCurrentWord - 设置完成')
+      // 当前词汇设置完成
     } else {
       console.log('setCurrentWord - 索引超出范围，currentIndex:', currentIndex, 'words.length:', words.length)
       // 如果索引超出范围，重置为最后一个词汇
