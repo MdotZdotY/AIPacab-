@@ -288,5 +288,22 @@ Page({
       content: content,
       showCancel: false
     })
+  },
+
+  // 分享给好友
+  onShareAppMessage() {
+    return {
+      title: 'AI Pacab+ - AI 论文阅读，词汇无障碍',
+      path: '/pages/manage/manage',
+      imageUrl: '/images/ai_vocab_app_icon.png'
+    }
+  },
+
+  // 分享到朋友圈
+  onShareTimeline() {
+    return {
+      title: 'AI Pacab+ - AI 论文阅读，词汇无障碍',
+      imageUrl: '/images/小程序二维码.jpg'
+    }
   }
 })

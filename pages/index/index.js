@@ -34,6 +34,11 @@ Page({
   },
 
   onShow() {
+    // 设置标签栏选中状态
+    if (this.getTabBar && this.getTabBar()) {
+      this.getTabBar().setData({ selected: 0 })
+    }
+    
     // 页面显示时刷新数据
     this.loadStats()
     this.loadRecentWords()
@@ -51,7 +56,7 @@ Page({
       totalWords: words.length,
       papersCount: papers.length,
       correctRate: 0, // 保留字段，但不再使用
-      studyDays: localStats.studyDays // 直接使用持久化的学习天数
+      studyDays: localStats.studyDays || 0 // 直接使用持久化的学习天数，确保有默认值
     }
     
     console.log('统计数据:', statsData)
@@ -250,8 +255,17 @@ Page({
   // 分享
   onShareAppMessage() {
     return {
-      title: '我在使用AI Pacab+学习词汇，一起来学习吧！',
-      path: '/pages/index/index'
+      title: 'AI Pacab+ - AI 论文阅读，词汇无障碍',
+      path: '/pages/index/index',
+      imageUrl: '/images/ai_vocab_app_icon.png'
+    }
+  },
+
+  // 分享到朋友圈
+  onShareTimeline() {
+    return {
+      title: 'AI Pacab+ - AI 论文阅读，词汇无障碍',
+      imageUrl: '/images/小程序二维码.jpg'
     }
   },
 

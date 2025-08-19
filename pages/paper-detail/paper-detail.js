@@ -94,8 +94,18 @@ Page({
   onShareAppMessage() {
     const { paper } = this.data
     return {
-      title: paper ? `${paper.title} - AI词汇学习` : 'AI词汇学习 - 论文详情',
-      path: `/pages/paper-detail/paper-detail?id=${paper ? paper.id : ''}`
+      title: paper ? `${paper.title} - AI Pacab+论文学习` : 'AI Pacab+ - 论文详情',
+      path: `/pages/paper-detail/paper-detail?id=${paper ? paper.id : ''}`,
+      imageUrl: '/images/ai_vocab_app_icon.png'
+    }
+  },
+
+  // 分享到朋友圈
+  onShareTimeline() {
+    const { paper } = this.data
+    return {
+      title: paper ? `${paper.title} - AI Pacab+论文学习` : 'AI Pacab+ - 论文学习资源',
+      imageUrl: '/images/小程序二维码.jpg'
     }
   },
 

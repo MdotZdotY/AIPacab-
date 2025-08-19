@@ -91,8 +91,17 @@ Page({
   // 分享
   onShareAppMessage() {
     return {
-      title: 'AI词汇学习 - 论文资源',
-      path: '/pages/papers/papers'
+      title: 'AI Pacab+ - 论文词汇学习资源',
+      path: '/pages/papers/papers',
+      imageUrl: '/images/ai_vocab_app_icon.png'
+    }
+  },
+
+  // 分享到朋友圈
+  onShareTimeline() {
+    return {
+      title: 'AI Pacab+ - 论文词汇学习资源',
+      imageUrl: '/images/小程序二维码.jpg'
     }
   },
 

@@ -35,10 +35,19 @@ Page({
   onLoad() {
     this.loadStats()
     // 尝试加载 uCharts（未安装不阻塞）
+    this.loadUCharts()
+  },
+
+  // 加载uCharts库
+  loadUCharts() {
     try {
       this.UCharts = require('../../libs/ucharts/ucharts.min.js')
       this.setData({ uChartsReady: true })
-    } catch (e) { console.warn('uCharts 未安装，先用简版渲染', e) }
+      console.log('uCharts加载成功')
+    } catch (e) { 
+      console.log('uCharts未安装，使用简版渲染模式')
+      this.setData({ uChartsReady: false })
+    }
   },
 
   onShow() {
@@ -66,9 +75,19 @@ Page({
     const totalStudy = studiedWords.reduce((sum, word) => sum + (word.studyCount || 0), 0)
     
     // 学习时长统计（本地累计）
-    const localStats = (new (require('../../utils/statsManager.js'))()).getStats()
-    const totalStudyHours = Math.round(((localStats.totalStudyMs || 0) / (1000 * 60 * 60)) * 10) / 10
-    const weeklyAvgHours = this.computeWeeklyAverageHours(localStats.perDayMs || {})
+    let localStats, totalStudyHours, weeklyAvgHours
+    try {
+      localStats = (new (require('../../utils/statsManager.js'))()).getStats()
+      totalStudyHours = Math.round(((localStats.totalStudyMs || 0) / (1000 * 60 * 60)) * 10) / 10
+      weeklyAvgHours = this.computeWeeklyAverageHours(localStats.perDayMs || {})
+      
+      console.log('学习时长统计:', { totalStudyHours, weeklyAvgHours, studyDays: localStats.studyDays })
+    } catch (error) {
+      console.warn('学习时长统计加载失败，使用默认值:', error)
+      totalStudyHours = 0
+      weeklyAvgHours = 0
+      localStats = { studyDays: 0 }
+    }
 
     // 论文统计
     const papers = require('../../utils/papersData.js')
@@ -110,11 +129,11 @@ Page({
         masteredWords: masteredWords.length,
         studiedWords: studiedWords.length,
         correctRate: totalStudy > 0 ? Math.round((totalCorrect / totalStudy) * 100) : 0,
-        studyDays: localStats.studyDays,
-        totalStudyHours,
-        weeklyAvgHours,
-        papersRead,
-        totalPapers
+        studyDays: localStats.studyDays || 0,
+        totalStudyHours: totalStudyHours || 0,
+        weeklyAvgHours: weeklyAvgHours || 0,
+        papersRead: papersRead || 0,
+        totalPapers: totalPapers || 0
       },
       categorySummary: summary
     })
@@ -206,13 +225,26 @@ Page({
     const papersRead = (this.data.stats.papersRead || 0)
     const hoursText = Number.isFinite(hours) ? (Math.round(hours * 10) / 10) : 0
     return {
-              title: `我在AI Pacab+中累计学习了${hoursText}小时，掌握了${mastered}个词汇，阅读了${papersRead}篇行业论文。`,
+      title: `我在AI Pacab+中累计学习了${hoursText}小时，掌握了${mastered}个词汇，阅读了${papersRead}篇行业论文。`,
       path: '/pages/index/index',
+      imageUrl: '/images/ai_vocab_app_icon.png',
       success: () => {
         try {
           wx.switchTab({ url: '/pages/stats/stats' })
         } catch (e) {}
       }
+    }
+  },
+
+  // 分享到朋友圈
+  onShareTimeline() {
+    const hours = (this.data.stats.totalStudyHours || 0)
+    const mastered = (this.data.stats.masteredWords || 0)
+    const papersRead = (this.data.stats.papersRead || 0)
+    const hoursText = Number.isFinite(hours) ? (Math.round(hours * 10) / 10) : 0
+    return {
+      title: `AI Pacab+学习成果：${hoursText}小时学习，${mastered}个词汇掌握，${papersRead}篇论文阅读`,
+      imageUrl: '/images/小程序二维码.jpg'
     }
   },
 
@@ -240,7 +272,7 @@ Page({
     }, 200)
   },
 
-  // 精美的分享卡片绘制方法
+    // 精美的分享卡片绘制方法
   drawSimpleTestCard() {
     try {
       // 使用 Canvas 2D API
@@ -290,14 +322,15 @@ Page({
             // 绘制核心数据展示
             this.drawStatsSection(ctx, baseWidth)
 
-            // 绘制二维码区域
-            this.drawQRSection(ctx, baseWidth, baseHeight)
+            // 绘制简化的二维码区域（避免复杂的图片加载）
+            this.drawSimpleQRSection(ctx, baseWidth, baseHeight, canvas)
 
             // 绘制底部品牌信息
             this.drawFooter(ctx, baseWidth, baseHeight)
 
-            console.log('分享卡片绘制完成，准备保存...')
-            this.saveShareCard(canvas)
+            // 等待二维码图片加载完成后再保存Canvas
+            console.log('Canvas渲染完成，等待二维码加载...')
+            this.waitForQRCodeAndSave(canvas)
           } else {
             console.error('Canvas节点获取失败')
             wx.hideLoading()
@@ -318,6 +351,8 @@ Page({
       })
     }
   },
+
+
 
   // 绘制装饰性背景元素
   drawBackgroundDecorations(ctx, width, height) {
@@ -454,9 +489,9 @@ Page({
     ctx.fill()
   },
 
-  // 绘制二维码区域
-  drawQRSection(ctx, width, height) {
-    const qrY = height - 120  // 从height-80调整到height-120，向上移动40像素，为底部文字留出空间
+  // 绘制简化的二维码区域
+  drawSimpleQRSection(ctx, width, height, canvas) {
+    const qrY = height - 120  // 从底部向上120像素
     
     // 绘制二维码区域背景
     ctx.fillStyle = 'rgba(255, 255, 255, 0.1)'
@@ -481,7 +516,7 @@ Page({
     ctx.fillText('开启你的AI论文词汇学习之旅', textX, textCenterY + 8)
     ctx.fillText('随时随地，高效学习', textX, textCenterY + 22)
 
-    // 绘制右侧二维码
+    // 绘制右侧真实的小程序二维码
     const qrSize = 64
     const qrX = width - 104  // 从右侧开始计算位置
     const qrCenterY = qrY + 40
@@ -491,12 +526,208 @@ Page({
     this.roundRect(ctx, qrX, qrCenterY - qrSize/2, qrSize, qrSize, 6)
     ctx.fill()
     
-    // 模拟二维码图案
+    // 绘制真实的小程序二维码图片
+    this.drawRealQRCode(ctx, qrX + 2, qrCenterY - qrSize/2 + 2, qrSize - 4, qrSize - 4, canvas)
+  },
+
+  // 等待二维码加载完成并保存Canvas
+  waitForQRCodeAndSave(canvas) {
+    // 设置一个超时时间，如果二维码加载失败，使用简化版本
+    this.qrTimeout = setTimeout(() => {
+      if (!this.qrCodeLoaded) {
+        console.log('二维码加载超时，使用简化版本')
+        this.qrCodeLoaded = true // 防止重复保存
+        this.saveShareCard(canvas)
+      }
+    }, 3000) // 3秒超时
+    
+    // 标记二维码加载状态
+    this.qrCodeLoaded = false
+  },
+
+  // 绘制简化的二维码图案
+  drawSimpleQRPattern(ctx, x, y, width, height) {
+    ctx.fillStyle = '#1E3A8A'
+    
+    // 绘制外框
+    ctx.fillRect(x, y, width, height)
+    
+    // 绘制内部白色区域
+    ctx.fillStyle = '#FFFFFF'
+    ctx.fillRect(x + 2, y + 2, width - 4, height - 4)
+    
+    // 绘制简单的二维码图案
+    ctx.fillStyle = '#1E3A8A'
+    const cellSize = 4
+    const cells = Math.floor((width - 4) / cellSize)
+    
+    for (let i = 0; i < cells; i++) {
+      for (let j = 0; j < cells; j++) {
+        if ((i + j) % 3 === 0 || (i === 0 && j < 3) || (j === 0 && i < 3)) {
+          ctx.fillRect(x + 2 + i * cellSize, y + 2 + j * cellSize, cellSize - 1, cellSize - 1)
+        }
+      }
+    }
+  },
+
+  // 绘制二维码区域（原版本，暂时保留）
+  drawQRSection(ctx, width, height, qrImage = null) {
+    // 原版本代码暂时保留，但不再使用
+    console.log('使用原版本二维码绘制方法')
+  },
+
+  // 绘制实际的小程序二维码
+  drawRealQRCode(ctx, x, y, width, height, canvas) {
+    console.log('开始绘制真实二维码，参数:', { x, y, width, height })
+    
+    // 直接尝试加载真实的二维码图片
+    this.loadRealQRCodeImage(ctx, x, y, width, height, canvas)
+  },
+
+  // 加载真实的二维码图片
+  loadRealQRCodeImage(ctx, x, y, width, height, canvas) {
+    console.log('开始加载真实二维码图片...')
+    console.log('绘制参数:', { x, y, width, height })
+    
+    // 使用FileSystemManager读取图片文件并转换为base64
+    const fs = wx.getFileSystemManager()
+    try {
+      // 读取图片文件
+      const filePath = '/images/小程序二维码.jpg'
+      fs.readFile({
+        filePath: filePath,
+        encoding: 'base64',
+        success: (res) => {
+          console.log('读取图片文件成功')
+          
+          try {
+            // 创建图片对象并使用base64数据
+            const img = canvas.createImage()
+            img.onload = () => {
+              ctx.drawImage(img, x, y, width, height)
+              console.log('真实二维码绘制成功！使用base64方法')
+              console.log('绘制完成，坐标:', x, y, '尺寸:', width, 'x', height)
+              
+              // 二维码加载成功，清除超时并保存Canvas
+              this.qrCodeLoaded = true
+              if (this.qrTimeout) {
+                clearTimeout(this.qrTimeout)
+                this.qrTimeout = null
+              }
+              console.log('分享卡片绘制完成，准备保存...')
+              this.saveShareCard(canvas)
+            }
+            img.onerror = (err) => {
+              console.error('图片base64加载失败:', err)
+              console.log('使用简化二维码作为备用方案')
+              this.drawSimpleQRPattern(ctx, x, y, width, height)
+              
+              // 图片加载失败，清除超时并使用简化版本保存Canvas
+              this.qrCodeLoaded = true
+              if (this.qrTimeout) {
+                clearTimeout(this.qrTimeout)
+                this.qrTimeout = null
+              }
+              console.log('分享卡片绘制完成（简化版），准备保存...')
+              this.saveShareCard(canvas)
+            }
+            // 使用base64数据
+            img.src = 'data:image/jpeg;base64,' + res.data
+            
+          } catch (error) {
+            console.error('Canvas图片处理失败:', error)
+            this.fallbackToSimpleQR(ctx, x, y, width, height, canvas)
+          }
+        },
+        fail: (err) => {
+          console.error('读取图片文件失败:', err)
+          this.fallbackToSimpleQR(ctx, x, y, width, height, canvas)
+        }
+      })
+    } catch (error) {
+      console.error('文件系统操作失败:', error)
+      this.fallbackToSimpleQR(ctx, x, y, width, height, canvas)
+    }
+  },
+
+  // 回退到简化二维码
+  fallbackToSimpleQR(ctx, x, y, width, height, canvas) {
+    console.log('使用简化二维码作为备用方案')
+    this.drawSimpleQRPattern(ctx, x, y, width, height)
+    
+    // 清除超时并使用简化版本保存Canvas
+    this.qrCodeLoaded = true
+    if (this.qrTimeout) {
+      clearTimeout(this.qrTimeout)
+      this.qrTimeout = null
+    }
+    console.log('分享卡片绘制完成（简化版），准备保存...')
+    this.saveShareCard(canvas)
+  },
+
+  // 尝试替代的加载方法
+  tryAlternativeLoading(ctx, x, y, width, height, canvas) {
+    console.log('尝试替代加载方法...')
+    
+    // 尝试不同的图片路径
+    const paths = [
+      '../../images/小程序二维码.jpg',
+      '../images/小程序二维码.jpg',
+      './images/小程序二维码.jpg',
+      'images/小程序二维码.jpg'
+    ]
+    
+    this.tryPath(ctx, x, y, width, height, paths, 0, canvas)
+  },
+
+  // 尝试不同的路径
+  tryPath(ctx, x, y, width, height, paths, index, canvas) {
+    if (index >= paths.length) {
+      console.log('所有路径都尝试失败，绘制默认二维码')
+      this.drawDefaultQRCode(ctx, x, y, width, height)
+      return
+    }
+
+    const currentPath = paths[index]
+    console.log('尝试路径:', currentPath)
+
+    wx.getImageInfo({
+      src: currentPath,
+      success: (res) => {
+        console.log('路径成功:', currentPath, res)
+        
+        try {
+          // 直接使用Canvas的drawImage方法绘制图片
+          ctx.drawImage(res.path, x, y, width, height)
+          console.log('真实二维码绘制成功！路径:', currentPath)
+          
+        } catch (error) {
+          console.error('Canvas.drawImage绘制失败，尝试下一个路径:', currentPath, error)
+          this.tryPath(ctx, x, y, width, height, paths, index + 1, canvas)
+        }
+      },
+      fail: (err) => {
+        console.error('路径失败:', currentPath, err)
+        this.tryPath(ctx, x, y, width, height, paths, index + 1, canvas)
+      }
+    })
+  },
+
+
+
+
+
+
+
+
+
+  // 绘制默认二维码图案（备用方案）
+  drawDefaultQRCode(ctx, x, y, width, height) {
     ctx.fillStyle = '#1E3A8A'
     for (let i = 0; i < 8; i++) {
       for (let j = 0; j < 8; j++) {
         if (Math.random() > 0.5) {
-          ctx.fillRect(qrX + i * 8, qrCenterY - qrSize/2 + j * 8, 6, 6)
+          ctx.fillRect(x + i * 8, y + j * 8, 6, 6)
         }
       }
     }

@@ -47,5 +47,6 @@
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
-  "lazyCodeLoading": "requiredComponents"
+  "lazyCodeLoading": "requiredComponents",
+  "icon": "/images/ai_vocab_app_icon.png"
 }
