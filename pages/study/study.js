@@ -137,6 +137,9 @@ Page({
     }
     // 学习页面隐藏，已结束学习会话
     
+    // 保存当前学习状态
+    this.saveCurrentProgress()
+    
     // 页面隐藏时重置用户手动设置标志，下次进入时恢复默认状态
     this.setData({
       userSetMeaning: false,
@@ -1451,6 +1454,14 @@ Page({
       if (wordIndex !== -1) {
         app.globalData.words[wordIndex].status = 'mastered'
         console.log(`词汇 "${currentWord.word}" 答题正确，已移至熟知词库`)
+        
+        // 立即保存熟知词库状态变更
+        try {
+          wx.setStorageSync('words', app.globalData.words)
+          console.log('熟知词库状态已保存到本地存储')
+        } catch (e) {
+          console.error('保存熟知词库状态失败:', e)
+        }
       } else {
         console.log(`词汇 "${currentWord.word}" 在全局词汇列表中未找到`)
       }
@@ -1529,6 +1540,14 @@ Page({
         console.log('学习模式：记录学习事件')
         statsManager.recordStudyEvent(1)
       }
+      
+      // 立即保存学习进度到本地存储
+      try {
+        wx.setStorageSync('words', app.globalData.words)
+        console.log('学习进度已保存到本地存储')
+      } catch (e) {
+        console.error('保存学习进度失败:', e)
+      }
     }
   },
 
@@ -1551,6 +1570,14 @@ Page({
       word.weeklyStudyCount = 0 // 重置周学习次数
       console.log(`词汇 "${word.word}" 已移至复习词库`)
       
+      // 立即保存复习词库状态变更
+      try {
+        wx.setStorageSync('words', app.globalData.words)
+        console.log('复习词库状态已保存到本地存储')
+      } catch (e) {
+        console.error('保存复习词库状态失败:', e)
+      }
+      
       // 注意：不在这里重新加载词汇列表，避免重置进度
       // 词汇状态变化会在下次学习时生效
     } else {
@@ -1558,6 +1585,14 @@ Page({
       // 增加周学习次数
       word.weeklyStudyCount = (word.weeklyStudyCount || 0) + 1
       console.log(`词汇 "${word.word}" 周学习次数增加到:`, word.weeklyStudyCount)
+      
+      // 也要保存周学习次数的增加
+      try {
+        wx.setStorageSync('words', app.globalData.words)
+        console.log('周学习次数已保存到本地存储')
+      } catch (e) {
+        console.error('保存周学习次数失败:', e)
+      }
     }
   },
 
@@ -1682,6 +1717,16 @@ Page({
     })
   },
 
+  // 保存当前学习进度
+  saveCurrentProgress() {
+    try {
+      wx.setStorageSync('words', app.globalData.words)
+      console.log('当前学习进度已保存到本地存储')
+    } catch (e) {
+      console.error('保存当前进度失败:', e)
+    }
+  },
+
   // 阻止事件冒泡
   stopPropagation() {
     // 空函数，用于阻止事件冒泡
@@ -1694,6 +1739,9 @@ Page({
       if (this._statsSession) this._statsSession.endSession()
     } catch (e) {}
     console.log('学习页面卸载')
+    
+    // 保存当前学习状态
+    this.saveCurrentProgress()
     
     // 保存发音历史记录到本地存储
     try {

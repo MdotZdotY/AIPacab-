@@ -49,17 +49,26 @@ App({
   // 从本地存储加载词汇数据
   loadVocabularyData() {
     try {
-      // 强制使用内置词汇数据，忽略本地存储
-      console.log('强制使用内置词汇数据，共', this.globalData.words.length, '个词汇')
-      this.globalData.words = this.normalizeCategories(this.globalData.words)
-      // 保存内置数据到本地存储
-      wx.setStorageSync('words', this.globalData.words)
-      console.log('已保存内置词汇数据到本地存储')
+      // 优先从本地存储加载用户数据
+      const savedWords = wx.getStorageSync('words')
+      if (savedWords && Array.isArray(savedWords) && savedWords.length > 0) {
+        console.log('从本地存储加载词汇数据，共', savedWords.length, '个词汇')
+        this.globalData.words = this.normalizeCategories(savedWords)
+        console.log('成功加载用户学习进度')
+      } else {
+        // 只有在没有本地数据时才使用默认数据
+        console.log('本地存储为空，使用默认词汇数据，共', this.globalData.words.length, '个词汇')
+        this.globalData.words = this.normalizeCategories(this.globalData.words)
+        // 保存默认数据到本地存储
+        wx.setStorageSync('words', this.globalData.words)
+        console.log('已保存默认词汇数据到本地存储')
+      }
     } catch (error) {
       console.error('加载词汇数据失败:', error)
-      // 如果加载失败，确保有默认数据
+      // 出错时使用默认数据，但不覆盖可能存在的本地数据
       if (!this.globalData.words || this.globalData.words.length === 0) {
-        console.log('使用内置默认词汇数据')
+        console.log('使用内置默认词汇数据作为备用')
+        this.globalData.words = this.normalizeCategories(this.globalData.words)
       }
     }
   },
