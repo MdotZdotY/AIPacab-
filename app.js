@@ -22,6 +22,9 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
+    // 应用启动时自动执行数据加载和迁移（如果需要）
+    this.loadApplicationData()
+
     // 检查是否需要重置词库（已禁用，保持默认词汇数据）
     // const RESET_FLAG = 'vocab_reset_2025_08_09'
     // try {
@@ -46,29 +49,364 @@ App({
     })
   },
 
-  // 从本地存储加载词汇数据
-  loadVocabularyData() {
+  // 加载完整应用数据（词汇 + 论文 + 用户进度）
+  loadApplicationData() {
     try {
-      // 优先从本地存储加载用户数据
-      const savedWords = wx.getStorageSync('words')
-      if (savedWords && Array.isArray(savedWords) && savedWords.length > 0) {
-        console.log('从本地存储加载词汇数据，共', savedWords.length, '个词汇')
-        this.globalData.words = this.normalizeCategories(savedWords)
-        console.log('成功加载用户学习进度')
+      console.log('开始加载完整应用数据...')
+      
+      // 获取当前应用版本和内置数据
+      const currentAppVersion = '1.1.0'
+      const currentVocabularyData = this.globalData.words
+      const currentPapersData = require('./utils/papersData.js')
+      
+      // 加载已保存的版本信息
+      const savedVersionInfo = wx.getStorageSync('version_info') || {}
+      const needsDataUpdate = this.checkIfDataUpdateNeeded(savedVersionInfo, currentAppVersion)
+      
+      if (needsDataUpdate) {
+        console.log('检测到数据需要更新，开始迁移...')
+        this.performDataMigration(currentAppVersion, currentVocabularyData, currentPapersData)
       } else {
-        // 只有在没有本地数据时才使用默认数据
-        console.log('本地存储为空，使用默认词汇数据，共', this.globalData.words.length, '个词汇')
-        this.globalData.words = this.normalizeCategories(this.globalData.words)
-        // 保存默认数据到本地存储
-        wx.setStorageSync('words', this.globalData.words)
-        console.log('已保存默认词汇数据到本地存储')
+        console.log('数据版本一致，直接加载现有数据...')
+        this.loadExistingData()
       }
+      
     } catch (error) {
-      console.error('加载词汇数据失败:', error)
-      // 出错时使用默认数据，但不覆盖可能存在的本地数据
-      if (!this.globalData.words || this.globalData.words.length === 0) {
-        console.log('使用内置默认词汇数据作为备用')
-        this.globalData.words = this.normalizeCategories(this.globalData.words)
+      console.error('应用数据加载失败:', error)
+      this.handleDataLoadFailure()
+    }
+  },
+
+  // 检查是否需要数据更新
+  checkIfDataUpdateNeeded(savedVersionInfo, currentVersion) {
+    if (!savedVersionInfo.appVersion) {
+      console.log('首次使用，需要初始化数据')
+      return true
+    }
+    
+    const needsUpdate = this.compareVersions(currentVersion, savedVersionInfo.appVersion) > 0
+    console.log('版本比较结果:', savedVersionInfo.appVersion, '->', currentVersion, '需要更新:', needsUpdate)
+    return needsUpdate
+  },
+
+  // 版本比较函数
+  compareVersions(version1, version2) {
+    const v1Parts = version1.split('.').map(Number)
+    const v2Parts = version2.split('.').map(Number)
+    
+    for (let i = 0; i < Math.max(v1Parts.length, v2Parts.length); i++) {
+      const v1Part = v1Parts[i] || 0
+      const v2Part = v2Parts[i] || 0
+      
+      if (v1Part > v2Part) return 1
+      if (v1Part < v2Part) return -1
+    }
+    return 0
+  },
+
+  // 执行数据迁移
+  performDataMigration(newVersion, newVocabularyData, newPapersData) {
+    console.log('开始执行数据迁移...')
+    
+    try {
+      // 1. 创建数据备份
+      this.createDataBackup()
+      
+      // 2. 加载现有用户进度
+      const savedUserProgress = this.loadAllUserProgress()
+      console.log('已加载用户进度数据')
+      
+      // 3. 合并新数据与用户进度
+      const mergedVocabularyData = this.mergeVocabularyWithProgress(newVocabularyData, savedUserProgress.vocabulary)
+      console.log('词汇数据合并完成，总数:', mergedVocabularyData.length)
+      
+      // 4. 保存合并后的数据
+      this.saveAllApplicationData(mergedVocabularyData, newPapersData, savedUserProgress, newVersion)
+      
+      // 5. 更新全局数据
+      this.globalData.words = mergedVocabularyData
+      this.globalData.papers = newPapersData
+      
+      console.log('数据迁移完成')
+      
+    } catch (error) {
+      console.error('数据迁移失败:', error)
+      // 迁移失败时尝试恢复备份
+      this.handleMigrationFailure()
+    }
+  },
+
+  // 加载现有数据（无需迁移时）
+  loadExistingData() {
+    try {
+      const savedWords = wx.getStorageSync('words') || []
+      const papersData = require('./utils/papersData.js')
+      
+      // 重要：即使不需要迁移，也要合并用户进度数据
+      // 因为用户进度可能保存在独立的存储中
+      const vocabularyProgress = wx.getStorageSync('user_vocabulary_progress') || {}
+      
+      if (Object.keys(vocabularyProgress).length > 0) {
+        console.log('发现独立的用户进度数据，正在合并...')
+        // 使用相同的合并逻辑确保用户进度不丢失
+        const mergedWords = this.mergeVocabularyWithProgress(savedWords, vocabularyProgress)
+        this.globalData.words = this.normalizeCategories(mergedWords)
+        
+        // 保存合并后的数据（确保数据一致性）
+        wx.setStorageSync('words', mergedWords)
+        console.log('用户进度数据合并完成')
+      } else {
+        this.globalData.words = this.normalizeCategories(savedWords)
+      }
+      
+      this.globalData.papers = papersData
+      
+      console.log('现有数据加载完成，词汇数:', this.globalData.words.length, '论文数:', papersData.length)
+      
+      // 统计已掌握词汇数量用于验证
+      const masteredCount = this.globalData.words.filter(word => word.status === 'mastered').length
+      console.log('加载后已掌握词汇数量:', masteredCount)
+      
+    } catch (error) {
+      console.error('加载现有数据失败:', error)
+      this.handleDataLoadFailure()
+    }
+  },
+
+  // 加载所有用户进度数据
+  loadAllUserProgress() {
+    return {
+      vocabulary: wx.getStorageSync('user_vocabulary_progress') || {},
+      papers: wx.getStorageSync('user_paper_progress') || {
+        readPaperIds: [],
+        paperReadHistory: {}
+      },
+      stats: wx.getStorageSync('user_learning_stats') || {
+        studyDays: 0,
+        studiedWordEvents: 0,
+        totalStudyMs: 0,
+        perDayMs: {},
+        readPaperIds: []
+      }
+    }
+  },
+
+  // 合并词汇数据与用户进度
+  mergeVocabularyWithProgress(newVocabularyData, vocabularyProgress) {
+    return newVocabularyData.map(word => {
+      const progress = vocabularyProgress[word.id] || {
+        studyCount: 0,
+        correctCount: 0,
+        status: 'learning',
+        weeklyStudyCount: 0,
+        lastStudyTime: null
+      }
+      
+      // 重要：确保用户进度数据优先级高于新词汇数据的默认值
+      return {
+        ...word,
+        // 用户进度相关字段优先使用保存的值
+        studyCount: progress.studyCount,
+        correctCount: progress.correctCount,
+        status: progress.status,
+        weeklyStudyCount: progress.weeklyStudyCount,
+        lastStudyTime: progress.lastStudyTime
+      }
+    })
+  },
+
+  // 保存所有应用数据
+  saveAllApplicationData(vocabularyData, papersData, userProgress, version) {
+    try {
+      console.log('开始保存所有应用数据...')
+      
+      // 保存词汇数据（兼容现有代码）
+      wx.setStorageSync('words', vocabularyData)
+      
+      // 保存用户进度数据（分离存储）
+      wx.setStorageSync('user_vocabulary_progress', this.extractVocabularyProgress(vocabularyData))
+      wx.setStorageSync('user_paper_progress', userProgress.papers)
+      wx.setStorageSync('user_learning_stats', userProgress.stats)
+      
+      // 保存版本信息
+      wx.setStorageSync('version_info', {
+        appVersion: version,
+        dataVersion: {
+          vocabulary: version,
+          papers: version
+        },
+        lastUpdate: new Date().toISOString()
+      })
+      
+      console.log('所有应用数据保存完成')
+      
+    } catch (error) {
+      console.error('保存应用数据失败:', error)
+      throw error
+    }
+  },
+
+  // 从词汇数据中提取用户进度
+  extractVocabularyProgress(vocabularyData) {
+    const progress = {}
+    vocabularyData.forEach(word => {
+      progress[word.id] = {
+        studyCount: word.studyCount || 0,
+        correctCount: word.correctCount || 0,
+        status: word.status || 'learning',
+        weeklyStudyCount: word.weeklyStudyCount || 0,
+        lastStudyTime: word.lastStudyTime || null
+      }
+    })
+    return progress
+  },
+
+  // 创建数据备份
+  createDataBackup() {
+    try {
+      const backup = {
+        timestamp: Date.now(),
+        appVersion: wx.getStorageSync('version_info')?.appVersion || 'unknown',
+        data: {
+          words: wx.getStorageSync('words') || [],
+          vocabularyProgress: wx.getStorageSync('user_vocabulary_progress') || {},
+          paperProgress: wx.getStorageSync('user_paper_progress') || {},
+          learningStats: wx.getStorageSync('user_learning_stats') || {}
+        }
+      }
+      
+      const existingBackups = wx.getStorageSync('data_backups') || []
+      existingBackups.unshift(backup)
+      
+      // 只保留最近5个备份
+      if (existingBackups.length > 5) {
+        existingBackups.splice(5)
+      }
+      
+      wx.setStorageSync('data_backups', existingBackups)
+      console.log('数据备份创建成功')
+      
+    } catch (e) {
+      console.error('创建数据备份失败:', e)
+    }
+  },
+
+  // 处理数据加载失败
+  handleDataLoadFailure() {
+    console.log('使用默认数据作为备用方案')
+    this.globalData.words = this.normalizeCategories(this.globalData.words)
+    
+    try {
+      const papersData = require('./utils/papersData.js')
+      this.globalData.papers = papersData
+    } catch (e) {
+      console.error('加载论文数据失败:', e)
+      this.globalData.papers = []
+    }
+  },
+
+  // 处理迁移失败
+  handleMigrationFailure() {
+    console.log('尝试从备份恢复数据...')
+    try {
+      const backups = wx.getStorageSync('data_backups') || []
+      if (backups.length > 0) {
+        const latestBackup = backups[0]
+        wx.setStorageSync('words', latestBackup.data.words)
+        wx.setStorageSync('user_vocabulary_progress', latestBackup.data.vocabularyProgress)
+        wx.setStorageSync('user_paper_progress', latestBackup.data.paperProgress)
+        wx.setStorageSync('user_learning_stats', latestBackup.data.learningStats)
+        
+        this.globalData.words = latestBackup.data.words
+        console.log('从备份恢复数据成功')
+      } else {
+        throw new Error('没有可用备份')
+      }
+    } catch (e) {
+      console.error('从备份恢复失败:', e)
+      this.handleDataLoadFailure()
+    }
+  },
+
+  // 保持原有方法名以兼容现有代码
+  loadVocabularyData() {
+    console.log('调用兼容性方法，重定向到完整数据加载')
+    this.loadApplicationData()
+  },
+
+  // 全局备份管理器
+  backupManager: {
+    // 恢复数据备份
+    restoreFromBackup(backupIndex = 0) {
+      try {
+        const backups = wx.getStorageSync('data_backups') || []
+        if (backups.length === 0 || !backups[backupIndex]) {
+          throw new Error('没有可用的备份')
+        }
+        
+        const backup = backups[backupIndex]
+        
+        // 恢复所有数据
+        wx.setStorageSync('words', backup.data.words)
+        wx.setStorageSync('user_vocabulary_progress', backup.data.vocabularyProgress)
+        wx.setStorageSync('user_paper_progress', backup.data.paperProgress)
+        wx.setStorageSync('user_learning_stats', backup.data.learningStats)
+        
+        // 更新全局数据
+        const app = getApp()
+        app.globalData.words = backup.data.words
+        
+        console.log('数据恢复成功，恢复到版本:', backup.appVersion)
+        return true
+        
+      } catch (e) {
+        console.error('恢复数据失败:', e)
+        return false
+      }
+    },
+
+    // 获取备份列表
+    getBackupList() {
+      try {
+        const backups = wx.getStorageSync('data_backups') || []
+        return backups.map((backup, index) => ({
+          index,
+          timestamp: backup.timestamp,
+          appVersion: backup.appVersion,
+          formatTime: new Date(backup.timestamp).toLocaleString(),
+          dataSize: this.calculateBackupSize(backup.data)
+        }))
+      } catch (e) {
+        console.error('获取备份列表失败:', e)
+        return []
+      }
+    },
+
+    // 计算备份数据大小
+    calculateBackupSize(data) {
+      try {
+        const size = JSON.stringify(data).length
+        if (size < 1024) return size + 'B'
+        if (size < 1024 * 1024) return Math.round(size / 1024) + 'KB'
+        return Math.round(size / (1024 * 1024)) + 'MB'
+      } catch (e) {
+        return '未知'
+      }
+    },
+
+    // 删除指定备份
+    deleteBackup(backupIndex) {
+      try {
+        const backups = wx.getStorageSync('data_backups') || []
+        if (backupIndex >= 0 && backupIndex < backups.length) {
+          backups.splice(backupIndex, 1)
+          wx.setStorageSync('data_backups', backups)
+          return true
+        }
+        return false
+      } catch (e) {
+        console.error('删除备份失败:', e)
+        return false
       }
     }
   },

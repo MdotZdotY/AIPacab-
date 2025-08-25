@@ -5,7 +5,7 @@
     "pages/manage/manage",
     "pages/stats/stats",
     "pages/import/import",
-    
+
     "pages/papers/papers",
     "pages/paper-detail/paper-detail"
   ],
@@ -47,6 +47,5 @@
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
-  "lazyCodeLoading": "requiredComponents",
-  "icon": "/images/ai_vocab_app_icon.png"
+  "lazyCodeLoading": "requiredComponents"
 }

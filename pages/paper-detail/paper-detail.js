@@ -65,9 +65,13 @@ Page({
     if (paper && paper.url) {
       // 立即记一次阅读事件（按按钮即认为阅读），避免用户确认弹窗被误操作导致未计数
       try {
+        // 1. 记录到统计管理器（原有逻辑）
         const StatsManager = require('../../utils/statsManager.js')
         const stats = new StatsManager()
         stats.recordPaperRead(paper.id)
+        
+        // 2. 记录到独立的论文进度存储
+        this.recordPaperReadProgress(paper.id)
       } catch (e) { console.warn('记录论文阅读失败', e) }
       wx.showModal({
         title: '打开链接',
@@ -87,6 +91,54 @@ Page({
           }
         }
       })
+    }
+  },
+
+  // 记录论文阅读进度到独立存储
+  recordPaperReadProgress(paperId) {
+    try {
+      console.log('记录论文阅读进度:', paperId)
+      
+      // 获取现有的论文进度数据
+      const paperProgress = wx.getStorageSync('user_paper_progress') || {
+        readPaperIds: [],
+        paperReadHistory: {}
+      }
+      
+      // 更新已读论文列表
+      if (!paperProgress.readPaperIds.includes(paperId)) {
+        paperProgress.readPaperIds.push(paperId)
+        console.log('添加新的已读论文:', paperId)
+      }
+      
+      // 更新详细阅读历史
+      if (!paperProgress.paperReadHistory[paperId]) {
+        paperProgress.paperReadHistory[paperId] = {
+          firstReadTime: new Date().toISOString(),
+          readCount: 1,
+          lastReadTime: new Date().toISOString()
+        }
+        console.log('创建论文阅读历史记录:', paperId)
+      } else {
+        paperProgress.paperReadHistory[paperId].readCount++
+        paperProgress.paperReadHistory[paperId].lastReadTime = new Date().toISOString()
+        console.log('更新论文阅读次数:', paperId, '次数:', paperProgress.paperReadHistory[paperId].readCount)
+      }
+      
+      // 保存更新后的论文进度
+      wx.setStorageSync('user_paper_progress', paperProgress)
+      
+      // 同时更新学习统计数据的备份
+      const StatsManager = require('../../utils/statsManager.js')
+      const statsManager = new StatsManager()
+      const currentStats = statsManager.getStats()
+      wx.setStorageSync('user_learning_stats', currentStats)
+      
+      console.log('论文阅读进度已保存完成')
+      console.log('- 已读论文总数:', paperProgress.readPaperIds.length)
+      
+    } catch (e) {
+      console.error('保存论文阅读进度失败:', e)
     }
   },
 

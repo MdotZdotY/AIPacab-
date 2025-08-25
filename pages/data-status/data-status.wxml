@@ -1,0 +1,188 @@
+<!--pages/data-status/data-status.wxml-->
+<view class="container">
+  <!-- 页面标题 -->
+  <view class="page-header">
+    <text class="header-title">📊 数据状态管理</text>
+    <text class="header-subtitle">查看和管理您的学习数据</text>
+  </view>
+
+  <!-- 数据概览 -->
+  <view class="section">
+    <view class="section-title">
+      <text class="title-icon">📈</text>
+      <text class="title-text">数据概览</text>
+      <view class="refresh-btn" bindtap="refreshStatus">🔄</view>
+    </view>
+    
+    <view class="stats-grid">
+      <view class="stat-item">
+        <text class="stat-number">{{dataStatus.vocabularyCount}}</text>
+        <text class="stat-label">词汇总数</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-number">{{dataStatus.userProgressCount}}</text>
+        <text class="stat-label">学习进度</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-number">{{dataStatus.papersCount}}</text>
+        <text class="stat-label">论文总数</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-number">{{dataStatus.readPapersCount}}</text>
+        <text class="stat-label">已读论文</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 版本信息 -->
+  <view class="section">
+    <view class="section-title">
+      <text class="title-icon">🏷️</text>
+      <text class="title-text">版本信息</text>
+    </view>
+    
+    <view class="info-list">
+      <view class="info-item">
+        <text class="info-label">应用版本</text>
+        <text class="info-value">{{dataStatus.appVersion}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">数据版本</text>
+        <text class="info-value">{{dataStatus.dataVersion}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">最后更新</text>
+        <text class="info-value">{{dataStatus.lastUpdate}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 存储使用情况 -->
+  <view class="section">
+    <view class="section-title">
+      <text class="title-icon">💾</text>
+      <text class="title-text">存储使用</text>
+    </view>
+    
+    <view class="storage-list">
+      <view class="storage-item">
+        <text class="storage-label">词汇数据</text>
+        <text class="storage-size">{{storageInfo.vocabularyStorage}}</text>
+      </view>
+      <view class="storage-item">
+        <text class="storage-label">学习进度</text>
+        <text class="storage-size">{{storageInfo.progressStorage}}</text>
+      </view>
+      <view class="storage-item">
+        <text class="storage-label">论文进度</text>
+        <text class="storage-size">{{storageInfo.paperStorage}}</text>
+      </view>
+      <view class="storage-item">
+        <text class="storage-label">学习统计</text>
+        <text class="storage-size">{{storageInfo.statsStorage}}</text>
+      </view>
+      <view class="storage-item">
+        <text class="storage-label">数据备份</text>
+        <text class="storage-size">{{storageInfo.backupStorage}}</text>
+      </view>
+      <view class="storage-item total">
+        <text class="storage-label">总计使用</text>
+        <text class="storage-size">{{storageInfo.totalStorage}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 数据完整性 -->
+  <view class="section">
+    <view class="section-title">
+      <text class="title-icon">🔍</text>
+      <text class="title-text">数据完整性</text>
+    </view>
+    
+    <view class="integrity-list">
+      <view class="integrity-item {{dataIntegrity.vocabularyValid ? 'valid' : 'invalid'}}">
+        <text class="integrity-icon">{{dataIntegrity.vocabularyValid ? '✅' : '❌'}}</text>
+        <text class="integrity-label">词汇数据</text>
+        <text class="integrity-status">{{dataIntegrity.vocabularyValid ? '正常' : '异常'}}</text>
+      </view>
+      <view class="integrity-item {{dataIntegrity.progressValid ? 'valid' : 'invalid'}}">
+        <text class="integrity-icon">{{dataIntegrity.progressValid ? '✅' : '❌'}}</text>
+        <text class="integrity-label">学习进度</text>
+        <text class="integrity-status">{{dataIntegrity.progressValid ? '正常' : '异常'}}</text>
+      </view>
+      <view class="integrity-item {{dataIntegrity.paperValid ? 'valid' : 'invalid'}}">
+        <text class="integrity-icon">{{dataIntegrity.paperValid ? '✅' : '❌'}}</text>
+        <text class="integrity-label">论文数据</text>
+        <text class="integrity-status">{{dataIntegrity.paperValid ? '正常' : '异常'}}</text>
+      </view>
+      <view class="integrity-item {{dataIntegrity.statsValid ? 'valid' : 'invalid'}}">
+        <text class="integrity-icon">{{dataIntegrity.statsValid ? '✅' : '❌'}}</text>
+        <text class="integrity-label">统计数据</text>
+        <text class="integrity-status">{{dataIntegrity.statsValid ? '正常' : '异常'}}</text>
+      </view>
+    </view>
+
+    <!-- 数据问题提示 -->
+    <view wx:if="{{dataIntegrity.issues.length > 0}}" class="issues-alert">
+      <text class="alert-title">⚠️ 发现数据问题：</text>
+      <view wx:for="{{dataIntegrity.issues}}" wx:key="index" class="issue-item">
+        <text>• {{item}}</text>
+      </view>
+      <view class="fix-btn" bindtap="fixDataIssues">
+        <text>🔧 修复问题</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 备份管理 -->
+  <view class="section">
+    <view class="section-title">
+      <text class="title-icon">💼</text>
+      <text class="title-text">备份管理</text>
+    </view>
+    
+    <view class="backup-info">
+      <view class="backup-status">
+        <text class="backup-icon">{{dataStatus.hasBackups ? '✅' : '⚠️'}}</text>
+        <text class="backup-text">
+          {{dataStatus.hasBackups ? '已有 ' + dataStatus.backupCount + ' 个备份' : '暂无数据备份'}}
+        </text>
+      </view>
+      
+      <view class="backup-actions">
+        <view class="backup-btn" bindtap="viewBackups" wx:if="{{dataStatus.hasBackups}}">
+          <text>📋 查看备份</text>
+        </view>
+        <view class="backup-btn" bindtap="createBackup">
+          <text>📦 创建备份</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 数据管理操作 -->
+  <view class="section">
+    <view class="section-title">
+      <text class="title-icon">⚙️</text>
+      <text class="title-text">数据管理</text>
+    </view>
+    
+    <view class="action-buttons">
+      <view class="action-btn primary" bindtap="exportData">
+        <text class="btn-icon">📤</text>
+        <text class="btn-text">导出数据</text>
+      </view>
+      <view class="action-btn secondary" bindtap="clearCache">
+        <text class="btn-icon">🗑️</text>
+        <text class="btn-text">清理缓存</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部说明 -->
+  <view class="footer-note">
+    <text class="note-text">💡 数据会自动备份，学习进度安全保障</text>
+  </view>
+</view>
+
+

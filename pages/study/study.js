@@ -1455,13 +1455,8 @@ Page({
         app.globalData.words[wordIndex].status = 'mastered'
         console.log(`词汇 "${currentWord.word}" 答题正确，已移至熟知词库`)
         
-        // 立即保存熟知词库状态变更
-        try {
-          wx.setStorageSync('words', app.globalData.words)
-          console.log('熟知词库状态已保存到本地存储')
-        } catch (e) {
-          console.error('保存熟知词库状态失败:', e)
-        }
+        // 立即保存熟知词库状态变更（使用增强版保存）
+        this.saveCurrentProgress()
       } else {
         console.log(`词汇 "${currentWord.word}" 在全局词汇列表中未找到`)
       }
@@ -1541,13 +1536,8 @@ Page({
         statsManager.recordStudyEvent(1)
       }
       
-      // 立即保存学习进度到本地存储
-      try {
-        wx.setStorageSync('words', app.globalData.words)
-        console.log('学习进度已保存到本地存储')
-      } catch (e) {
-        console.error('保存学习进度失败:', e)
-      }
+      // 立即保存学习进度到本地存储（使用增强版保存）
+      this.saveCurrentProgress()
     }
   },
 
@@ -1570,13 +1560,8 @@ Page({
       word.weeklyStudyCount = 0 // 重置周学习次数
       console.log(`词汇 "${word.word}" 已移至复习词库`)
       
-      // 立即保存复习词库状态变更
-      try {
-        wx.setStorageSync('words', app.globalData.words)
-        console.log('复习词库状态已保存到本地存储')
-      } catch (e) {
-        console.error('保存复习词库状态失败:', e)
-      }
+      // 立即保存复习词库状态变更（使用增强版保存）
+      this.saveCurrentProgress()
       
       // 注意：不在这里重新加载词汇列表，避免重置进度
       // 词汇状态变化会在下次学习时生效
@@ -1586,13 +1571,8 @@ Page({
       word.weeklyStudyCount = (word.weeklyStudyCount || 0) + 1
       console.log(`词汇 "${word.word}" 周学习次数增加到:`, word.weeklyStudyCount)
       
-      // 也要保存周学习次数的增加
-      try {
-        wx.setStorageSync('words', app.globalData.words)
-        console.log('周学习次数已保存到本地存储')
-      } catch (e) {
-        console.error('保存周学习次数失败:', e)
-      }
+      // 也要保存周学习次数的增加（使用增强版保存）
+      this.saveCurrentProgress()
     }
   },
 
@@ -1717,11 +1697,35 @@ Page({
     })
   },
 
-  // 保存当前学习进度
+  // 保存当前学习进度（增强版：支持分离存储）
   saveCurrentProgress() {
     try {
+      // 1. 保存词汇学习进度到独立存储
+      const vocabularyProgress = {}
+      app.globalData.words.forEach(word => {
+        vocabularyProgress[word.id] = {
+          studyCount: word.studyCount || 0,
+          correctCount: word.correctCount || 0,
+          status: word.status || 'learning',
+          weeklyStudyCount: word.weeklyStudyCount || 0,
+          lastStudyTime: word.lastStudyTime || null
+        }
+      })
+      wx.setStorageSync('user_vocabulary_progress', vocabularyProgress)
+      
+      // 2. 保存完整词汇数据（向后兼容）
       wx.setStorageSync('words', app.globalData.words)
-      console.log('当前学习进度已保存到本地存储')
+      
+      // 3. 保存学习统计数据
+      const StatsManager = require('../../utils/statsManager.js')
+      const statsManager = new StatsManager()
+      const currentStats = statsManager.getStats()
+      wx.setStorageSync('user_learning_stats', currentStats)
+      
+      console.log('完整的用户进度数据已保存到分离存储')
+      console.log('- 词汇进度记录数:', Object.keys(vocabularyProgress).length)
+      console.log('- 学习统计数据已同步')
+      
     } catch (e) {
       console.error('保存当前进度失败:', e)
     }

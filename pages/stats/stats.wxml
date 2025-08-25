@@ -64,7 +64,7 @@
 
   <!-- 版本信息 -->
   <view class="version-info">
-    <text class="version-text">Version 1.0 | 2025</text>
+    <text class="version-text">AI Pacab+ | 2025</text>
   </view>
 
   <!-- 隐藏的Canvas用于生成分享卡片 -->

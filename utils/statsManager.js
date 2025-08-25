@@ -40,13 +40,31 @@ class StatsManager {
     return { studyDays: 0, studiedWordEvents: 0, lastStudyDate: '', updatedAt: '', totalStudyMs: 0, perDayMs: {}, readPaperIds: [] }
   }
 
-  // 写入本地存储
+  // 写入本地存储（增强版：支持双重存储）
   saveStats() {
     const data = { ...this.stats, updatedAt: new Date().toISOString() }
     try {
+      // 保存到原有位置（向后兼容）
       wx.setStorageSync(this.storageKey, data)
+      
+      // 同时保存到独立存储（数据保护）
+      wx.setStorageSync('user_learning_stats', data)
+      
+      console.log('统计数据已保存到双重存储')
+      
     } catch (e) {
       console.error('保存本地统计失败:', e)
+    }
+  }
+
+  // 新增：同步保存到独立存储
+  saveStatsToIndependentStorage() {
+    try {
+      const currentStats = this.getStats()
+      wx.setStorageSync('user_learning_stats', currentStats)
+      console.log('统计数据已同步到独立存储')
+    } catch (e) {
+      console.error('同步统计数据失败:', e)
     }
   }
 
@@ -112,6 +130,53 @@ class StatsManager {
   // 获取统计
   getStats() {
     return { ...this.stats }
+  }
+
+  // 新增：从独立存储恢复统计数据
+  loadFromIndependentStorage() {
+    try {
+      const independentStats = wx.getStorageSync('user_learning_stats')
+      if (independentStats && typeof independentStats === 'object') {
+        console.log('从独立存储恢复统计数据')
+        this.stats = {
+          studyDays: Number(independentStats.studyDays) || 0,
+          studiedWordEvents: Number(independentStats.studiedWordEvents) || 0,
+          lastStudyDate: independentStats.lastStudyDate || '',
+          updatedAt: independentStats.updatedAt || '',
+          totalStudyMs: Number(independentStats.totalStudyMs) || 0,
+          perDayMs: independentStats.perDayMs && typeof independentStats.perDayMs === 'object' ? independentStats.perDayMs : {},
+          readPaperIds: Array.isArray(independentStats.readPaperIds) ? independentStats.readPaperIds : []
+        }
+        
+        // 同时更新到原有存储位置
+        this.saveStats()
+        return true
+      }
+    } catch (e) {
+      console.error('从独立存储恢复统计数据失败:', e)
+    }
+    return false
+  }
+
+  // 新增：数据完整性检查
+  validateStatsIntegrity() {
+    const issues = []
+    
+    // 检查基本数据类型
+    if (typeof this.stats.studyDays !== 'number' || this.stats.studyDays < 0) {
+      issues.push('学习天数数据异常')
+    }
+    if (typeof this.stats.studiedWordEvents !== 'number' || this.stats.studiedWordEvents < 0) {
+      issues.push('学习事件数据异常')
+    }
+    if (!Array.isArray(this.stats.readPaperIds)) {
+      issues.push('论文阅读记录数据异常')
+    }
+    
+    return {
+      isValid: issues.length === 0,
+      issues: issues
+    }
   }
 }
 
