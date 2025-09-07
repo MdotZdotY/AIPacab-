@@ -40,6 +40,12 @@ App({
     // 从本地存储加载词汇数据
     this.loadVocabularyData()
 
+    // 检查数据更新
+    this.checkDataUpdate()
+    
+    // 检查并加载词汇更新文件
+    this.loadVocabularyUpdates()
+
     // 登录
     wx.login({
       success: res => {
@@ -413,21 +419,8 @@ App({
   
   // 统一规范分类名称，消除别名/空白差异
   normalizeCategories(words) {
-    const aliasMap = new Map([
-      ['GRE高频词', 'GRE高频词'],
-      ['GRE高频词汇', 'GRE高频词'],
-      ['TOEFL高频词', 'TOEFL高频词'],
-      ['TOEFL高频词汇', 'TOEFL高频词'],
-      ['AI专业词汇', 'AI专业词汇'],
-      ['AI领域常用及专有词汇', 'AI专业词汇'],
-      ['AI领域内常用词和专有词', 'AI专业词汇'],
-      ['IELTS高频词', 'IELTS高频词'],
-      ['IELTS高频词汇', 'IELTS高频词']
-    ])
-    return (words || []).map(w => ({
-      ...w,
-      category: aliasMap.get((w.category || '').trim()) || 'AI专业词汇'
-    }))
+    const { normalizeWordsCategories } = require('./utils/categoryConstants.js')
+    return normalizeWordsCategories(words || [])
   },
   
   // 添加云数据库操作方法
@@ -484,8 +477,185 @@ App({
       console.error('云端词汇删除失败:', error)
     }
   },
+
+  // 检查数据更新
+  checkDataUpdate() {
+    // 暂时禁用自动更新检查，避免域名校验错误
+    console.log('数据更新检查已禁用，使用本地数据')
+    return
+    
+    const currentVersion = wx.getStorageSync('dataVersion') || '0'
+    const serverVersion = this.globalData.dataVersion
+    
+    if (currentVersion < serverVersion) {
+      console.log('发现新版本数据，开始更新...')
+      this.downloadDataUpdate()
+    } else {
+      console.log('数据已是最新版本')
+    }
+  },
+  
+  // 加载词汇更新文件
+  loadVocabularyUpdates() {
+    try {
+      console.log('检查词汇更新文件...')
+      
+      // 尝试加载词汇更新JS模块
+      const vocabularyUpdate = require('./utils/vocabulary_update.js')
+      
+      if (vocabularyUpdate && vocabularyUpdate.vocabulary && vocabularyUpdate.vocabulary.length > 0) {
+        console.log(`发现词汇更新文件，包含 ${vocabularyUpdate.vocabulary.length} 个新词汇`)
+        
+        // 获取当前词汇数据
+        const currentWords = this.globalData.words || []
+        console.log(`当前词汇数量: ${currentWords.length}`)
+        
+        // 合并新词汇（去重）
+        const mergedWords = this.mergeVocabularyData(currentWords, vocabularyUpdate.vocabulary)
+        
+        // 更新全局数据
+        this.globalData.words = mergedWords
+        
+        // 保存到本地存储
+        wx.setStorageSync('words', mergedWords)
+        
+        console.log(`词汇更新完成，总词汇数量: ${mergedWords.length}`)
+        
+        // 显示更新提示
+        wx.showToast({
+          title: `新增${vocabularyUpdate.vocabulary.length}个词汇`,
+          icon: 'success',
+          duration: 2000
+        })
+        
+        // 更新版本信息
+        this.updateVersionInfo(vocabularyUpdate.version, vocabularyUpdate.timestamp)
+        
+      } else {
+        console.log('没有发现词汇更新文件或文件为空')
+      }
+      
+    } catch (error) {
+      console.log('词汇更新文件不存在或加载失败:', error.message)
+      // 这是正常情况，不是错误
+    }
+  },
+  
+  // 合并词汇数据（去重）
+  mergeVocabularyData(existingWords, newWords) {
+    const existingWordSet = new Set(existingWords.map(w => w.word.toLowerCase()))
+    const uniqueNewWords = newWords.filter(word => 
+      !existingWordSet.has(word.word.toLowerCase())
+    )
+    
+    console.log(`去重后新增词汇数量: ${uniqueNewWords.length}`)
+    return [...existingWords, ...uniqueNewWords]
+  },
+  
+  // 更新版本信息
+  updateVersionInfo(version, timestamp) {
+    try {
+      const versionInfo = wx.getStorageSync('version_info') || {}
+      versionInfo.dataVersion = {
+        vocabulary: version,
+        lastUpdate: timestamp
+      }
+      wx.setStorageSync('version_info', versionInfo)
+      console.log('版本信息已更新')
+    } catch (error) {
+      console.error('更新版本信息失败:', error)
+    }
+  },
+
+  // 下载数据更新
+  downloadDataUpdate() {
+    wx.request({
+      url: this.globalData.updateUrl,
+      method: 'GET',
+      success: (res) => {
+        if (res.statusCode === 200) {
+          this.updateLocalData(res.data)
+        }
+      },
+      fail: (err) => {
+        console.error('数据更新失败:', err)
+        // 不显示错误提示，避免用户困扰
+        console.log('使用本地数据，跳过服务器更新')
+      }
+    })
+  },
+
+  // 更新本地数据
+  updateLocalData(newData) {
+    try {
+      // 更新论文数据
+      if (newData.papers && newData.papers.length > 0) {
+        const existingPapers = wx.getStorageSync('papers') || []
+        const updatedPapers = this.mergePapers(existingPapers, newData.papers)
+        wx.setStorageSync('papers', updatedPapers)
+        console.log(`更新了 ${newData.papers.length} 篇论文`)
+      }
+      
+      // 更新词汇数据
+      if (newData.vocabulary && newData.vocabulary.length > 0) {
+        const existingWords = wx.getStorageSync('words') || []
+        const updatedWords = this.mergeVocabulary(existingWords, newData.vocabulary)
+        wx.setStorageSync('words', updatedWords)
+        console.log(`更新了 ${newData.vocabulary.length} 个词汇`)
+      }
+      
+      // 更新版本号
+      wx.setStorageSync('dataVersion', newData.version)
+      
+      // 显示更新成功提示
+      wx.showToast({
+        title: '数据更新成功',
+        icon: 'success'
+      })
+      
+    } catch (error) {
+      console.error('本地数据更新失败:', error)
+      wx.showToast({
+        title: '数据更新失败',
+        icon: 'error'
+      })
+    }
+  },
+
+  // 合并论文数据
+  mergePapers(existingPapers, newPapers) {
+    // 基于ID进行合并，新论文追加到列表
+    const existingIds = new Set(existingPapers.map(p => p.id))
+    const uniqueNewPapers = newPapers.filter(p => !existingIds.has(p.id))
+    const mergedPapers = [...existingPapers, ...uniqueNewPapers]
+    
+    // 按照发表时间由近到远排序（最新发表的论文排在最上面）
+    // 同年发表的论文按标题字母顺序排序
+    return mergedPapers.sort((a, b) => {
+      // 首先按年份排序（由近到远）
+      if (b.year !== a.year) {
+        return b.year - a.year
+      }
+      // 同年发表的论文按标题字母顺序排序
+      return a.title.localeCompare(b.title)
+    })
+  },
+
+  // 合并词汇数据
+  mergeVocabulary(existingWords, newWords) {
+    // 基于词汇文本去重，保留用户学习进度
+    const existingWordSet = new Set(existingWords.map(w => w.word.toLowerCase()))
+    const uniqueNewWords = newWords.filter(word => 
+      !existingWordSet.has(word.word.toLowerCase())
+    )
+    return [...existingWords, ...uniqueNewWords]
+  },
+
   globalData: {
     userInfo: null,
+    // 数据更新配置
+    dataVersion: '20241201_000000',
+    updateUrl: 'https://your-server.com/api/data/update',
     // 词汇数据 - 从Attention Is All You Need论文中提取
         // 词汇数据 - 从论文中提取
     words: [
@@ -5594,6 +5764,346 @@ App({
         sentence: 'These goals bring along two guiding principles: increased human control and increased understanding of AI systems, drawing from the long history of Human-Computer Interaction (HCI).',
         translation: '这些目标带来了两条指导原则：增强人类控制和增进对AI系统的理解，这借鉴了人机交互（HCI）的悠久历史。',
         paperTitle: 'Human-Centered Artificial Intelligence: Reliable, Safe & Trustworthy',
+        category: 'AI专业词汇',
+        difficulty: 'hard',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 285,
+        word: 'synthesis',
+        meaning: '综合，合成',
+        englishMeaning: 'The combination of ideas to form a theory or system',
+        pronunciation: '/ˈsɪnθəsɪs/',
+        sentence: 'This survey presents a comprehensive, data-centric synthesis that reframes the development of Sci-LLMs',
+        translation: '本综述提出了一个全面的、以数据为中心的综合分析，重新构建了Sci-LLMs的发展框架',
+        paperTitle: 'A Survey of Scientific Large Language Models: From Data Foundations to Agent Frontiers',
+        category: 'GRE高频词',
+        difficulty: 'hard',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 286,
+        word: 'substrate',
+        meaning: '基质，底层',
+        englishMeaning: 'A substance or layer that underlies something',
+        pronunciation: '/ˈsʌbstreɪt/',
+        sentence: 'co-evolution between models and their underlying data substrate',
+        translation: '模型与其底层数据基质之间的协同演化',
+        paperTitle: 'A Survey of Scientific Large Language Models: From Data Foundations to Agent Frontiers',
+        category: 'GRE高频词',
+        difficulty: 'hard',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 287,
+        word: 'taxonomy',
+        meaning: '分类法',
+        englishMeaning: 'A classification system for organizing and categorizing things',
+        pronunciation: '/tækˈsɒnəmi/',
+        sentence: 'We formulate a unified taxonomy of scientific data',
+        translation: '我们制定了科学数据的统一分类法',
+        paperTitle: 'A Survey of Scientific Large Language Models: From Data Foundations to Agent Frontiers',
+        category: 'GRE高频词',
+        difficulty: 'medium',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 288,
+        word: 'heterogeneous',
+        meaning: '异质的',
+        englishMeaning: 'Diverse in character or content; varied',
+        pronunciation: '/ˌhetərəˈdʒiːniəs/',
+        sentence: 'heterogeneous, multi-scale, uncertainty-laden corpora',
+        translation: '异构的、多尺度的、不确定性负载的语料库',
+        paperTitle: 'A Survey of Scientific Large Language Models: From Data Foundations to Agent Frontiers',
+        category: 'GRE高频词',
+        difficulty: 'hard',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 289,
+        word: 'invariance',
+        meaning: '不变性',
+        englishMeaning: 'The property of remaining unchanged under certain transformations',
+        pronunciation: '/ɪnˈveəriəns/',
+        sentence: 'representations preserving domain invariance',
+        translation: '保持领域不变性的表示',
+        paperTitle: 'A Survey of Scientific Large Language Models: From Data Foundations to Agent Frontiers',
+        category: 'GRE高频词',
+        difficulty: 'hard',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 290,
+        word: 'comprehensive',
+        meaning: '全面的',
+        englishMeaning: 'Including or dealing with all or nearly all elements or aspects',
+        pronunciation: '/ˌkɒmprɪˈhensɪv/',
+        sentence: 'a comprehensive, data-centric synthesis',
+        translation: '一个全面的、以数据为中心的综合分析',
+        paperTitle: 'A Survey of Scientific Large Language Models: From Data Foundations to Agent Frontiers',
+        category: 'TOEFL高频词',
+        difficulty: 'hard',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 291,
+        word: 'evolution',
+        meaning: '进化',
+        englishMeaning: 'The gradual development of something',
+        pronunciation: '/ˌiːvəˈluːʃən/',
+        sentence: 'co-evolution between models and their underlying data substrate',
+        translation: '模型与其底层数据基质之间的协同演化',
+        paperTitle: 'A Survey of Scientific Large Language Models: From Data Foundations to Agent Frontiers',
+        category: 'TOEFL高频词',
+        difficulty: 'hard',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 292,
+        word: 'integration',
+        meaning: '整合',
+        englishMeaning: 'The action or process of combining two or more things',
+        pronunciation: '/ˌɪntɪˈɡreɪʃən/',
+        sentence: 'how knowledge is represented, integrated, and applied',
+        translation: '知识如何被表示、整合和应用',
+        paperTitle: 'A Survey of Scientific Large Language Models: From Data Foundations to Agent Frontiers',
+        category: 'TOEFL高频词',
+        difficulty: 'hard',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 293,
+        word: 'fundamental',
+        meaning: '基础的',
+        englishMeaning: 'Forming a necessary base or core; of central importance',
+        pronunciation: '/ˌfʌndəˈmentəl/',
+        sentence: 'From Data Foundations to Agent Frontiers',
+        translation: '从数据基础到智能体前沿',
+        paperTitle: 'A Survey of Scientific Large Language Models: From Data Foundations to Agent Frontiers',
+        category: 'TOEFL高频词',
+        difficulty: 'hard',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 294,
+        word: 'dimensions',
+        meaning: '维度',
+        englishMeaning: 'A measurable extent of a particular kind',
+        pronunciation: '/daɪˈmenʃənz/',
+        sentence: 'Dimensions for Evaluating Scientific AI',
+        translation: '评估科学AI的维度',
+        paperTitle: 'A Survey of Scientific Large Language Models: From Data Foundations to Agent Frontiers',
+        category: 'TOEFL高频词',
+        difficulty: 'hard',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 295,
+        word: 'multimodal',
+        meaning: '多模态的',
+        englishMeaning: 'Involving several different modes or methods',
+        pronunciation: '/ˌmʌltiˈmoʊdəl/',
+        sentence: 'emphasizing the multimodal, cross-scale, and domain-specific challenges',
+        translation: '强调多模态、跨尺度和领域特异性挑战',
+        paperTitle: 'A Survey of Scientific Large Language Models: From Data Foundations to Agent Frontiers',
+        category: 'IELTS高频词',
+        difficulty: 'hard',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 296,
+        word: 'corpora',
+        meaning: '语料库',
+        englishMeaning: 'Collections of written or spoken texts',
+        pronunciation: '/ˈkɔːrpərə/',
+        sentence: 'differentiate scientific corpora from general natural language processing datasets',
+        translation: '区分科学语料库与通用自然语言处理数据集',
+        paperTitle: 'A Survey of Scientific Large Language Models: From Data Foundations to Agent Frontiers',
+        category: 'IELTS高频词',
+        difficulty: 'medium',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 297,
+        word: 'benchmark',
+        meaning: '基准',
+        englishMeaning: 'A standard or point of reference against which things may be compared',
+        pronunciation: '/ˈbentʃmɑːrk/',
+        sentence: 'examine over 190 benchmark datasets',
+        translation: '检查超过190个基准数据集',
+        paperTitle: 'A Survey of Scientific Large Language Models: From Data Foundations to Agent Frontiers',
+        category: 'IELTS高频词',
+        difficulty: 'hard',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 298,
+        word: 'autonomous',
+        meaning: '自主的',
+        englishMeaning: 'Acting independently or having the freedom to do so',
+        pronunciation: '/ɔːˈtɒnəməs/',
+        sentence: 'autonomous agents based on Sci-LLMs actively experiment',
+        translation: '基于Sci-LLMs的自主智能体主动实验',
+        paperTitle: 'A Survey of Scientific Large Language Models: From Data Foundations to Agent Frontiers',
+        category: 'IELTS高频词',
+        difficulty: 'hard',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 299,
+        word: 'validation',
+        meaning: '验证',
+        englishMeaning: 'The action of checking or proving the validity of something',
+        pronunciation: '/ˌvælɪˈdeɪʃən/',
+        sentence: 'emerging solutions involving semi-automated annotation pipelines and expert validation',
+        translation: '涉及半自动化标注管道和专家验证的新兴解决方案',
+        paperTitle: 'A Survey of Scientific Large Language Models: From Data Foundations to Agent Frontiers',
+        category: 'IELTS高频词',
+        difficulty: 'hard',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 300,
+        word: 'Large Language Models',
+        meaning: '大语言模型',
+        englishMeaning: 'AI models trained on vast amounts of text data to understand and generate human-like language',
+        pronunciation: '/lɑːrdʒ ˈlæŋɡwɪdʒ ˈmɒdəlz/',
+        sentence: 'Scientific Large Language Models (Sci-LLMs) are transforming how knowledge is represented',
+        translation: '科学大语言模型（Sci-LLMs）正在改变知识的表示方式',
+        paperTitle: 'A Survey of Scientific Large Language Models: From Data Foundations to Agent Frontiers',
+        category: 'AI专业词汇',
+        difficulty: 'hard',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 301,
+        word: 'multimodal integration',
+        meaning: '多模态集成',
+        englishMeaning: 'The process of combining multiple modes of data or information',
+        pronunciation: '/ˌmʌltiˈmoʊdəl ˌɪntɪˈɡreɪʃən/',
+        sentence: 'cross-modal reasoning and multimodal integration challenges',
+        translation: '跨模态推理和多模态集成挑战',
+        paperTitle: 'A Survey of Scientific Large Language Models: From Data Foundations to Agent Frontiers',
+        category: 'AI专业词汇',
+        difficulty: 'hard',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 302,
+        word: 'pre-training',
+        meaning: '预训练',
+        englishMeaning: 'Training a model on a large dataset before fine-tuning for specific tasks',
+        pronunciation: '/priː ˈtreɪnɪŋ/',
+        sentence: 'extensive analysis of over 270 pre-post-training datasets',
+        translation: '对超过270个预训练和后训练数据集的广泛分析',
+        paperTitle: 'A Survey of Scientific Large Language Models: From Data Foundations to Agent Frontiers',
+        category: 'AI专业词汇',
+        difficulty: 'hard',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 303,
+        word: 'autonomous agents',
+        meaning: '自主代理',
+        englishMeaning: 'AI systems that can operate independently and make decisions',
+        pronunciation: '/ɔːˈtɒnəməs ˈeɪdʒənts/',
+        sentence: 'autonomous agents based on Sci-LLMs actively experiment',
+        translation: '基于Sci-LLMs的自主智能体主动实验',
+        paperTitle: 'A Survey of Scientific Large Language Models: From Data Foundations to Agent Frontiers',
+        category: 'AI专业词汇',
+        difficulty: 'hard',
+        studyCount: 0,
+        correctCount: 0,
+        lastStudyTime: null,
+        status: 'learning',
+        weeklyStudyCount: 0
+      },
+      {
+        id: 304,
+        word: 'knowledge representation',
+        meaning: '知识表示',
+        englishMeaning: 'The way knowledge is encoded and stored in AI systems',
+        pronunciation: '/ˈnɒlɪdʒ ˌreprɪzenˈteɪʃən/',
+        sentence: 'transforming how knowledge is represented, integrated, and applied',
+        translation: '知识如何被表示、整合和应用',
+        paperTitle: 'A Survey of Scientific Large Language Models: From Data Foundations to Agent Frontiers',
         category: 'AI专业词汇',
         difficulty: 'hard',
         studyCount: 0,

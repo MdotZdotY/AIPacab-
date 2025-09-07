@@ -7,20 +7,13 @@ Page({
     filteredWords: [],
     searchKeyword: '',
     activeCategory: '',
-    // 用于选择器和新增词汇的真实分类值
-    categories: ['GRE高频词', 'TOEFL高频词', 'AI专业词汇', 'IELTS高频词'],
-    // 用于筛选卡片的显示与实际值映射（移除按钮文案中的"高频词"）
-    categoryFilters: [
-      { display: 'GRE', value: 'GRE高频词' },
-      { display: 'TOEFL', value: 'TOEFL高频词' },
-      { display: 'IELTS', value: 'IELTS高频词' },
-      { display: 'AI专业', value: 'AI专业词汇' }
-    ],
+    categories: [],
+    categoryFilters: [],
     totalCount: 0,
-
   },
 
   onLoad() {
+    this.initializeCategoryData()
     this.loadWords()
   },
 
@@ -36,6 +29,15 @@ Page({
     // 空函数，用于阻止事件冒泡
   },
 
+  // 初始化分类数据
+  initializeCategoryData() {
+    const { CATEGORY_LIST, CATEGORY_FILTERS } = require('../../utils/categoryConstants.js')
+    this.setData({
+      categories: CATEGORY_LIST,
+      categoryFilters: CATEGORY_FILTERS
+    })
+  },
+
   // 加载词汇列表
   loadWords() {
     // 强制使用app.globalData中的词汇数据，不从本地存储加载
@@ -43,17 +45,9 @@ Page({
     
     let words = app.globalData.words || []
     
-    // 统一一次分类别名，避免与首页统计不一致
-    const aliasMap = {
-      'GRE高频词汇': 'GRE高频词',
-      'TOEFL高频词汇': 'TOEFL高频词',
-      'AI领域常用及专有词汇': 'AI专业词汇',
-      'AI领域内常用词和专有词': 'AI专业词汇',
-      'IELTS高频词汇': 'IELTS高频词'
-    }
-    words.forEach(w => {
-      if (aliasMap[w.category]) w.category = aliasMap[w.category]
-    })
+    // 使用统一的分类标准化函数
+    const { normalizeWordsCategories } = require('../../utils/categoryConstants.js')
+    words = normalizeWordsCategories(words)
     
     // 确保词汇数据是数组
     if (!Array.isArray(words)) {
@@ -246,6 +240,14 @@ Page({
     const wordId = e.currentTarget.dataset.id
     const word = app.globalData.words.find(w => w.id === wordId)
     
+    if (!word) {
+      wx.showToast({
+        title: '词汇不存在',
+        icon: 'error'
+      })
+      return
+    }
+    
     // 获取状态的中文描述
     const statusText = {
       'learning': '学习词库',
@@ -253,35 +255,15 @@ Page({
       'mastered': '熟知词库'
     }[word.status] || '未知状态'
     
-    // 构建详细信息内容 - 使用微信小程序支持的换行方式
-    let content = `含义：${word.meaning}
-
-例句：${word.sentence}
-
-分类：${word.category}
-
-状态：${statusText}
-
-学习次数：${word.studyCount}
-
-正确次数：${word.correctCount}
-
-周学习次数：${word.weeklyStudyCount || 0}`
+    // 只显示含义、例句、分类和状态
+    let contentLines = [
+      `含义：${word.meaning}`,
+      `例句：${word.sentence}`,
+      `分类：${word.category}`,
+      `状态：${statusText}`
+    ]
     
-    // 如果是复习词库，显示复习统计
-    if (word.status === 'review') {
-      const reviewCount = word.reviewCount || 0
-      const reviewCorrectCount = word.reviewCorrectCount || 0
-      const reviewStreak = word.reviewStreak || 0
-      const accuracy = reviewCount > 0 ? (reviewCorrectCount / reviewCount * 100).toFixed(1) : 0
-      
-      content += `\n\n复习统计：\n复习次数：${reviewCount}\n复习正确：${reviewCorrectCount}\n正确率：${accuracy}%\n连续正确：${reviewStreak}次`
-    }
-    
-    // 如果是熟知词库，显示掌握信息
-    if (word.status === 'mastered') {
-      content += `\n\n掌握状态：已完全掌握，不再进入学习循环`
-    }
+    let content = contentLines.join('\n\n')
     
     wx.showModal({
       title: word.word,

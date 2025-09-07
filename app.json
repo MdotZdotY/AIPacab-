@@ -5,7 +5,6 @@
     "pages/manage/manage",
     "pages/stats/stats",
     "pages/import/import",
-
     "pages/papers/papers",
     "pages/paper-detail/paper-detail"
   ],

@@ -1,0 +1,80 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Temporary files
+*.tmp
+*.temp
+*_temp.py
+*_test.py
+*_debug.py
+*_fix.py
+*_check.py
+*_supplement.py
+*_update.py
+*_quick.py
+*_manual.py
+*_batch.py
+*_apply.py
+*_improved.py
+*_reset.py
+*_simple.py
+
+# Data files
+update_package_*.json
+vocabulary_update.json
+
+# Paper files (PDFs are large and not needed in version control)
+# These files are downloaded during processing and can be regenerated
+backend/papers/*.pdf
+papers/*.pdf
+*.pdf
+
+# OS
+.DS_Store
+Thumbs.db
+
+# WeChat Mini Program
+node_modules/
+miniprogram_npm/

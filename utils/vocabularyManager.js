@@ -1,14 +1,12 @@
 // utils/vocabularyManager.js
 // 词汇管理工具 - 用于处理词汇库的更新和管理
 
+const { normalizeCategory, CATEGORY_MAPPING } = require('./categoryConstants.js')
+
 class VocabularyManager {
   constructor() {
-    this.categories = {
-      'GRE高频词汇': 'GRE高频词',
-      'TOEFL高频词汇': 'TOEFL高频词', 
-      'AI领域常用及专有词汇': 'AI专业词汇',
-      'IELTS高频词汇': 'IELTS高频词'
-    }
+    // 使用统一的分类映射
+    this.categories = CATEGORY_MAPPING
   }
 
   // 解析新词汇文件
@@ -24,7 +22,7 @@ class VocabularyManager {
       
       // 检测分类标题
       if (line.includes('GRE高频词汇') || line.includes('TOEFL高频词汇') || line.includes('AI领域常用及专有词汇') || line.includes('IELTS高频词汇')) {
-        currentCategory = this.categories[line] || line
+        currentCategory = normalizeCategory(line)
         continue
       }
 

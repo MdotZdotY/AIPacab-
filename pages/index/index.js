@@ -71,37 +71,19 @@ Page({
   // 加载分类数据
   loadCategories() {
     console.log('开始加载分类数据...')
-    // 统一分类别名，避免历史数据导致的统计不一致
-    const aliasMap = {
-      'GRE高频词汇': 'GRE高频词',
-      'TOEFL高频词汇': 'TOEFL高频词',
-      'AI领域常用及专有词汇': 'AI专业词汇',
-      'AI领域内常用词和专有词': 'AI专业词汇',
-      'IELTS高频词汇': 'IELTS高频词'
-    }
-    const words = (app.globalData.words || []).map(w => ({
-      ...w,
-      category: aliasMap[w.category] || w.category
-    }))
-    const categoryMap = {}
     
-    words.forEach(word => {
-      if (!categoryMap[word.category]) {
-        categoryMap[word.category] = 0
-      }
-      categoryMap[word.category]++
-    })
-
-    // 确保默认展示（并调整显示顺序：GRE, TOEFL, IELTS, AI专业）
-    const defaults = ['GRE高频词', 'TOEFL高频词', 'IELTS高频词', 'AI专业词汇']
-    defaults.forEach(name => {
-      if (categoryMap[name] === undefined) categoryMap[name] = 0
-    })
-
-    // 固定顺序输出
-    const categories = defaults
-      .filter(name => categoryMap[name] !== undefined)
-      .map(name => ({ name, count: categoryMap[name] }))
+    const { getCategoryStats, CATEGORIES } = require('../../utils/categoryConstants.js')
+    const words = app.globalData.words || []
+    
+    // 使用统一的分类统计函数
+    const categoryStats = getCategoryStats(words)
+    
+    // 按固定顺序输出分类数据
+    const categoryOrder = [CATEGORIES.GRE, CATEGORIES.TOEFL, CATEGORIES.IELTS, CATEGORIES.AI]
+    const categories = categoryOrder.map(name => ({ 
+      name, 
+      count: categoryStats[name] || 0 
+    }))
 
     console.log('分类数据:', categories)
     this.setData({ categories })

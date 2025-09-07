@@ -95,31 +95,9 @@ Page({
     const papersRead = Array.isArray(localStats2.readPaperIds) ? localStats2.readPaperIds.length : 0
     const totalPapers = papers.length
 
-    // 分类词汇统计：规范类别并统计
-    const normalizeCategory = (name) => {
-      if (!name) return 'AI专业词汇'
-      const map = {
-        'GRE高频词汇': 'GRE高频词',
-        'TOEFL高频词汇': 'TOEFL高频词',
-        'IELTS高频词汇': 'IELTS高频词',
-        'AI领域常用及专有词汇': 'AI专业词汇',
-        'AI领域内常用词和专有词': 'AI专业词汇'
-      }
-      return map[name] || name
-    }
-    const summaryInit = { mastered: 0, total: 0 }
-    const summary = {
-      gre: { ...summaryInit },
-      toefl: { ...summaryInit },
-      ielts: { ...summaryInit },
-      ai: { ...summaryInit }
-    }
-    ;(words || []).forEach(w => {
-      const cat = normalizeCategory(w.category)
-      const key = cat === 'GRE高频词' ? 'gre' : cat === 'TOEFL高频词' ? 'toefl' : cat === 'IELTS高频词' ? 'ielts' : 'ai'
-      summary[key].total += 1
-      if (w.status === 'mastered') summary[key].mastered += 1
-    })
+    // 分类词汇统计：使用统一的分类统计函数
+    const { getCategorySummary } = require('../../utils/categoryConstants.js')
+    const summary = getCategorySummary(words || [])
 
     this.setData({
       stats: {

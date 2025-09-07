@@ -16,7 +16,17 @@ Page({
   // 加载论文数据
   loadPapersData() {
     const papers = require('../../utils/papersData.js')
-    this.setData({ papers, filteredPapers: papers })
+    // 按照发表时间由近到远排序（最新发表的论文排在最上面）
+    // 同年发表的论文按标题字母顺序排序
+    const sortedPapers = papers.sort((a, b) => {
+      // 首先按年份排序（由近到远）
+      if (b.year !== a.year) {
+        return b.year - a.year
+      }
+      // 同年发表的论文按标题字母顺序排序
+      return a.title.localeCompare(b.title)
+    })
+    this.setData({ papers: sortedPapers, filteredPapers: sortedPapers })
   },
 
   onShow() {
@@ -50,7 +60,7 @@ Page({
   // 过滤论文
   filterPapers(keyword) {
     if (!keyword || keyword.trim() === '') {
-      // 如果搜索关键词为空，显示所有论文
+      // 如果搜索关键词为空，显示所有论文（保持排序）
       this.setData({
         filteredPapers: this.data.papers
       })
@@ -71,8 +81,19 @@ Page({
              category.includes(searchText)
     })
 
+    // 确保过滤后的结果也按时间排序（由近到远）
+    // 同年发表的论文按标题字母顺序排序
+    const sortedFiltered = filtered.sort((a, b) => {
+      // 首先按年份排序（由近到远）
+      if (b.year !== a.year) {
+        return b.year - a.year
+      }
+      // 同年发表的论文按标题字母顺序排序
+      return a.title.localeCompare(b.title)
+    })
+
     this.setData({
-      filteredPapers: filtered
+      filteredPapers: sortedFiltered
     })
   },
 
