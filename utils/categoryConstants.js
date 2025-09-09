@@ -12,10 +12,14 @@ export const CATEGORIES = {
 // 分类名称映射表（旧名称 -> 新名称）
 export const CATEGORY_MAPPING = {
   'GRE高频词汇': CATEGORIES.GRE,
+  'GRE高频词': CATEGORIES.GRE,  // 添加实际数据中使用的格式
   'TOEFL高频词汇': CATEGORIES.TOEFL,
+  'TOEFL高频词': CATEGORIES.TOEFL,  // 添加实际数据中使用的格式
   'AI领域常用及专有词汇': CATEGORIES.AI,
+  'AI专业词汇': CATEGORIES.AI,  // 添加实际数据中使用的格式
   'AI领域内常用词和专有词': CATEGORIES.AI,
-  'IELTS高频词汇': CATEGORIES.IELTS
+  'IELTS高频词汇': CATEGORIES.IELTS,
+  'IELTS高频词': CATEGORIES.IELTS  // 添加实际数据中使用的格式
 }
 
 // 分类显示名称映射（用于UI显示）

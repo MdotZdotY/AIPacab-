@@ -22,6 +22,9 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
+    // 检查并加载词汇更新文件（优先执行，确保新增词汇被加载）
+    this.loadVocabularyUpdates()
+
     // 应用启动时自动执行数据加载和迁移（如果需要）
     this.loadApplicationData()
 
@@ -42,9 +45,6 @@ App({
 
     // 检查数据更新
     this.checkDataUpdate()
-    
-    // 检查并加载词汇更新文件
-    this.loadVocabularyUpdates()
 
     // 登录
     wx.login({
@@ -126,12 +126,16 @@ App({
       const mergedVocabularyData = this.mergeVocabularyWithProgress(newVocabularyData, savedUserProgress.vocabulary)
       console.log('词汇数据合并完成，总数:', mergedVocabularyData.length)
       
+      // 3.1 合并论文数据与用户进度
+      const mergedPapersData = this.mergePaperProgressWithUserData(newPapersData, savedUserProgress.papers)
+      console.log('论文数据合并完成，总数:', mergedPapersData.length)
+      
       // 4. 保存合并后的数据
-      this.saveAllApplicationData(mergedVocabularyData, newPapersData, savedUserProgress, newVersion)
+      this.saveAllApplicationData(mergedVocabularyData, mergedPapersData, savedUserProgress, newVersion)
       
       // 5. 更新全局数据
       this.globalData.words = mergedVocabularyData
-      this.globalData.papers = newPapersData
+      this.globalData.papers = mergedPapersData
       
       console.log('数据迁移完成')
       
@@ -152,17 +156,20 @@ App({
       // 因为用户进度可能保存在独立的存储中
       const vocabularyProgress = wx.getStorageSync('user_vocabulary_progress') || {}
       
+      // 如果本地存储中没有词汇数据，使用默认词汇数据
+      let wordsToUse = savedWords.length > 0 ? savedWords : this.globalData.words || []
+      
       if (Object.keys(vocabularyProgress).length > 0) {
         console.log('发现独立的用户进度数据，正在合并...')
         // 使用相同的合并逻辑确保用户进度不丢失
-        const mergedWords = this.mergeVocabularyWithProgress(savedWords, vocabularyProgress)
+        const mergedWords = this.mergeVocabularyWithProgress(wordsToUse, vocabularyProgress)
         this.globalData.words = this.normalizeCategories(mergedWords)
         
         // 保存合并后的数据（确保数据一致性）
         wx.setStorageSync('words', mergedWords)
         console.log('用户进度数据合并完成')
       } else {
-        this.globalData.words = this.normalizeCategories(savedWords)
+        this.globalData.words = this.normalizeCategories(wordsToUse)
       }
       
       this.globalData.papers = papersData
@@ -199,13 +206,40 @@ App({
 
   // 合并词汇数据与用户进度
   mergeVocabularyWithProgress(newVocabularyData, vocabularyProgress) {
-    return newVocabularyData.map(word => {
-      const progress = vocabularyProgress[word.id] || {
+    console.log('开始合并词汇数据与用户进度...')
+    console.log('新词汇数据数量:', newVocabularyData.length)
+    console.log('用户进度数据数量:', Object.keys(vocabularyProgress).length)
+    
+    // 创建基于词汇文本的进度映射
+    const progressByWord = {}
+    Object.keys(vocabularyProgress).forEach(id => {
+      const progress = vocabularyProgress[id]
+      // 尝试通过ID找到对应的词汇文本
+      const wordText = this.findWordTextById(id, newVocabularyData)
+      if (wordText) {
+        progressByWord[wordText.toLowerCase()] = progress
+        console.log(`进度迁移: ID ${id} -> 词汇 "${wordText}"`)
+      }
+    })
+    
+    let progressMatchedCount = 0
+    let progressUnmatchedCount = 0
+    
+    const result = newVocabularyData.map(word => {
+      // 优先使用词汇文本匹配进度
+      const progress = progressByWord[word.word.toLowerCase()] || {
         studyCount: 0,
         correctCount: 0,
         status: 'learning',
         weeklyStudyCount: 0,
         lastStudyTime: null
+      }
+      
+      // 统计进度匹配情况
+      if (progressByWord[word.word.toLowerCase()]) {
+        progressMatchedCount++
+      } else {
+        progressUnmatchedCount++
       }
       
       // 重要：确保用户进度数据优先级高于新词汇数据的默认值
@@ -219,6 +253,63 @@ App({
         lastStudyTime: progress.lastStudyTime
       }
     })
+    
+    console.log(`进度合并完成: 匹配 ${progressMatchedCount} 个，未匹配 ${progressUnmatchedCount} 个`)
+    return result
+  },
+
+  // 合并论文数据与用户进度
+  mergePaperProgressWithUserData(newPapersData, paperProgress) {
+    console.log('开始合并论文数据与用户进度...')
+    console.log('新论文数据数量:', newPapersData.length)
+    console.log('用户已读论文数量:', paperProgress.readPaperIds ? paperProgress.readPaperIds.length : 0)
+    
+    // 确保新论文的ID不与现有论文冲突
+    const maxExistingId = Math.max(...newPapersData.map(p => p.id || 0), 0)
+    const reassignedPapers = newPapersData.map((paper, index) => ({
+      ...paper,
+      id: maxExistingId + index + 1  // 重新分配ID，确保不冲突
+    }))
+    
+    console.log(`论文ID重新分配: 从 ${maxExistingId + 1} 到 ${maxExistingId + reassignedPapers.length}`)
+    
+    // 统计用户已读论文的迁移情况
+    let readPapersMatched = 0
+    let readPapersUnmatched = 0
+    
+    // 检查用户已读论文是否在新论文中
+    if (paperProgress.readPaperIds && paperProgress.readPaperIds.length > 0) {
+      paperProgress.readPaperIds.forEach(readId => {
+        const paperExists = reassignedPapers.some(p => p.id == readId)
+        if (paperExists) {
+          readPapersMatched++
+          console.log(`已读论文进度保持: ID ${readId}`)
+        } else {
+          readPapersUnmatched++
+          console.log(`已读论文进度丢失: ID ${readId} (论文不存在)`)
+        }
+      })
+    }
+    
+    console.log(`论文进度合并完成: 匹配 ${readPapersMatched} 个，未匹配 ${readPapersUnmatched} 个`)
+    return reassignedPapers
+  },
+
+  // 通过ID查找词汇文本（用于进度迁移）
+  findWordTextById(id, vocabularyData) {
+    // 首先尝试在新词汇数据中查找
+    const wordInNewData = vocabularyData.find(w => w.id == id)
+    if (wordInNewData) {
+      return wordInNewData.word
+    }
+    
+    // 如果新数据中没找到，尝试在默认词汇数据中查找
+    const wordInDefaultData = this.globalData.words.find(w => w.id == id)
+    if (wordInDefaultData) {
+      return wordInDefaultData.word
+    }
+    
+    return null
   },
 
   // 保存所有应用数据
@@ -549,7 +640,17 @@ App({
     )
     
     console.log(`去重后新增词汇数量: ${uniqueNewWords.length}`)
-    return [...existingWords, ...uniqueNewWords]
+    
+    // 确保新词汇的ID不与现有词汇冲突
+    const maxExistingId = Math.max(...existingWords.map(w => w.id || 0), 0)
+    const reassignedNewWords = uniqueNewWords.map((word, index) => ({
+      ...word,
+      id: maxExistingId + index + 1  // 重新分配ID，确保不冲突
+    }))
+    
+    console.log(`新词汇ID重新分配: 从 ${maxExistingId + 1} 到 ${maxExistingId + reassignedNewWords.length}`)
+    
+    return [...existingWords, ...reassignedNewWords]
   },
   
   // 更新版本信息
@@ -624,10 +725,28 @@ App({
 
   // 合并论文数据
   mergePapers(existingPapers, newPapers) {
-    // 基于ID进行合并，新论文追加到列表
-    const existingIds = new Set(existingPapers.map(p => p.id))
-    const uniqueNewPapers = newPapers.filter(p => !existingIds.has(p.id))
-    const mergedPapers = [...existingPapers, ...uniqueNewPapers]
+    console.log('开始合并论文数据...')
+    console.log('现有论文数量:', existingPapers.length)
+    console.log('新论文数量:', newPapers.length)
+    
+    // 基于标题进行去重（类似词汇的去重逻辑）
+    const existingTitles = new Set(existingPapers.map(p => p.title.toLowerCase()))
+    const uniqueNewPapers = newPapers.filter(paper => 
+      !existingTitles.has(paper.title.toLowerCase())
+    )
+    
+    console.log(`去重后新增论文数量: ${uniqueNewPapers.length}`)
+    
+    // 确保新论文的ID不与现有论文冲突
+    const maxExistingId = Math.max(...existingPapers.map(p => p.id || 0), 0)
+    const reassignedNewPapers = uniqueNewPapers.map((paper, index) => ({
+      ...paper,
+      id: maxExistingId + index + 1  // 重新分配ID，确保不冲突
+    }))
+    
+    console.log(`新论文ID重新分配: 从 ${maxExistingId + 1} 到 ${maxExistingId + reassignedNewPapers.length}`)
+    
+    const mergedPapers = [...existingPapers, ...reassignedNewPapers]
     
     // 按照发表时间由近到远排序（最新发表的论文排在最上面）
     // 同年发表的论文按标题字母顺序排序
@@ -4170,24 +4289,6 @@ App({
         weeklyStudyCount: 0
       },
       {
-        id: 196,
-        word: 'Large Language Model (LLM)',
-        englishMeaning: 'A type of artificial intelligence model trained on vast amounts of text data to understand and generate human-like language.',
-        meaning: '大型语言模型 (noun phrase)',
-        partOfSpeech: 'noun phrase',
-        pronunciation: '/lɑːrdʒ ˈlæŋ.ɡwɪdʒ ˈmɑː.dəl/',
-        sentence: 'We explore how generating a chain of thought... significantly improves the ability of large language models to perform complex reasoning.',
-        translation: '我们探索了生成一个思维链……如何显著提高大型语言模型执行复杂推理的能力。',
-        paperTitle: 'Chain-of-Thought Prompting Elicits Reasoning in Large Language Models',
-        category: 'AI专业词汇',
-        difficulty: 'hard',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
         id: 197,
         word: 'Fine-tuning',
         englishMeaning: 'The process of making small adjustments to improve performance.',
@@ -6020,23 +6121,6 @@ App({
         translation: '涉及半自动化标注管道和专家验证的新兴解决方案',
         paperTitle: 'A Survey of Scientific Large Language Models: From Data Foundations to Agent Frontiers',
         category: 'IELTS高频词',
-        difficulty: 'hard',
-        studyCount: 0,
-        correctCount: 0,
-        lastStudyTime: null,
-        status: 'learning',
-        weeklyStudyCount: 0
-      },
-      {
-        id: 300,
-        word: 'Large Language Models',
-        meaning: '大语言模型',
-        englishMeaning: 'AI models trained on vast amounts of text data to understand and generate human-like language',
-        pronunciation: '/lɑːrdʒ ˈlæŋɡwɪdʒ ˈmɒdəlz/',
-        sentence: 'Scientific Large Language Models (Sci-LLMs) are transforming how knowledge is represented',
-        translation: '科学大语言模型（Sci-LLMs）正在改变知识的表示方式',
-        paperTitle: 'A Survey of Scientific Large Language Models: From Data Foundations to Agent Frontiers',
-        category: 'AI专业词汇',
         difficulty: 'hard',
         studyCount: 0,
         correctCount: 0,

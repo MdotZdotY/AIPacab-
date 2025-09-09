@@ -13,32 +13,6 @@
 
   </view>
 
-  <!-- 分类筛选 + 统计信息（同一卡片） -->
-  <view class="category-section">
-    <view class="category-title"></view>
-    <view class="category-list">
-      <view class="category-item {{activeCategory === filter.value ? 'active' : ''}}"
-            wx:for="{{categoryFilters}}" 
-            wx:for-item="filter"
-            wx:key="value"
-            bindtap="selectCategory"
-            data-category="{{filter.value}}">
-        <text class="category-text">{{filter.display}}</text>
-      </view>
-    </view>
-
-    <!-- 统计信息并入同一卡片 -->
-    <view class="stats-section inside-card">
-      <view class="stats-item">
-        <text class="stats-label-inline">总词汇量</text>
-        <text class="stats-number-inline">{{totalCount}}</text>
-      </view>
-      <view class="stats-item">
-        <text class="stats-label-inline">筛选结果</text>
-        <text class="stats-number-inline">{{filteredWords.length}}</text>
-      </view>
-    </view>
-  </view>
 
 
 

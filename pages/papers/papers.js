@@ -67,23 +67,35 @@ Page({
       return
     }
 
-    // 根据关键词过滤论文
-    const filtered = this.data.papers.filter(paper => {
-      const searchText = keyword.toLowerCase()
-      const title = paper.title.toLowerCase()
-      const authors = paper.authors.toLowerCase()
-      const abstract = paper.abstract.toLowerCase()
-      const category = paper.category.toLowerCase()
-      
-      return title.includes(searchText) || 
-             authors.includes(searchText) || 
-             abstract.includes(searchText) || 
-             category.includes(searchText)
+    const searchText = keyword.toLowerCase()
+    
+    // 首先按标题搜索
+    const titleMatches = this.data.papers.filter(paper => {
+      const title = (paper.title || '').toLowerCase()
+      return title.includes(searchText)
     })
-
-    // 确保过滤后的结果也按时间排序（由近到远）
-    // 同年发表的论文按标题字母顺序排序
-    const sortedFiltered = filtered.sort((a, b) => {
+    
+    // 如果标题有匹配结果，直接返回标题匹配的结果
+    if (titleMatches.length > 0) {
+      const sortedTitleMatches = titleMatches.sort((a, b) => {
+        // 按标题字母顺序排序
+        return a.title.localeCompare(b.title)
+      })
+      
+      this.setData({
+        filteredPapers: sortedTitleMatches
+      })
+      return
+    }
+    
+    // 如果标题没有匹配，则按摘要搜索
+    const abstractMatches = this.data.papers.filter(paper => {
+      const abstract = (paper.abstract || '').toLowerCase()
+      return abstract.includes(searchText)
+    })
+    
+    // 对摘要匹配结果进行排序
+    const sortedAbstractMatches = abstractMatches.sort((a, b) => {
       // 首先按年份排序（由近到远）
       if (b.year !== a.year) {
         return b.year - a.year
@@ -91,9 +103,9 @@ Page({
       // 同年发表的论文按标题字母顺序排序
       return a.title.localeCompare(b.title)
     })
-
+    
     this.setData({
-      filteredPapers: sortedFiltered
+      filteredPapers: sortedAbstractMatches
     })
   },
 

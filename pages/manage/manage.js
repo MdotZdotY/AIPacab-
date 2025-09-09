@@ -6,19 +6,18 @@ Page({
     allWords: [],
     filteredWords: [],
     searchKeyword: '',
-    activeCategory: '',
-    categories: [],
-    categoryFilters: [],
-    totalCount: 0,
   },
 
   onLoad() {
-    this.initializeCategoryData()
     this.loadWords()
   },
 
   onShow() {
-    this.loadWords()
+    // 延迟加载词汇数据，确保app.js的数据加载完成
+    setTimeout(() => {
+      this.loadWords()
+    }, 500)
+    
     if (this.getTabBar && this.getTabBar()) {
       this.getTabBar().setData({ selected: 2 })
     }
@@ -29,14 +28,6 @@ Page({
     // 空函数，用于阻止事件冒泡
   },
 
-  // 初始化分类数据
-  initializeCategoryData() {
-    const { CATEGORY_LIST, CATEGORY_FILTERS } = require('../../utils/categoryConstants.js')
-    this.setData({
-      categories: CATEGORY_LIST,
-      categoryFilters: CATEGORY_FILTERS
-    })
-  },
 
   // 加载词汇列表
   loadWords() {
@@ -45,15 +36,21 @@ Page({
     
     let words = app.globalData.words || []
     
-    // 使用统一的分类标准化函数
-    const { normalizeWordsCategories } = require('../../utils/categoryConstants.js')
-    words = normalizeWordsCategories(words)
-    
     // 确保词汇数据是数组
     if (!Array.isArray(words)) {
       console.warn('词汇数据格式错误，重置为空数组')
       words = []
       app.globalData.words = words
+    }
+    
+    // 如果词汇数据为空，尝试重新加载
+    if (words.length === 0) {
+      console.warn('管理页面词汇数据为空，尝试重新加载...')
+      // 延迟重新加载，给app.js更多时间完成数据加载
+      setTimeout(() => {
+        this.loadWords()
+      }, 1000)
+      return
     }
     
     // 检查并修复重复ID
@@ -68,11 +65,8 @@ Page({
     
     this.setData({
       allWords: words,
-      filteredWords: words,
-      totalCount: words.length
+      filteredWords: words
     })
-    // 在默认状态下不需要调用filterWords，因为filteredWords已经设置为所有词汇
-    // this.filterWords()
   },
 
   // 修复重复ID
@@ -128,14 +122,6 @@ Page({
     this.filterWords()
   },
 
-  // 选择分类
-  selectCategory(e) {
-    const category = e.currentTarget.dataset.category
-    this.setData({
-      activeCategory: this.data.activeCategory === category ? '' : category
-    })
-    this.filterWords()
-  },
 
   // 筛选词汇
   filterWords() {
@@ -162,15 +148,7 @@ Page({
         const bScore = this.calculateSearchScore(b, keyword)
         return bScore - aScore // 降序排列，分数高的在前
       })
-    }
-
-    // 按分类筛选
-    if (this.data.activeCategory) {
-      filtered = filtered.filter(word => word && word.category === this.data.activeCategory)
-    }
-
-    // 只有在有搜索关键词或分类筛选时才去重，默认状态下不去重
-    if (this.data.searchKeyword || this.data.activeCategory) {
+      
       // 去重：按词汇名称去重，保留第一个出现的
       const uniqueFiltered = []
       const seenWords = new Set()

@@ -6,10 +6,16 @@
   min-height: 100vh;
 }
 
-/* 搜索区域 */
+/* 搜索区域 - 固定定位 */
 .search-section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: #F5F7FA;
   padding: 20rpx;
-  margin-bottom: 10rpx; /* 减少底部间距，让论文卡片更靠近搜索框 */
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
 }
 
 .search-box {
@@ -44,7 +50,7 @@
 .papers-list {
   margin-bottom: 30rpx;
   padding: 0 20rpx;
-  margin-top: 0; /* 确保顶部没有额外间距 */
+  margin-top: 120rpx; /* 为固定搜索框预留空间 */
 }
 
 .paper-item {
@@ -145,7 +151,7 @@
   justify-content: center;
   padding: 100rpx 40rpx;
   text-align: center;
-  margin: 0 20rpx;
+  margin: 120rpx 20rpx 0 20rpx; /* 为固定搜索框预留空间 */
 }
 
 .empty-icon {

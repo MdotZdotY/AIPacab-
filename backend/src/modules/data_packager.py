@@ -242,7 +242,7 @@ class MiniProgramDataInjector:
         return js_template
     
     def create_vocabulary_update_file(self, vocabulary_data: List[Dict], file_path: str):
-        """创建词汇更新文件"""
+        """创建词汇更新文件（JS格式）"""
         try:
             update_data = {
                 "version": datetime.now().strftime("%Y%m%d_%H%M%S"),
@@ -250,8 +250,21 @@ class MiniProgramDataInjector:
                 "timestamp": datetime.now().isoformat()
             }
             
+            # 生成JS格式内容
+            js_content = f"""// 词汇更新数据
+// 自动生成于: {datetime.now().isoformat()}
+
+const vocabularyUpdate = {json.dumps(update_data, ensure_ascii=False, indent=2)}
+
+module.exports = vocabularyUpdate
+"""
+            
+            # 确保文件扩展名为.js
+            if not file_path.endswith('.js'):
+                file_path = file_path.replace('.json', '.js')
+            
             with open(file_path, 'w', encoding='utf-8') as f:
-                json.dump(update_data, f, ensure_ascii=False, indent=2)
+                f.write(js_content)
             
             logger.info(f"词汇更新文件已创建: {file_path}")
             return True
@@ -387,7 +400,7 @@ class DataPackager:
             
             vocabulary_file = os.path.join(
                 self.config.get('miniprogram', {}).get('data_path', '../utils/'),
-                'vocabulary_update.json'
+                'vocabulary_update.js'
             )
             
             vocabulary_manager = ImprovedVocabularyManager(vocabulary_file)
@@ -415,7 +428,7 @@ class DataPackager:
         try:
             vocabulary_file = os.path.join(
                 self.config.get('miniprogram', {}).get('data_path', '../utils/'),
-                'vocabulary_update.json'
+                'vocabulary_update.js'
             )
             return self.injector.create_vocabulary_update_file(vocabulary_data, vocabulary_file)
         except Exception as e:

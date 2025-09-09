@@ -51,7 +51,11 @@ Page({
   },
 
   onShow() {
-    this.loadStats()
+    // 延迟加载统计数据，确保app.js的数据加载完成
+    setTimeout(() => {
+      this.loadStats()
+    }, 500)
+    
     // 同步自定义 tabBar 的选中态
     if (this.getTabBar && this.getTabBar()) {
       this.getTabBar().setData({ selected: 4 })
@@ -64,6 +68,30 @@ Page({
     console.log('统计页面使用app.globalData中的词汇数据')
     
     const words = app.globalData.words || []
+    
+    // 调试：输出词汇数据信息
+    console.log('统计页面词汇数据调试信息:')
+    console.log('- 总词汇数量:', words.length)
+    console.log('- 词汇数据示例:', words.slice(0, 3))
+    
+    // 调试：输出分类统计
+    const categoryCounts = {}
+    words.forEach(word => {
+      if (word && word.category) {
+        categoryCounts[word.category] = (categoryCounts[word.category] || 0) + 1
+      }
+    })
+    console.log('- 原始分类统计:', categoryCounts)
+    
+    // 如果词汇数据为空，尝试重新加载
+    if (words.length === 0) {
+      console.warn('词汇数据为空，尝试重新加载...')
+      // 延迟重新加载，给app.js更多时间完成数据加载
+      setTimeout(() => {
+        this.loadStats()
+      }, 1000)
+      return
+    }
     
     // 按状态统计词汇
     const learningWords = words.filter(word => word.status === 'learning')
